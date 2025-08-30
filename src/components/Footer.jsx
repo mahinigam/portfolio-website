@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { motion } from 'framer-motion'
 import { Heart, Code, Coffee, Gamepad2 } from 'lucide-react'
 import SnakeGame from './SnakeGame'
 
