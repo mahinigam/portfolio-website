@@ -130,7 +130,7 @@ const About = () => {
               { label: 'TECHNOLOGIES', value: '10+' },
               { label: 'BLOG POSTS', value: '8+' },
               { label: 'COFFEE CUPS', value: '∞' }
-            ].map((stat, index) => (
+            ].map((stat) => (
               <motion.div
                 key={stat.label}
                 whileHover={{ scale: 1.05 }}

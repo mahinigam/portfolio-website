@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 import { X, Play, RotateCcw } from 'lucide-react'
 
 const SnakeGame = ({ isOpen, onClose }) => {
@@ -101,6 +101,11 @@ const SnakeGame = ({ isOpen, onClose }) => {
       const currentDirection = nextDirection.x !== 0 || nextDirection.y !== 0 ? nextDirection : direction
       setDirection(currentDirection)
 
+      // Don't move if no direction is set (game just started)
+      if (currentDirection.x === 0 && currentDirection.y === 0) {
+        return currentSnake
+      }
+
       // Move head
       head.x += currentDirection.x
       head.y += currentDirection.y
@@ -158,7 +163,7 @@ const SnakeGame = ({ isOpen, onClose }) => {
   // Set up game loop
   useEffect(() => {
     if (gameState === 'playing') {
-      gameLoopRef.current = setInterval(gameLoop, 120)
+      gameLoopRef.current = setInterval(gameLoop, 150) // Slightly slower for better playability
     } else {
       clearInterval(gameLoopRef.current)
     }
@@ -315,6 +320,17 @@ const SnakeGame = ({ isOpen, onClose }) => {
                 >
                   <Play size={16} /> START GAME
                 </button>
+              </div>
+            )}
+
+            {gameState === 'playing' && direction.x === 0 && direction.y === 0 && (
+              <div className="absolute inset-0 bg-retro-black/60 flex flex-col items-center justify-center">
+                <div className="text-retro-yellow font-pixel text-xs text-glow mb-2 text-center sprite animate-bounce-retro">
+                  PRESS ANY ARROW KEY TO START
+                </div>
+                <div className="text-retro-blue font-pixel text-xs text-center sprite">
+                  ↑ ↓ ← → OR W A S D
+                </div>
               </div>
             )}
 

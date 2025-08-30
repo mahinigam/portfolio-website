@@ -16,7 +16,6 @@
     overflow-x: hidden;
     line-height: 1.6;
     font-size: 14px;
-    cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA2ElEQVQoU6WSsQ2DQAxFnxMSI1BQZgRGSJmhZYbWGVpmhJQZGmZomSFlhpYZUmZImaFlBpYZjhfJlZz4O/m9/7+NjTGGf5BSyu+1EEKglPJJCCGklHJKKb9TSvlFCCGklHJKKd9TSrmllPJJKeWXEEJIKeWUUr6nlHJLKeWTUsovoZQSUsoppXxPKeWWUsonpZRfQgghpJRTSvm+pZRTSvmklPJLCCGElFJOKeX7llJOKeWTUsonpZRfQgghpJRzSim/b1/f+t8/pZRTSvmklPJLCCGElFJOKeX7llJOKeWTUsonpZRfQggh/gFhPzz2AJYQqwAAAABJRU5ErkJggg=='), auto;
   }
 
   html {
@@ -206,4 +205,62 @@
     z-index: -1;
     border-radius: inherit;
   }
+}
+
+/* Simple system cursors - clean and reliable */
+button,
+a,
+[role="button"],
+input[type="submit"],
+input[type="button"],
+.cursor-pointer,
+.retro-button,
+.arcade-button {
+  cursor: pointer;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  cursor: text;
+}
+
+.snake-game-container {
+  cursor: crosshair;
+}
+
+/* Scanline animation */
+@keyframes moveDown {
+  from {
+    transform: translateY(-100vh);
+  }
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+/* Pixel hand cursor for interactive elements */
+button,
+a,
+[role="button"],
+input[type="submit"],
+input[type="button"],
+.cursor-pointer,
+.retro-button,
+.arcade-button {
+  cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAACXBIWXMAAAsTAAALEwEAmpwYAAABKklEQVQ4T52UsQ3CQAxF30KkASpgAzoBE8AETABMwARswARMwAZswARMwARMwAZswAZMwAZswAZtTU4nE5/vf8kucrLtf3/+2TGGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYf4BDrMbfKKDN8YAAAAASUVORK5CYII='), pointer !important;
+}
+
+/* Text cursor for inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAQCAYAAAA8qK60AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJklEQVQIHWNkYGBgZGBgYGRgYGBkYGBgZGBgYGRgYGBkYGBgZGBgYAAABAABAAETgN7eAAAAAElFTkSuQmCC'), text !important;
+}
+
+/* Special cursors for specific actions */
+.snake-game-container {
+  cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAACXBIWXMAAAsTAAALEwEAmpwYAAABKklEQVQ4T52UsQ3CQAxF30KkASpgAzoBE8AETABMwARswARMwAZswARMwARMwAZswAZswAZtTU4nE5/vf8kucrLtf3/+2TGGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYf4BDrMbfKKDN8YAAAAASUVORK5CYII='), crosshair !important;
 }

@@ -206,7 +206,7 @@ const Blog = () => {
             {/* Blog Posts */}
             <div className="lg:col-span-2">
               <motion.div variants={containerVariants} className="space-y-6">
-                {blogPosts.map((post, index) => (
+                {blogPosts.map((post) => (
                   <motion.article
                     key={post.title}
                     variants={itemVariants}

@@ -1,5 +1,4 @@
 import React from 'react'
-import { motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -18,15 +17,10 @@ function App() {
       <div className="fixed inset-0 bg-retro-stars bg-stars opacity-30 pointer-events-none"></div>
       
       {/* Enhanced scanline effect */}
-      <motion.div
-        className="fixed w-full h-1 bg-gradient-to-r from-transparent via-retro-green to-transparent opacity-30 z-10 pointer-events-none"
-        animate={{
-          y: ['0vh', '100vh']
-        }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          ease: 'linear'
+      <div
+        className="fixed w-full h-1 bg-gradient-to-r from-transparent via-retro-green to-transparent opacity-30 z-10 pointer-events-none animate-bounce-retro"
+        style={{
+          animation: 'moveDown 3s linear infinite'
         }}
       />
 
