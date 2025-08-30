@@ -24,10 +24,48 @@
 }
 
 @layer components {
-  .retro-button {
+    .retro-button {
     @apply bg-retro-pink border-2 border-retro-blue text-retro-black px-4 py-2 text-xs font-pixel
            hover:bg-retro-green hover:text-retro-black transition-all duration-200 
-           transform hover:scale-110 active:scale-95 cursor-pointer;
+           focus:outline-none focus:ring-2 focus:ring-retro-yellow cursor-pointer;
+  }
+
+  /* Remove any unwanted pseudo-elements or browser defaults */
+  .retro-button::before,
+  .retro-button::after,
+  button::before,
+  button::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  /* Override any browser button defaults and list styles */
+  button {
+    background-image: none !important;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    list-style: none !important;
+  }
+
+  button:hover {
+    background-image: none !important;
+  }
+
+  /* Remove any list-style bullets that might appear */
+  * {
+    list-style: none !important;
+  }
+
+  /* Remove any default focus styles that might show as dots */
+  *:focus {
+    outline: none !important;
+  }
+
+  /* Ensure retro-card hover doesn't create unwanted elements */
+  .retro-card:hover::after {
+    content: none !important;
+    display: none !important;
   }
 
   .retro-card {
@@ -256,27 +294,31 @@ textarea {
   background-size: 100px 100px;
 }
 
-/* Pixel hand cursor for interactive elements */
-button,
-a,
-[role="button"],
-input[type="submit"],
-input[type="button"],
-.cursor-pointer,
-.retro-button,
-.arcade-button {
-  cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAACXBIWXMAAAsTAAALEwEAmpwYAAABKklEQVQ4T52UsQ3CQAxF30KkASpgAzoBE8AETABMwARswARMwAZswARMwARMwAZswAZMwAZswAZtTU4nE5/vf8kucrLtf3/+2TGGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYf4BDrMbfKKDN8YAAAAASUVORK5CYII='), pointer !important;
-}
+/* Normal system cursors - keeping it simple and standard */
+/* 
+  Commented out pixel cursors to use normal system cursors instead
+  
+  button,
+  a,
+  [role="button"],
+  input[type="submit"],
+  input[type="button"],
+  .cursor-pointer,
+  .retro-button,
+  .arcade-button {
+    cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAACXBIWXMAAAsTAAALEwEAmpwYAAABKklEQVQ4T52UsQ3CQAxF30KkASpgAzoBE8AETABMwARswARMwAZswARMwARMwAZswAZMwAZswAZtTU4nE5/vf8kucrLtf3/+2TGGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYf4BDrMbfKKDN8YAAAAASUVORK5CYII='), pointer !important;
+  }
+*/
 
 /* Text cursor for inputs */
 input[type="text"],
 input[type="email"],
 input[type="password"],
 textarea {
-  cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAQCAYAAAA8qK60AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJklEQVQIHWNkYGBgZGBgYGRgYGBkYGBgZGBgYGRgYGBkYGBgZGBgYAAABAABAAETgN7eAAAAAElFTkSuQmCC'), text !important;
+  cursor: text !important;
 }
 
 /* Special cursors for specific actions */
 .snake-game-container {
-  cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAACXBIWXMAAAsTAAALEwEAmpwYAAABKklEQVQ4T52UsQ3CQAxF30KkASpgAzoBE8AETABMwARswARMwAZswARMwARMwAZswAZswAZtTU4nE5/vf8kucrLtf3/+2TGGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYf4BDrMbfKKDN8YAAAAASUVORK5CYII='), crosshair !important;
+  cursor: crosshair !important;
 }
