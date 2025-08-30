@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
-import { AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { X, Play, RotateCcw } from 'lucide-react'
 
 const SnakeGame = ({ isOpen, onClose }) => {
@@ -22,26 +22,55 @@ const SnakeGame = ({ isOpen, onClose }) => {
   const [specialFood, setSpecialFood] = useState(null)
   const [direction, setDirection] = useState({ x: 0, y: 0 })
   const [nextDirection, setNextDirection] = useState({ x: 0, y: 0 })
+  const [foodEaten, setFoodEaten] = useState(0) // Counter for special food generation
 
-  // Generate random food position
+  // Generate random food position (avoiding snake)
   const generateFood = useCallback(() => {
-    return {
-      x: Math.floor(Math.random() * GRID_COUNT),
-      y: Math.floor(Math.random() * GRID_COUNT)
-    }
-  }, [GRID_COUNT])
-
-  // Generate special food occasionally
-  const generateSpecialFood = useCallback(() => {
-    if (Math.random() < 0.15) { // 15% chance
-      return {
+    let newFood;
+    let attempts = 0;
+    
+    // Try to find a position not on the snake (with fallback to prevent infinite loop)
+    do {
+      newFood = {
         x: Math.floor(Math.random() * GRID_COUNT),
-        y: Math.floor(Math.random() * GRID_COUNT),
-        timer: 100 // Disappears after 100 game loops
-      }
+        y: Math.floor(Math.random() * GRID_COUNT)
+      };
+      attempts++;
+    } while (
+      attempts < 50 && 
+      snake.some(segment => segment.x === newFood.x && segment.y === newFood.y)
+    );
+    
+    return newFood;
+  }, [GRID_COUNT, snake])
+
+  // Generate special food with better logic
+  const generateSpecialFood = useCallback((foodCount) => {
+    // Generate special food every 3-5 regular foods eaten, or 20% random chance
+    const shouldGenerate = (foodCount > 0 && foodCount % 4 === 0) || Math.random() < 0.2;
+    
+    if (shouldGenerate) {
+      let position;
+      let attempts = 0;
+      
+      // Ensure special food doesn't spawn on snake or regular food
+      do {
+        position = {
+          x: Math.floor(Math.random() * GRID_COUNT),
+          y: Math.floor(Math.random() * GRID_COUNT),
+          timer: 150 // Lasts longer for better visibility
+        };
+        attempts++;
+      } while (
+        attempts < 50 && (
+          (position.x === food.x && position.y === food.y) || // Don't spawn on regular food
+          snake.some(segment => segment.x === position.x && segment.y === position.y) // Don't spawn on snake
+        )
+      );
+      return position;
     }
-    return null
-  }, [GRID_COUNT])
+    return null;
+  }, [GRID_COUNT, food.x, food.y, snake])
 
   // Initialize game
   const initGame = useCallback(() => {
@@ -51,19 +80,29 @@ const SnakeGame = ({ isOpen, onClose }) => {
     setDirection({ x: 0, y: 0 })
     setNextDirection({ x: 0, y: 0 })
     setScore(0)
+    setFoodEaten(0) // Reset food counter
     setGameState('menu')
   }, [generateFood])
 
   // Start game
-  const startGame = () => {
+  const startGame = useCallback(() => {
     initGame()
     setGameState('playing')
-  }
+  }, [initGame])
 
   // Handle keyboard input
   const handleKeyPress = useCallback((e) => {
     if (e.code === 'Escape') {
       onClose()
+      return
+    }
+
+    // Spacebar to start/restart game
+    if (e.code === 'Space') {
+      e.preventDefault() // Prevent page scroll
+      if (gameState === 'menu' || gameState === 'gameOver') {
+        startGame()
+      }
       return
     }
 
@@ -89,7 +128,7 @@ const SnakeGame = ({ isOpen, onClose }) => {
         }
       }
     }
-  }, [gameState, direction, onClose])
+  }, [gameState, direction, onClose, startGame])
 
   // Game loop
   const gameLoop = useCallback(() => {
@@ -127,11 +166,12 @@ const SnakeGame = ({ isOpen, onClose }) => {
       // Check food collision
       if (head.x === food.x && head.y === food.y) {
         setScore(prev => prev + 10)
+        setFoodEaten(prev => prev + 1)
         setFood(generateFood())
         
-        // Chance to generate special food
+        // Generate special food with improved logic
         if (!specialFood) {
-          setSpecialFood(generateSpecialFood())
+          setSpecialFood(generateSpecialFood(foodEaten + 1))
         }
       } else if (specialFood && head.x === specialFood.x && head.y === specialFood.y) {
         setScore(prev => prev + 50)
@@ -150,7 +190,7 @@ const SnakeGame = ({ isOpen, onClose }) => {
       }
       return current && current.timer === 0 ? null : current
     })
-  }, [direction, nextDirection, food, specialFood, generateFood, generateSpecialFood, GRID_COUNT])
+  }, [direction, nextDirection, food, specialFood, generateFood, generateSpecialFood, GRID_COUNT, foodEaten])
 
   // Game over effect
   useEffect(() => {
@@ -187,6 +227,9 @@ const SnakeGame = ({ isOpen, onClose }) => {
     if (!canvas) return
 
     const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    // Clear canvas
     ctx.fillStyle = '#000000'
     ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE)
 
@@ -249,7 +292,7 @@ const SnakeGame = ({ isOpen, onClose }) => {
         ctx.shadowBlur = 0
       }
     }
-  })
+  }, [isOpen, snake, food, specialFood, CANVAS_SIZE, GRID_SIZE, GRID_COUNT])
 
   if (!isOpen) return null
 
@@ -311,8 +354,11 @@ const SnakeGame = ({ isOpen, onClose }) => {
                 <div className="text-retro-green font-pixel text-sm text-glow mb-4 text-center sprite">
                   RETRO SNAKE
                 </div>
-                <div className="text-retro-blue font-pixel text-xs mb-6 text-center sprite">
+                <div className="text-retro-blue font-pixel text-xs mb-4 text-center sprite">
                   USE ARROW KEYS OR WASD
+                </div>
+                <div className="text-retro-cyan font-pixel text-xs mb-6 text-center sprite">
+                  PRESS SPACE TO START
                 </div>
                 <button
                   onClick={startGame}
@@ -347,6 +393,9 @@ const SnakeGame = ({ isOpen, onClose }) => {
                     NEW HIGH SCORE!
                   </div>
                 )}
+                <div className="text-retro-cyan font-pixel text-xs mb-4 text-center sprite">
+                  PRESS SPACE TO PLAY AGAIN
+                </div>
                 <button
                   onClick={startGame}
                   className="retro-button pixel-corners bg-retro-black border-retro-pink text-retro-pink hover:bg-retro-pink hover:text-retro-black flex items-center gap-2 sprite"
@@ -359,8 +408,15 @@ const SnakeGame = ({ isOpen, onClose }) => {
 
           {/* Instructions */}
           <div className="text-center text-xs font-pixel text-retro-blue sprite">
-            <div className="mb-1">🍎 FOOD = 10 PTS</div>
-            <div className="mb-1">⭐ SPECIAL = 50 PTS</div>
+            <div className="mb-1 flex items-center justify-center gap-2">
+              <div className="w-3 h-3 bg-retro-pink border border-retro-pink" style={{boxShadow: '0 0 5px #FF00FF'}}></div>
+              <span>FOOD = 20 PTS</span>
+            </div>
+            <div className="mb-1 flex items-center justify-center gap-2">
+              <div className="w-3 h-3 bg-retro-yellow border border-retro-yellow" style={{boxShadow: '0 0 8px #FFFF00'}}></div>
+              <span>SPECIAL = 100 PTS</span>
+            </div>
+            <div className="mb-1">SPACE = START</div>
             <div>ESC TO CLOSE</div>
           </div>
 
