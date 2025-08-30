@@ -18,6 +18,8 @@ export default {
           'blue': '#00FFFF',
           'pink': '#FF00FF',
           'green': '#39FF14',
+          'green-dim': '#2BCC11',  
+          'green-soft': '#1F9908', 
           'yellow': '#FFFF00',
           'white': '#FFFFFF',
         }

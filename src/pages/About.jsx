@@ -29,7 +29,7 @@ const About = () => {
         >
           {/* Section Title */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl font-pixel text-retro-green text-glow mb-4 sprite">
+            <h2 className="text-2xl md:text-3xl font-pixel text-retro-green-dim text-glow-soft mb-4 sprite">
               &gt; ABOUT_ME.EXE
             </h2>
             <div className="w-32 h-0.5 bg-retro-green mx-auto"></div>
@@ -77,7 +77,7 @@ const About = () => {
               <div className="retro-card pixel-corners sprite">
                 <div className="flex items-center gap-3 mb-3">
                   <User className="text-retro-blue" size={20} />
-                  <h3 className="font-pixel text-sm text-retro-green text-glow">PROFILE</h3>
+                  <h3 className="font-pixel text-sm text-retro-green-soft text-glow-subtle">PROFILE</h3>
                 </div>
                 <p className="text-xs text-retro-blue leading-relaxed">
                   I'm a passionate student at Galgotias University with a deep interest in Data Science 
@@ -89,7 +89,7 @@ const About = () => {
               <div className="retro-card pixel-corners sprite">
                 <div className="flex items-center gap-3 mb-3">
                   <MapPin className="text-retro-pink" size={20} />
-                  <h3 className="font-pixel text-sm text-retro-green text-glow">LOCATION</h3>
+                  <h3 className="font-pixel text-sm text-retro-green-soft text-glow-subtle">LOCATION</h3>
                 </div>
                 <p className="text-xs text-retro-blue">
                   Based in India, open to remote opportunities worldwide
@@ -99,7 +99,7 @@ const About = () => {
               <div className="retro-card pixel-corners sprite">
                 <div className="flex items-center gap-3 mb-3">
                   <Calendar className="text-retro-yellow" size={20} />
-                  <h3 className="font-pixel text-sm text-retro-green text-glow">CURRENTLY</h3>
+                  <h3 className="font-pixel text-sm text-retro-green-soft text-glow-subtle">CURRENTLY</h3>
                 </div>
                 <p className="text-xs text-retro-blue">
                   Pursuing my degree while building projects and expanding my skillset in 
@@ -110,7 +110,7 @@ const About = () => {
               <div className="retro-card pixel-corners sprite">
                 <div className="flex items-center gap-3 mb-3">
                   <Heart className="text-retro-pink" size={20} />
-                  <h3 className="font-pixel text-sm text-retro-green text-glow">WHEN NOT CODING</h3>
+                  <h3 className="font-pixel text-sm text-retro-green-soft text-glow-subtle">WHEN NOT CODING</h3>
                 </div>
                 <p className="text-xs text-retro-blue">
                   You'll find me reading tech blogs, exploring new datasets, playing retro games, 

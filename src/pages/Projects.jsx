@@ -86,7 +86,7 @@ const Projects = () => {
         >
           {/* Section Title */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl font-pixel text-retro-green text-glow mb-4 sprite">
+            <h2 className="text-2xl md:text-3xl font-pixel text-retro-green-dim text-glow-soft mb-4 sprite">
               &gt; PROJECTS.DIR
             </h2>
             <p className="text-sm font-pixel text-retro-blue mb-6 sprite">

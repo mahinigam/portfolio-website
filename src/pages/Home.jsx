@@ -44,7 +44,7 @@ const Home = () => {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <h1 className="text-2xl md:text-4xl lg:text-5xl font-pixel text-retro-green text-glow mb-4">
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-pixel text-retro-green-dim text-glow-soft mb-4">
             {currentText}
             <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100 text-retro-yellow`}>
               _

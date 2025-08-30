@@ -106,7 +106,7 @@ const Blog = () => {
         >
           {/* Section Title */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl font-pixel text-retro-green text-glow mb-4">
+            <h2 className="text-2xl md:text-3xl font-pixel text-retro-green-dim text-glow-soft mb-4">
               &gt; BLOG_TERMINAL.EXE
             </h2>
             <p className="text-sm font-pixel text-retro-cyan mb-6">

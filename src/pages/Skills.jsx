@@ -67,7 +67,7 @@ const Skills = () => {
         >
           {/* Section Title */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl font-pixel text-retro-green text-glow mb-4 sprite">
+            <h2 className="text-2xl md:text-3xl font-pixel text-retro-green-dim text-glow-soft mb-4 sprite">
               &gt; POWER_UPS.EXE
             </h2>
             <p className="text-sm font-pixel text-retro-blue mb-6 sprite">
@@ -88,7 +88,7 @@ const Skills = () => {
                 {/* Category Header */}
                 <div className="flex items-center gap-3 mb-6">
                   {category.icon}
-                  <h3 className="font-pixel text-sm text-retro-green text-glow">
+                  <h3 className="font-pixel text-sm text-retro-green-soft text-glow-subtle">
                     {category.title}
                   </h3>
                 </div>
@@ -137,7 +137,7 @@ const Skills = () => {
 
           {/* Experience Timeline */}
           <motion.div variants={itemVariants} className="mt-16">
-            <h3 className="text-xl font-pixel text-retro-green text-center mb-8 text-glow sprite">
+            <h3 className="text-xl font-pixel text-retro-green-dim text-center mb-8 text-glow-soft sprite">
               &gt; LEARNING_JOURNEY.LOG
             </h3>
             
@@ -182,7 +182,7 @@ const Skills = () => {
           {/* Fun Stats */}
           <motion.div variants={itemVariants} className="mt-16 text-center">
             <div className="retro-card pixel-corners max-w-2xl mx-auto sprite">
-              <h4 className="font-pixel text-sm text-retro-green mb-4 text-glow">
+              <h4 className="font-pixel text-sm text-retro-green-soft mb-4 text-glow-subtle">
                 &gt; FUN_STATS.JSON
               </h4>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
