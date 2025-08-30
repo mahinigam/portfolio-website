@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Press Start 2P', monospace;
+    background-color: #0a0a0a;
+    color: #00ff41;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .retro-button {
+    @apply bg-retro-card border-2 border-retro-green text-retro-green px-4 py-2 text-xs 
+           hover:bg-retro-green hover:text-retro-dark transition-all duration-200 
+           transform hover:scale-105 active:scale-95;
+  }
+
+  .retro-card {
+    @apply bg-retro-card border-2 border-retro-green p-6 relative overflow-hidden;
+  }
+
+  .retro-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-retro-green to-transparent 
+           opacity-0 -translate-x-full transition-all duration-500;
+  }
+
+  .retro-card:hover::before {
+    @apply opacity-10 translate-x-full;
+  }
+
+  .skill-badge {
+    @apply bg-retro-bg border border-retro-cyan text-retro-cyan px-3 py-1 text-xs 
+           hover:bg-retro-cyan hover:text-retro-dark transition-all duration-200 cursor-default;
+  }
+
+  .nav-link {
+    @apply text-retro-green hover:text-retro-cyan transition-colors duration-200 text-xs;
+  }
+
+  .retro-input {
+    @apply bg-retro-bg border border-retro-green text-retro-green p-2 text-xs 
+           focus:border-retro-cyan focus:outline-none;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 10px currentColor;
+  }
+
+  .scanlines {
+    position: relative;
+  }
+
+  .scanlines::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(transparent 50%, rgba(0, 255, 65, 0.03) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .pixel-corners {
+    clip-path: polygon(0 8px, 8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px));
+  }
+}
