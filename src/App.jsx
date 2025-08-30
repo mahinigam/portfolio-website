@@ -13,12 +13,12 @@ function App() {
   return (
     <div className="min-h-screen bg-retro-black relative scanlines crt-effect">
       {/* Retro background effects */}
-      <div className="fixed inset-0 bg-retro-grid bg-grid opacity-20 pointer-events-none"></div>
-      <div className="fixed inset-0 bg-retro-stars bg-stars opacity-30 pointer-events-none"></div>
+      <div className="fixed inset-0 bg-retro-grid opacity-20 pointer-events-none"></div>
+      <div className="fixed inset-0 bg-retro-stars opacity-30 pointer-events-none"></div>
       
       {/* Enhanced scanline effect */}
       <div
-        className="fixed w-full h-1 bg-gradient-to-r from-transparent via-retro-green to-transparent opacity-30 z-10 pointer-events-none animate-bounce-retro"
+        className="fixed w-full h-1 bg-gradient-to-r from-transparent via-retro-green to-transparent opacity-30 z-10 pointer-events-none"
         style={{
           animation: 'moveDown 3s linear infinite'
         }}
