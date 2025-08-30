@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Heart, Code, Coffee } from 'lucide-react'
+import { Heart, Code, Coffee, Gamepad2 } from 'lucide-react'
+import SnakeGame from './SnakeGame'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
+  const [showSnakeGame, setShowSnakeGame] = useState(false)
 
   return (
     <footer className="bg-retro-black border-t border-retro-green py-12 px-4">
@@ -159,8 +161,42 @@ const Footer = () => {
               }}
             />
           ))}
+
+          {/* Snake Game Easter Egg */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 1.0, duration: 0.6 }}
+            className="absolute bottom-4 right-4"
+          >
+            <motion.button
+              onClick={() => setShowSnakeGame(true)}
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              whileTap={{ scale: 0.95 }}
+              className="group relative p-2 bg-retro-black border border-retro-green text-retro-green hover:border-retro-pink hover:text-retro-pink transition-all duration-200 pixel-corners sprite"
+              title="Play Snake? 🐍"
+            >
+              <Gamepad2 size={16} />
+              
+              {/* Hover tooltip */}
+              <div className="absolute bottom-full right-0 mb-2 px-2 py-1 bg-retro-black border border-retro-green text-retro-green text-xs font-pixel opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap sprite">
+                Play Snake? 🐍
+                <div className="absolute top-full right-2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-retro-green"></div>
+              </div>
+
+              {/* Glow effect */}
+              <div className="absolute inset-0 bg-retro-green opacity-0 group-hover:opacity-20 transition-opacity duration-200 pixel-corners"></div>
+            </motion.button>
+          </motion.div>
         </motion.div>
       </div>
+
+      {/* Snake Game Modal */}
+      <SnakeGame 
+        isOpen={showSnakeGame} 
+        onClose={() => setShowSnakeGame(false)} 
+      />
     </footer>
   )
 }

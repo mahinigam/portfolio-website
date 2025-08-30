@@ -10,7 +10,7 @@ const Projects = () => {
       tags: ['Python', 'Pandas', 'Tableau', 'Data Analysis'],
       github: 'https://github.com/mahinigam',
       demo: '#',
-      icon: <BarChart3 className="text-retro-cyan" size={20} />,
+      icon: <BarChart3 className="text-retro-blue" size={20} />,
       status: 'COMPLETED'
     },
     {
@@ -37,7 +37,7 @@ const Projects = () => {
       tags: ['React', 'TailwindCSS', 'Framer Motion', 'JavaScript'],
       github: 'https://github.com/mahinigam',
       demo: '#',
-      icon: <Code className="text-retro-purple" size={20} />,
+      icon: <Code className="text-retro-yellow" size={20} />,
       status: 'COMPLETED'
     },
     {
@@ -46,7 +46,7 @@ const Projects = () => {
       tags: ['Python', 'Scikit-learn', 'Matplotlib', 'Seaborn'],
       github: 'https://github.com/mahinigam',
       demo: '#',
-      icon: <Database className="text-retro-yellow" size={20} />,
+      icon: <Database className="text-retro-pink" size={20} />,
       status: 'COMPLETED'
     },
     {
@@ -55,7 +55,7 @@ const Projects = () => {
       tags: ['React', 'D3.js', 'API Integration', 'Chart.js'],
       github: 'https://github.com/mahinigam',
       demo: '#',
-      icon: <BarChart3 className="text-retro-cyan" size={20} />,
+      icon: <BarChart3 className="text-retro-blue" size={20} />,
       status: 'COMPLETED'
     }
   ]
@@ -86,10 +86,10 @@ const Projects = () => {
         >
           {/* Section Title */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl font-pixel text-retro-green text-glow mb-4">
+            <h2 className="text-2xl md:text-3xl font-pixel text-retro-green text-glow mb-4 sprite">
               &gt; PROJECTS.DIR
             </h2>
-            <p className="text-sm font-pixel text-retro-cyan mb-6">
+            <p className="text-sm font-pixel text-retro-blue mb-6 sprite">
               A collection of my work and experiments
             </p>
             <div className="w-32 h-0.5 bg-retro-green mx-auto"></div>
