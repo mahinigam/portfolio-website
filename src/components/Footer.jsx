@@ -6,7 +6,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-retro-dark border-t border-retro-green py-12 px-4">
+    <footer className="bg-retro-black border-t border-retro-green py-12 px-4">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -16,7 +16,7 @@ const Footer = () => {
           className="text-center"
         >
           {/* ASCII Art Logo */}
-          <div className="font-mono text-retro-green text-xs mb-8 opacity-60">
+          <div className="font-mono text-retro-green text-xs mb-8 opacity-60 text-glow sprite">
             <pre className="whitespace-pre-wrap">
 {`    ╔═══════════════════════════════════╗
     ║        THANK YOU FOR VISITING     ║
@@ -31,7 +31,7 @@ const Footer = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="flex items-center justify-center gap-2 text-xs font-pixel text-retro-cyan mb-6"
+            className="flex items-center justify-center gap-2 text-xs font-pixel text-retro-blue mb-6 sprite"
           >
             <span>CRAFTED WITH</span>
             <motion.div
@@ -64,14 +64,14 @@ const Footer = () => {
             transition={{ delay: 0.5, duration: 0.6 }}
             className="mb-8"
           >
-            <p className="text-xs font-pixel text-retro-cyan mb-2">
+            <p className="text-xs font-pixel text-retro-blue mb-2 sprite">
               BUILT WITH:
             </p>
             <div className="flex flex-wrap justify-center gap-2">
               {['REACT', 'TAILWINDCSS', 'FRAMER MOTION', 'LUCIDE ICONS', 'VITE'].map((tech) => (
                 <span
                   key={tech}
-                  className="text-xs font-pixel px-2 py-1 bg-retro-bg border border-retro-purple text-retro-purple"
+                  className="text-xs font-pixel px-2 py-1 bg-retro-black border border-retro-pink text-retro-pink hover:bg-retro-pink hover:text-retro-black transition-all duration-200 cursor-pointer sprite"
                 >
                   {tech}
                 </span>
@@ -88,7 +88,7 @@ const Footer = () => {
             className="border-t border-retro-green pt-6"
           >
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-pixel">
-              <div className="text-retro-green">
+              <div className="text-retro-green text-glow sprite">
                 © {currentYear} MAHI NIGAM. ALL RIGHTS RESERVED.
               </div>
               
@@ -96,7 +96,7 @@ const Footer = () => {
                 <motion.a
                   whileHover={{ scale: 1.1 }}
                   href="#home"
-                  className="text-retro-cyan hover:text-retro-green transition-colors duration-200"
+                  className="text-retro-blue hover:text-retro-yellow transition-colors duration-200 sprite"
                 >
                   HOME
                 </motion.a>
@@ -105,7 +105,7 @@ const Footer = () => {
                   href="https://github.com/mahinigam"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-retro-cyan hover:text-retro-green transition-colors duration-200"
+                  className="text-retro-blue hover:text-retro-yellow transition-colors duration-200 sprite"
                 >
                   GITHUB
                 </motion.a>
@@ -114,7 +114,7 @@ const Footer = () => {
                   href="https://mahinigam.blogspot.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-retro-cyan hover:text-retro-green transition-colors duration-200"
+                  className="text-retro-blue hover:text-retro-yellow transition-colors duration-200 sprite"
                 >
                   BLOG
                 </motion.a>
@@ -130,11 +130,11 @@ const Footer = () => {
             transition={{ delay: 0.9, duration: 0.6 }}
             className="mt-8 text-center"
           >
-            <div className="inline-block bg-retro-card border border-retro-green p-3 pixel-corners">
-              <div className="font-mono text-xs text-retro-cyan">
-                <div className="text-retro-green mb-1">$ echo "Thanks for visiting!"</div>
+            <div className="inline-block bg-retro-black border border-retro-green p-3 pixel-corners hover:border-retro-pink transition-colors duration-200 sprite">
+              <div className="font-mono text-xs text-retro-blue">
+                <div className="text-retro-green mb-1 text-glow">$ echo "Thanks for visiting!"</div>
                 <div>Thanks for visiting!</div>
-                <div className="text-retro-green mt-1">$ exit</div>
+                <div className="text-retro-green mt-1 text-glow">$ exit</div>
               </div>
             </div>
           </motion.div>

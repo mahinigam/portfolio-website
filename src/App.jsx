@@ -12,14 +12,14 @@ import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className="min-h-screen bg-retro-dark relative scanlines">
+    <div className="min-h-screen bg-retro-black relative scanlines crt-effect">
       {/* Retro background effects */}
       <div className="fixed inset-0 bg-retro-grid bg-grid opacity-20 pointer-events-none"></div>
       <div className="fixed inset-0 bg-retro-stars bg-stars opacity-30 pointer-events-none"></div>
       
-      {/* Scanline effect */}
+      {/* Enhanced scanline effect */}
       <motion.div
-        className="fixed w-full h-1 bg-gradient-to-r from-transparent via-retro-green to-transparent opacity-20 z-10 pointer-events-none"
+        className="fixed w-full h-1 bg-gradient-to-r from-transparent via-retro-green to-transparent opacity-30 z-10 pointer-events-none"
         animate={{
           y: ['0vh', '100vh']
         }}

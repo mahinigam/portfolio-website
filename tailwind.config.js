@@ -11,47 +11,53 @@ export default {
       },
       colors: {
         'retro': {
-          'dark': '#0a0a0a',
-          'bg': '#1a1a1a',
-          'card': '#2a2a2a',
-          'green': '#00ff41',
-          'cyan': '#00ffff',
-          'pink': '#ff00ff',
-          'purple': '#8b00ff',
-          'yellow': '#ffff00',
+          'black': '#000000',
+          'dark': '#000000',
+          'bg': '#0a0a0a',
+          'card': '#1a1a1a',
+          'blue': '#00FFFF',
+          'pink': '#FF00FF',
+          'green': '#39FF14',
+          'yellow': '#FFFF00',
+          'white': '#FFFFFF',
         }
       },
       animation: {
         'blink': 'blink 1s infinite',
-        'flicker': 'flicker 2s infinite',
+        'bounce-retro': 'bounceRetro 0.3s infinite alternate',
         'glow': 'glow 2s ease-in-out infinite alternate',
         'scanline': 'scanline 2s linear infinite',
+        'loading': 'loading 1s infinite',
       },
       keyframes: {
         blink: {
           '0%, 50%': { opacity: '1' },
           '51%, 100%': { opacity: '0' },
         },
-        flicker: {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0.8' },
+        bounceRetro: {
+          'from': { transform: 'translateY(0)' },
+          'to': { transform: 'translateY(-5px)' },
         },
         glow: {
           '0%': { 
-            'box-shadow': '0 0 5px #00ff41, 0 0 10px #00ff41, 0 0 15px #00ff41',
+            'box-shadow': '0 0 5px #39FF14, 0 0 10px #39FF14, 0 0 15px #39FF14',
           },
           '100%': { 
-            'box-shadow': '0 0 10px #00ff41, 0 0 20px #00ff41, 0 0 30px #00ff41',
+            'box-shadow': '0 0 10px #39FF14, 0 0 20px #39FF14, 0 0 30px #39FF14',
           },
         },
         scanline: {
           '0%': { transform: 'translateY(-100%)' },
           '100%': { transform: 'translateY(100vh)' },
+        },
+        loading: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0' },
         }
       },
       backgroundImage: {
-        'retro-grid': 'linear-gradient(rgba(0,255,65,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,65,0.1) 1px, transparent 1px)',
-        'retro-stars': 'radial-gradient(2px 2px at 20px 30px, #00ff41, transparent), radial-gradient(2px 2px at 40px 70px, #00ffff, transparent), radial-gradient(1px 1px at 90px 40px, #ff00ff, transparent)',
+        'retro-grid': 'linear-gradient(rgba(57,255,20,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(57,255,20,0.1) 1px, transparent 1px)',
+        'retro-stars': 'radial-gradient(2px 2px at 20px 30px, #39FF14, transparent), radial-gradient(2px 2px at 40px 70px, #00FFFF, transparent), radial-gradient(1px 1px at 90px 40px, #FF00FF, transparent)',
       },
       backgroundSize: {
         'grid': '40px 40px',

@@ -11,10 +11,12 @@
   body {
     margin: 0;
     font-family: 'Press Start 2P', monospace;
-    background-color: #0a0a0a;
-    color: #00ff41;
+    background-color: #000000;
+    color: #39FF14;
     overflow-x: hidden;
     line-height: 1.6;
+    font-size: 14px;
+    cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA2ElEQVQoU6WSsQ2DQAxFnxMSI1BQZgRGSJmhZYbWGVpmhJQZGmZomSFlhpYZUmZImaFlBpYZjhfJlZz4O/m9/7+NjTGGf5BSyu+1EEKglPJJCCGklHJKKb9TSvlFCCGklHJKKd9TSrmllPJJKeWXEEJIKeWUUr6nlHJLKeWTUsovoZQSUsoppXxPKeWWUsonpZRfQgghpJRTSvm+pZRTSvmklPJLCCGElFJOKeX7llJOKeWTUsonpZRfQgghpJRzSim/b1/f+t8/pZRTSvmklPJLCCGElFJOKeX7llJOKeWTUsonpZRfQggh/gFhPzz2AJYQqwAAAABJRU5ErkJggg=='), auto;
   }
 
   html {
@@ -24,13 +26,17 @@
 
 @layer components {
   .retro-button {
-    @apply bg-retro-card border-2 border-retro-green text-retro-green px-4 py-2 text-xs 
-           hover:bg-retro-green hover:text-retro-dark transition-all duration-200 
-           transform hover:scale-105 active:scale-95;
+    @apply bg-retro-pink border-2 border-retro-blue text-retro-black px-4 py-2 text-xs font-pixel
+           hover:bg-retro-green hover:text-retro-black transition-all duration-200 
+           transform hover:scale-110 active:scale-95 cursor-pointer;
   }
 
   .retro-card {
     @apply bg-retro-card border-2 border-retro-green p-6 relative overflow-hidden;
+  }
+
+  .retro-card:hover {
+    @apply animate-bounce-retro;
   }
 
   .retro-card::before {
@@ -44,23 +50,47 @@
   }
 
   .skill-badge {
-    @apply bg-retro-bg border border-retro-cyan text-retro-cyan px-3 py-1 text-xs 
-           hover:bg-retro-cyan hover:text-retro-dark transition-all duration-200 cursor-default;
+    @apply bg-retro-bg border border-retro-blue text-retro-blue px-3 py-1 text-xs 
+           hover:bg-retro-blue hover:text-retro-black transition-all duration-200 cursor-default;
+  }
+
+  .skill-badge:hover {
+    @apply animate-bounce-retro;
   }
 
   .nav-link {
-    @apply text-retro-green hover:text-retro-cyan transition-colors duration-200 text-xs;
+    @apply text-retro-green hover:text-retro-pink transition-colors duration-200 text-xs font-pixel;
+  }
+
+  .nav-link:hover {
+    @apply animate-bounce-retro;
   }
 
   .retro-input {
     @apply bg-retro-bg border border-retro-green text-retro-green p-2 text-xs 
-           focus:border-retro-cyan focus:outline-none;
+           focus:border-retro-blue focus:outline-none focus:text-retro-blue;
+  }
+
+  .loading-screen {
+    @apply font-pixel text-retro-green bg-retro-black text-center p-12 animate-loading;
   }
 }
 
 @layer utilities {
   .text-glow {
-    text-shadow: 0 0 10px currentColor;
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+
+  .text-glow-blue {
+    text-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF, 0 0 30px #00FFFF;
+  }
+
+  .text-glow-pink {
+    text-shadow: 0 0 10px #FF00FF, 0 0 20px #FF00FF, 0 0 30px #FF00FF;
+  }
+
+  .text-glow-yellow {
+    text-shadow: 0 0 10px #FFFF00, 0 0 20px #FFFF00, 0 0 30px #FFFF00;
   }
 
   .scanlines {
@@ -74,7 +104,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: linear-gradient(transparent 50%, rgba(0, 255, 65, 0.03) 50%);
+    background-image: linear-gradient(transparent 50%, rgba(57, 255, 20, 0.03) 50%);
     background-size: 100% 4px;
     pointer-events: none;
     z-index: 1;
@@ -82,5 +112,32 @@
 
   .pixel-corners {
     clip-path: polygon(0 8px, 8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px));
+  }
+
+  .sprite:hover {
+    @apply animate-bounce-retro;
+  }
+
+  .crt-effect {
+    position: relative;
+  }
+
+  .crt-effect::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(57, 255, 20, 0.05) 2px,
+        rgba(57, 255, 20, 0.05) 4px
+      );
+    pointer-events: none;
+    z-index: 1000;
   }
 }

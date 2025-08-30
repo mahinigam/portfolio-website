@@ -46,7 +46,7 @@ const Home = () => {
         >
           <h1 className="text-2xl md:text-4xl lg:text-5xl font-pixel text-retro-green text-glow mb-4">
             {currentText}
-            <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100`}>
+            <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100 text-retro-yellow`}>
               _
             </span>
           </h1>
@@ -59,10 +59,10 @@ const Home = () => {
           transition={{ delay: text.length * 0.1 + 0.5, duration: 0.8 }}
           className="mb-12"
         >
-          <p className="text-sm md:text-base lg:text-lg font-pixel text-retro-cyan mb-2">
+          <p className="text-sm md:text-base lg:text-lg font-pixel text-retro-blue text-glow-blue mb-2">
             {tagline}
           </p>
-          <p className="text-xs md:text-sm font-pixel text-retro-pink">
+          <p className="text-xs md:text-sm font-pixel text-retro-pink text-glow-pink">
             Student at Galgotias University
           </p>
         </motion.div>
@@ -72,7 +72,7 @@ const Home = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: text.length * 0.1 + 1, duration: 0.8 }}
-          className="mb-12 text-retro-green font-mono text-xs md:text-sm opacity-50"
+          className="mb-12 text-retro-blue font-mono text-xs md:text-sm opacity-80 text-glow-blue"
         >
           <pre className="whitespace-pre-wrap">
 {`    ╔═══════════════════════════════════╗
@@ -91,19 +91,19 @@ const Home = () => {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
         >
           <motion.button
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={scrollToAbout}
-            className="retro-button pixel-corners"
+            className="retro-button pixel-corners sprite"
           >
             EXPLORE PORTFOLIO
           </motion.button>
           
           <motion.a
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             href="#contact"
-            className="retro-button pixel-corners bg-retro-bg border-retro-cyan text-retro-cyan hover:bg-retro-cyan hover:text-retro-dark"
+            className="retro-button pixel-corners bg-retro-blue border-retro-pink text-retro-black hover:bg-retro-yellow hover:text-retro-black sprite"
           >
             GET IN TOUCH
           </motion.a>
@@ -120,7 +120,7 @@ const Home = () => {
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
             onClick={scrollToAbout}
-            className="text-retro-green hover:text-retro-cyan transition-colors duration-200"
+            className="text-retro-green hover:text-retro-pink transition-colors duration-200 sprite"
           >
             <ChevronDown size={24} />
           </motion.button>
@@ -131,7 +131,7 @@ const Home = () => {
       {[...Array(5)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-1 h-1 bg-retro-cyan rounded-full"
+          className="absolute w-1 h-1 bg-retro-blue rounded-full"
           style={{
             left: `${20 + i * 15}%`,
             top: `${30 + i * 10}%`,
