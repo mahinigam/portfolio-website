@@ -18,20 +18,38 @@ const Resume = () => {
     visible: { opacity: 1, y: 0 }
   }
 
+  const resumeFileName = 'resume-mahi-nigam.pdf';
+  const [fileInfo, setFileInfo] = React.useState({ size: null, format: null });
+
+  React.useEffect(() => {
+    // Fetch the file and get its size
+    fetch(`/${resumeFileName}`)
+      .then(res => {
+        if (!res.ok) throw new Error('Resume file not found');
+        return res.blob();
+      })
+      .then(blob => {
+        const sizeKB = (blob.size / 1024).toFixed(1);
+        const format = resumeFileName.split('.').pop().toUpperCase();
+        setFileInfo({ size: sizeKB, format });
+      })
+      .catch(() => {
+        setFileInfo({ size: 'N/A', format: 'N/A' });
+      });
+  }, []);
+
   const handleDownload = () => {
-    // In a real application, this would link to your actual resume PDF
-    const link = document.createElement('a')
-    link.href = '/resume-mahi-nigam.pdf' // Place your resume PDF in the public folder
-    link.download = 'Mahi_Nigam_Resume.pdf'
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
+    const link = document.createElement('a');
+    link.href = `/${resumeFileName}`;
+    link.download = 'Mahi_Nigam_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   const handlePreview = () => {
-    // Open resume in new tab for preview
-    window.open('/resume-mahi-nigam.pdf', '_blank')
-  }
+    window.open(`/${resumeFileName}`, '_blank');
+  };
 
   return (
     <section id="resume" className="py-20 px-4">
@@ -65,24 +83,16 @@ const Resume = () => {
                   </h3>
                 </div>
 
-                <div className="space-y-4 text-xs">
-                  <div className="flex justify-between">
-                    <span className="text-retro-cyan">Format:</span>
-                    <span className="text-retro-green-dim">PDF</span>
+                  <div className="space-y-4 text-xs">
+                    <div className="flex justify-between">
+                      <span className="text-retro-cyan">Format:</span>
+                      <span className="text-retro-green-dim">{fileInfo.format || '...'}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-retro-cyan">File Size:</span>
+                      <span className="text-retro-green-dim">{fileInfo.size ? `${fileInfo.size} KB` : '...'}</span>
+                    </div>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-retro-cyan">File Size:</span>
-                    <span className="text-retro-green-dim">245 KB</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-retro-cyan">Last Updated:</span>
-                    <span className="text-retro-green-dim">August 2024</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-retro-cyan">Version:</span>
-                    <span className="text-retro-green-dim">v2.4</span>
-                  </div>
-                </div>
 
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 mt-8">
