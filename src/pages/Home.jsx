@@ -8,7 +8,7 @@ const Home = () => {
   const [showCursor, setShowCursor] = useState(true)
   
   const text = "Hi, I'm Mahi Nigam"
-  const tagline = "Aspiring Data Scientist & Full-Stack Developer"
+  const tagline = "Turning Data into Impact"
 
   useEffect(() => {
     if (currentIndex < text.length) {
@@ -62,25 +62,6 @@ const Home = () => {
           <p className="text-sm md:text-base lg:text-lg font-pixel text-retro-blue text-glow-blue mb-2">
             {tagline}
           </p>
-          <p className="text-xs md:text-sm font-pixel text-retro-pink text-glow-pink">
-            Student at Galgotias University
-          </p>
-        </motion.div>
-
-        {/* ASCII Art decoration */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: text.length * 0.1 + 1, duration: 0.8 }}
-          className="mb-12 text-retro-blue font-mono text-xs md:text-sm opacity-80 text-glow-blue"
-        >
-          <pre className="whitespace-pre-wrap">
-{`    ╔═══════════════════════════════════╗
-    ║           LOADING...              ║
-    ║  ████████████████████████████████ ║
-    ║           100% COMPLETE           ║
-    ╚═══════════════════════════════════╝`}
-          </pre>
         </motion.div>
 
         {/* Call to action buttons */}
