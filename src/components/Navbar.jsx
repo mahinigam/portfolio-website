@@ -27,14 +27,14 @@ const Navbar = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-retro-black/90 backdrop-blur-sm border-b border-retro-green"
+      className="fixed top-0 left-0 right-0 z-50 bg-retro-bg/90 backdrop-blur-sm border-b border-retro-green"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="text-retro-green font-pixel text-sm cursor-pointer text-glow sprite"
+            className="text-retro-green-dim font-pixel text-sm cursor-pointer text-glow-soft sprite"
             onClick={() => scrollToSection('#home')}
           >
             &lt;MAHI.EXE&gt;
@@ -62,7 +62,7 @@ const Navbar = () => {
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsOpen(!isOpen)}
-              className="text-retro-green hover:text-retro-pink transition-colors duration-200 sprite"
+              className="text-retro-green-dim hover:text-retro-pink transition-colors duration-200 sprite"
             >
               {isOpen ? <X size={20} /> : <Menu size={20} />}
             </motion.button>
@@ -75,7 +75,7 @@ const Navbar = () => {
         initial={false}
         animate={isOpen ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
         transition={{ duration: 0.3 }}
-        className="md:hidden overflow-hidden bg-retro-black border-t border-retro-green"
+        className="md:hidden overflow-hidden bg-retro-card border-t border-retro-green"
       >
         <div className="px-2 pt-2 pb-3 space-y-1">
           {navItems.map((item) => (

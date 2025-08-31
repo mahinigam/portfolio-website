@@ -11,7 +11,7 @@ const Skills = () => {
     },
     {
       title: 'PROGRAMMING',
-      icon: <Code className="text-retro-green" size={24} />,
+      icon: <Code className="text-retro-green-dim" size={24} />,
       skills: ['Python', 'JavaScript', 'SQL', 'HTML/CSS', 'C++', 'Java']
     },
     {
@@ -125,7 +125,7 @@ const Skills = () => {
                         animate={{ scale: 1 }}
                         transition={{ delay: (index * 0.1) + (i * 0.05) }}
                         className={`w-2 h-2 ${
-                          i < 3 + (index % 3) ? 'bg-retro-green' : 'bg-retro-black border'
+                          i < 3 + (index % 3) ? 'bg-retro-green' : 'bg-retro-card border'
                         } border border-retro-green`}
                       />
                     ))}
@@ -188,19 +188,19 @@ const Skills = () => {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
                 <div>
                   <div className="text-retro-blue font-pixel mb-1">LINES OF CODE</div>
-                  <div className="text-retro-green text-glow">50,000+</div>
+                  <div className="text-retro-green-dim text-glow-soft">50,000+</div>
                 </div>
                 <div>
                   <div className="text-retro-blue font-pixel mb-1">DATASETS ANALYZED</div>
-                  <div className="text-retro-green text-glow">25+</div>
+                  <div className="text-retro-green-dim text-glow-soft">25+</div>
                 </div>
                 <div>
                   <div className="text-retro-blue font-pixel mb-1">HOURS CODING</div>
-                  <div className="text-retro-green text-glow">1,000+</div>
+                  <div className="text-retro-green-dim text-glow-soft">1,000+</div>
                 </div>
                 <div>
-                  <div className="text-retro-blue font-pixel mb-1">BUGS FIXED</div>
-                  <div className="text-retro-green text-glow">∞</div>
+                  <div className="text-retro-blue font-pixel mb-1">COFFEE CONSUMED</div>
+                  <div className="text-retro-green-dim text-glow-soft">∞</div>
                 </div>
               </div>
             </div>

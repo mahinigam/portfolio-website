@@ -16,7 +16,9 @@ export default {
           'bg': '#0a0a0a',
           'card': '#1a1a1a',
           'blue': '#00FFFF',
+          'cyan': '#00FFFF',  // Alias for blue for consistency
           'pink': '#FF00FF',
+          'purple': '#9F00FF', // Adding purple color
           'green': '#39FF14',
           'green-dim': '#2BCC11',  
           'green-soft': '#1F9908', 

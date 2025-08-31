@@ -35,7 +35,7 @@ const Contact = () => {
       name: 'EMAIL',
       icon: <Mail size={20} />,
       href: 'mailto:mahi.nigam@example.com',
-      color: 'text-retro-green',
+      color: 'text-retro-green-dim',
       description: 'mahi.nigam@example.com'
     },
     {
@@ -101,8 +101,8 @@ const Contact = () => {
             <motion.div variants={itemVariants}>
               <div className="retro-card pixel-corners">
                 <div className="flex items-center gap-3 mb-6">
-                  <MessageSquare className="text-retro-green" size={24} />
-                  <h3 className="font-pixel text-lg text-retro-green">
+                  <MessageSquare className="text-retro-green-dim" size={24} />
+                  <h3 className="font-pixel text-lg text-retro-green-dim">
                     SEND_MESSAGE.FORM
                   </h3>
                 </div>
@@ -165,7 +165,7 @@ const Contact = () => {
                         <motion.div
                           animate={{ rotate: 360 }}
                           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                          className="w-4 h-4 border-2 border-retro-dark border-t-retro-green rounded-full"
+                          className="w-4 h-4 border-2 border-retro-bg border-t-retro-green rounded-full"
                         />
                         SENDING...
                       </>
@@ -184,7 +184,7 @@ const Contact = () => {
             <motion.div variants={itemVariants} className="space-y-6">
               {/* Social Links */}
               <div className="retro-card pixel-corners">
-                <h3 className="font-pixel text-lg text-retro-green mb-6">
+                <h3 className="font-pixel text-lg text-retro-green-dim mb-6">
                   SOCIAL_NETWORKS.DIR
                 </h3>
                 
@@ -203,7 +203,7 @@ const Contact = () => {
                         {link.icon}
                       </div>
                       <div className="flex-1">
-                        <div className="font-pixel text-xs text-retro-green group-hover:text-retro-cyan transition-colors duration-200">
+                        <div className="font-pixel text-xs text-retro-green-dim group-hover:text-retro-cyan transition-colors duration-200">
                           {link.name}
                         </div>
                         <div className="text-xs text-retro-cyan">
@@ -217,7 +217,7 @@ const Contact = () => {
 
               {/* Quick Info */}
               <div className="retro-card pixel-corners">
-                <h3 className="font-pixel text-lg text-retro-green mb-6">
+                <h3 className="font-pixel text-lg text-retro-green-dim mb-6">
                   QUICK_INFO.TXT
                 </h3>
                 
@@ -225,7 +225,7 @@ const Contact = () => {
                   <div className="flex items-center gap-3">
                     <MapPin className="text-retro-cyan" size={16} />
                     <div>
-                      <div className="text-retro-green">LOCATION:</div>
+                      <div className="text-retro-green-dim">LOCATION:</div>
                       <div className="text-retro-cyan">India (Open to remote work)</div>
                     </div>
                   </div>
@@ -233,7 +233,7 @@ const Contact = () => {
                   <div className="flex items-center gap-3">
                     <Phone className="text-retro-pink" size={16} />
                     <div>
-                      <div className="text-retro-green">AVAILABILITY:</div>
+                      <div className="text-retro-green-dim">AVAILABILITY:</div>
                       <div className="text-retro-cyan">Available for opportunities</div>
                     </div>
                   </div>
@@ -241,7 +241,7 @@ const Contact = () => {
                   <div className="flex items-center gap-3">
                     <MessageSquare className="text-retro-purple" size={16} />
                     <div>
-                      <div className="text-retro-green">RESPONSE TIME:</div>
+                      <div className="text-retro-green-dim">RESPONSE TIME:</div>
                       <div className="text-retro-cyan">Usually within 24 hours</div>
                     </div>
                   </div>
@@ -254,15 +254,15 @@ const Contact = () => {
                   <div className="w-3 h-3 rounded-full bg-retro-pink"></div>
                   <div className="w-3 h-3 rounded-full bg-retro-yellow"></div>
                   <div className="w-3 h-3 rounded-full bg-retro-green"></div>
-                  <span className="text-retro-green text-xs font-pixel ml-2">STATUS</span>
+                  <span className="text-retro-green-dim text-xs font-pixel ml-2">STATUS</span>
                 </div>
                 
-                <div className="bg-retro-dark p-4 font-mono text-xs space-y-2">
-                  <div className="text-retro-green">$ status --check</div>
+                <div className="bg-retro-card p-4 font-pixel text-xs space-y-2">
+                  <div className="text-retro-green-dim">$ status --check</div>
                   <div className="text-retro-cyan">● ONLINE</div>
                   <div className="text-retro-cyan">● ACCEPTING NEW PROJECTS</div>
                   <div className="text-retro-cyan">● OPEN TO COLLABORATIONS</div>
-                  <div className="text-retro-green">$ echo "Let's build something amazing!"</div>
+                  <div className="text-retro-green-dim">$ echo "Let's build something amazing!"</div>
                   <div className="text-retro-pink">Let's build something amazing!</div>
                 </div>
               </div>
@@ -272,7 +272,7 @@ const Contact = () => {
           {/* Call to Action */}
           <motion.div variants={itemVariants} className="mt-16 text-center">
             <div className="retro-card pixel-corners max-w-2xl mx-auto">
-              <h3 className="font-pixel text-lg text-retro-green mb-4">
+              <h3 className="font-pixel text-lg text-retro-green-dim mb-4 text-glow-soft">
                 &gt; READY_TO_CONNECT.BAT
               </h3>
               <p className="text-sm text-retro-cyan mb-6">
@@ -295,7 +295,7 @@ const Contact = () => {
                   href="https://linkedin.com/in/mahinigam"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="retro-button pixel-corners bg-retro-bg border-retro-cyan text-retro-cyan hover:bg-retro-cyan hover:text-retro-dark"
+                  className="retro-button pixel-corners bg-retro-bg border-retro-cyan text-retro-cyan hover:bg-retro-cyan hover:text-retro-black"
                 >
                   <Linkedin size={16} className="mr-2" />
                   CONNECT ON LINKEDIN

@@ -43,10 +43,10 @@ const About = () => {
                   <div className="w-3 h-3 rounded-full bg-retro-pink"></div>
                   <div className="w-3 h-3 rounded-full bg-retro-yellow"></div>
                   <div className="w-3 h-3 rounded-full bg-retro-green"></div>
-                  <span className="text-retro-green text-xs font-pixel ml-2 text-glow sprite">TERMINAL</span>
+                  <span className="text-retro-green-dim text-xs font-pixel ml-2 text-glow-soft sprite">TERMINAL</span>
                 </div>
-                <div className="bg-retro-black p-4 font-mono text-xs border border-retro-green">
-                  <div className="text-retro-green mb-2 text-glow">$ whoami</div>
+                <div className="bg-retro-card p-4 font-pixel text-xs border border-retro-green">
+                  <div className="text-retro-green-dim mb-2 text-glow-soft">$ whoami</div>
                   <div className="text-retro-blue mb-4">
                     user: mahi_nigam<br />
                     status: aspiring_data_scientist<br />
@@ -55,7 +55,7 @@ const About = () => {
                     passion: data_science & web_development
                   </div>
                   
-                  <div className="text-retro-green mb-2 text-glow">$ cat interests.txt</div>
+                  <div className="text-retro-green-dim mb-2 text-glow-soft">$ cat interests.txt</div>
                   <div className="text-retro-pink mb-4">
                     • Machine Learning & AI<br />
                     • Data Visualization<br />
@@ -64,7 +64,7 @@ const About = () => {
                     • Continuous Learning
                   </div>
                   
-                  <div className="text-retro-green mb-2 text-glow">$ echo $GOALS</div>
+                  <div className="text-retro-green-dim mb-2 text-glow-soft">$ echo $GOALS</div>
                   <div className="text-retro-blue">
                     "Transforming data into insights and ideas into reality"
                   </div>
@@ -136,7 +136,7 @@ const About = () => {
                 whileHover={{ scale: 1.05 }}
                 className="retro-card pixel-corners text-center sprite"
               >
-                <div className="text-lg md:text-xl font-pixel text-retro-green mb-2 text-glow">
+                <div className="text-lg md:text-xl font-pixel text-retro-green-dim mb-2 text-glow-soft">
                   {stat.value}
                 </div>
                 <div className="text-xs font-pixel text-retro-blue">

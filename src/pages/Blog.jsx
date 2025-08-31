@@ -106,7 +106,7 @@ const Blog = () => {
         >
           {/* Section Title */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl font-pixel text-retro-green-dim text-glow-soft mb-4">
+            <h2 className="text-2xl md:text-3xl font-pixel text-retro-green-dim text-glow-soft mb-4 sprite">
               &gt; BLOG_TERMINAL.EXE
             </h2>
             <p className="text-sm font-pixel text-retro-cyan mb-6">
@@ -124,7 +124,7 @@ const Blog = () => {
                   <div className="w-3 h-3 rounded-full bg-retro-pink"></div>
                   <div className="w-3 h-3 rounded-full bg-retro-yellow"></div>
                   <div className="w-3 h-3 rounded-full bg-retro-green"></div>
-                  <span className="text-retro-green text-xs font-pixel ml-2 flex items-center gap-2">
+                  <span className="text-retro-green-dim text-xs font-pixel ml-2 flex items-center gap-2">
                     <Terminal size={14} />
                     BLOG_READER v2.0
                   </span>
@@ -133,16 +133,16 @@ const Blog = () => {
                 {/* Terminal Content */}
                 <motion.div
                   variants={terminalVariants}
-                  className="bg-retro-dark p-4 font-mono text-xs space-y-2"
+                  className="bg-retro-bg p-4 font-mono text-xs space-y-2"
                 >
-                  <motion.div variants={lineVariants} className="text-retro-green">
+                  <motion.div variants={lineVariants} className="text-retro-green-dim">
                     $ whoami
                   </motion.div>
                   <motion.div variants={lineVariants} className="text-retro-cyan">
                     mahi@portfolio:~$ blogger & writer
                   </motion.div>
                   
-                  <motion.div variants={lineVariants} className="text-retro-green">
+                  <motion.div variants={lineVariants} className="text-retro-green-dim">
                     $ cat blog_stats.txt
                   </motion.div>
                   <motion.div variants={lineVariants} className="text-retro-cyan">
@@ -155,28 +155,28 @@ const Blog = () => {
                     Est. Reading Time: 56 minutes
                   </motion.div>
                   
-                  <motion.div variants={lineVariants} className="text-retro-green">
+                  <motion.div variants={lineVariants} className="text-retro-green-dim">
                     $ date
                   </motion.div>
                   <motion.div variants={lineVariants} className="text-retro-cyan">
                     {currentTime.toLocaleString()}
                   </motion.div>
                   
-                  <motion.div variants={lineVariants} className="text-retro-green">
+                  <motion.div variants={lineVariants} className="text-retro-green-dim">
                     $ echo "Status"
                   </motion.div>
                   <motion.div variants={lineVariants} className="text-retro-pink">
                     Ready to share knowledge...
                   </motion.div>
                   
-                  <motion.div variants={lineVariants} className="text-retro-green">
+                  <motion.div variants={lineVariants} className="text-retro-green-dim">
                     $ █
                   </motion.div>
                 </motion.div>
 
                 {/* Quick Links */}
                 <div className="mt-6">
-                  <h4 className="font-pixel text-xs text-retro-green mb-3">QUICK ACCESS:</h4>
+                  <h4 className="font-pixel text-xs text-retro-green-soft mb-3">QUICK ACCESS:</h4>
                   <div className="space-y-2">
                     <motion.a
                       whileHover={{ x: 5 }}
@@ -215,7 +215,7 @@ const Blog = () => {
                   >
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1">
-                        <h3 className="font-pixel text-sm text-retro-green mb-2 group-hover:text-retro-cyan transition-colors duration-200">
+                        <h3 className="font-pixel text-sm text-retro-green-soft mb-2 group-hover:text-retro-cyan transition-colors duration-200">
                           {post.title}
                         </h3>
                         
@@ -255,7 +255,7 @@ const Blog = () => {
                       href={post.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-retro-green hover:text-retro-cyan transition-colors duration-200 font-pixel text-xs"
+                      className="inline-flex items-center gap-2 text-retro-green-dim hover:text-retro-cyan transition-colors duration-200 font-pixel text-xs"
                     >
                       READ_MORE.TXT
                       <ExternalLink size={12} />
@@ -267,7 +267,7 @@ const Blog = () => {
               {/* View All Posts CTA */}
               <motion.div variants={itemVariants} className="mt-12 text-center">
                 <div className="retro-card pixel-corners">
-                  <h3 className="font-pixel text-sm text-retro-green mb-4">
+                  <h3 className="font-pixel text-sm text-retro-green-soft mb-4">
                     &gt; EXPLORE_MORE.DIR
                   </h3>
                   <p className="text-xs text-retro-cyan mb-6">

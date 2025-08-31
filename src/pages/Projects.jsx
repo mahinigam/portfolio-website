@@ -19,7 +19,7 @@ const Projects = () => {
       tags: ['Python', 'Scikit-learn', 'Pandas', 'Flask'],
       github: 'https://github.com/mahinigam',
       demo: '#',
-      icon: <Code className="text-retro-green" size={20} />,
+      icon: <Code className="text-retro-green-dim" size={20} />,
       status: 'COMPLETED'
     },
     {
@@ -116,7 +116,7 @@ const Projects = () => {
                 {/* Project Icon */}
                 <div className="flex items-center gap-3 mb-4">
                   {project.icon}
-                  <h3 className="font-pixel text-sm text-retro-green">
+                  <h3 className="font-pixel text-sm text-retro-green-soft text-glow-subtle">
                     {project.title}
                   </h3>
                 </div>
@@ -146,7 +146,7 @@ const Projects = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-retro-green hover:text-retro-cyan transition-colors duration-200"
+                    className="flex items-center gap-2 text-retro-green-dim hover:text-retro-cyan transition-colors duration-200"
                   >
                     <Github size={16} />
                     <span className="text-xs font-pixel">CODE</span>
@@ -176,7 +176,7 @@ const Projects = () => {
           {/* GitHub CTA */}
           <motion.div variants={itemVariants} className="text-center mt-16">
             <div className="retro-card pixel-corners max-w-2xl mx-auto">
-              <h3 className="font-pixel text-sm text-retro-green mb-4">
+              <h3 className="font-pixel text-sm text-retro-green-soft mb-4">
                 &gt; MORE_PROJECTS.AVAILABLE
               </h3>
               <p className="text-xs text-retro-cyan mb-6">
@@ -211,7 +211,7 @@ const Projects = () => {
                   whileHover={{ scale: 1.05 }}
                   className="retro-card pixel-corners text-center"
                 >
-                  <div className="text-lg font-pixel text-retro-green mb-2">
+                  <div className="text-lg font-pixel text-retro-green-dim mb-2 text-glow-soft">
                     {stat.value}
                   </div>
                   <div className="text-xs font-pixel text-retro-cyan">

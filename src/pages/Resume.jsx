@@ -60,7 +60,7 @@ const Resume = () => {
               <div>
                 <div className="flex items-center gap-3 mb-6">
                   <FileText className="text-retro-cyan" size={24} />
-                  <h3 className="font-pixel text-lg text-retro-green">
+                  <h3 className="font-pixel text-lg text-retro-green-dim text-glow-soft">
                     MY RESUME
                   </h3>
                 </div>
@@ -68,19 +68,19 @@ const Resume = () => {
                 <div className="space-y-4 text-xs">
                   <div className="flex justify-between">
                     <span className="text-retro-cyan">Format:</span>
-                    <span className="text-retro-green">PDF</span>
+                    <span className="text-retro-green-dim">PDF</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-retro-cyan">File Size:</span>
-                    <span className="text-retro-green">245 KB</span>
+                    <span className="text-retro-green-dim">245 KB</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-retro-cyan">Last Updated:</span>
-                    <span className="text-retro-green">August 2024</span>
+                    <span className="text-retro-green-dim">August 2024</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-retro-cyan">Version:</span>
-                    <span className="text-retro-green">v2.4</span>
+                    <span className="text-retro-green-dim">v2.4</span>
                   </div>
                 </div>
 
@@ -100,7 +100,7 @@ const Resume = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={handlePreview}
-                    className="retro-button pixel-corners bg-retro-bg border-retro-cyan text-retro-cyan hover:bg-retro-cyan hover:text-retro-dark flex items-center justify-center gap-2"
+                    className="retro-button pixel-corners bg-retro-bg border-retro-cyan text-retro-cyan hover:bg-retro-cyan hover:text-retro-black flex items-center justify-center gap-2"
                   >
                     <Eye size={16} />
                     PREVIEW
@@ -144,8 +144,8 @@ const Resume = () => {
                   {/* Preview overlay */}
                   <div className="absolute inset-0 bg-retro-dark/80 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                     <div className="text-center">
-                      <Eye className="text-retro-green mx-auto mb-2" size={24} />
-                      <p className="text-xs font-pixel text-retro-green">CLICK TO PREVIEW</p>
+                      <Eye className="text-retro-green-dim mx-auto mb-2" size={24} />
+                      <p className="text-xs font-pixel text-retro-green-dim">CLICK TO PREVIEW</p>
                     </div>
                   </div>
                 </motion.div>
@@ -156,21 +156,21 @@ const Resume = () => {
           {/* Resume Highlights */}
           <motion.div variants={itemVariants} className="grid md:grid-cols-3 gap-6 mb-12">
             <div className="retro-card pixel-corners text-center">
-              <h4 className="font-pixel text-sm text-retro-green mb-3">EXPERIENCE</h4>
+              <h4 className="font-pixel text-sm text-retro-green-soft mb-3">EXPERIENCE</h4>
               <p className="text-xs text-retro-cyan">
                 Academic projects, internships, and hands-on experience in Data Science and Web Development
               </p>
             </div>
             
             <div className="retro-card pixel-corners text-center">
-              <h4 className="font-pixel text-sm text-retro-green mb-3">EDUCATION</h4>
+              <h4 className="font-pixel text-sm text-retro-green-soft mb-3">EDUCATION</h4>
               <p className="text-xs text-retro-cyan">
                 Currently pursuing degree at Galgotias University with focus on Computer Science
               </p>
             </div>
             
             <div className="retro-card pixel-corners text-center">
-              <h4 className="font-pixel text-sm text-retro-green mb-3">SKILLS</h4>
+              <h4 className="font-pixel text-sm text-retro-green-soft mb-3">SKILLS</h4>
               <p className="text-xs text-retro-cyan">
                 Python, Data Analysis, Machine Learning, React, Node.js, and more
               </p>
@@ -180,14 +180,14 @@ const Resume = () => {
           {/* Additional Info */}
           <motion.div variants={itemVariants} className="retro-card pixel-corners">
             <div className="text-center">
-              <h3 className="font-pixel text-sm text-retro-green mb-4">
+              <h3 className="font-pixel text-sm text-retro-green-soft mb-4 text-glow-subtle">
                 &gt; ADDITIONAL_INFO.TXT
               </h3>
               
               <div className="grid md:grid-cols-2 gap-8 text-xs">
                 <div>
                   <h4 className="font-pixel text-retro-cyan mb-3">WHAT YOU'LL FIND:</h4>
-                  <ul className="space-y-2 text-retro-green text-left">
+                  <ul className="space-y-2 text-retro-green-dim text-left">
                     <li>• Detailed project descriptions</li>
                     <li>• Technical skills and proficiencies</li>
                     <li>• Academic achievements</li>
@@ -198,7 +198,7 @@ const Resume = () => {
                 
                 <div>
                   <h4 className="font-pixel text-retro-cyan mb-3">FORMATS AVAILABLE:</h4>
-                  <ul className="space-y-2 text-retro-green text-left">
+                  <ul className="space-y-2 text-retro-green-dim text-left">
                     <li>• PDF (Recommended)</li>
                     <li>• Online version (This portfolio)</li>
                     <li>• LinkedIn profile</li>

@@ -8,7 +8,7 @@ const Footer = () => {
   const [showSnakeGame, setShowSnakeGame] = useState(false)
 
   return (
-    <footer className="bg-retro-black border-t border-retro-green py-12 px-4">
+    <footer className="bg-retro-bg border-t border-retro-green py-12 px-4">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -18,7 +18,7 @@ const Footer = () => {
           className="text-center"
         >
           {/* ASCII Art Logo */}
-          <div className="font-mono text-retro-green text-xs mb-8 opacity-60 text-glow sprite">
+          <div className="font-pixel text-retro-green-dim text-xs mb-8 opacity-60 text-glow-soft sprite">
             <pre className="whitespace-pre-wrap">
 {`    ╔═══════════════════════════════════╗
     ║        THANK YOU FOR VISITING     ║
@@ -47,7 +47,7 @@ const Footer = () => {
               animate={{ rotate: [0, 5, -5, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <Code size={12} className="text-retro-green" />
+              <Code size={12} className="text-retro-green-dim" />
             </motion.div>
             <span>POWERED BY</span>
             <motion.div
@@ -73,7 +73,7 @@ const Footer = () => {
               {['REACT', 'TAILWINDCSS', 'FRAMER MOTION', 'LUCIDE ICONS', 'VITE'].map((tech) => (
                 <span
                   key={tech}
-                  className="text-xs font-pixel px-2 py-1 bg-retro-black border border-retro-pink text-retro-pink hover:bg-retro-pink hover:text-retro-black transition-all duration-200 cursor-pointer sprite"
+                  className="retro-button pixel-corners sprite text-xs font-pixel"
                 >
                   {tech}
                 </span>
@@ -87,10 +87,10 @@ const Footer = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="border-t border-retro-green pt-6"
+            className="border-t border-retro-green pt-6 bg-retro-card pixel-corners"
           >
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-pixel">
-              <div className="text-retro-green text-glow sprite">
+              <div className="text-retro-green-dim text-glow-soft font-pixel sprite">
                 © {currentYear} MAHI NIGAM. ALL RIGHTS RESERVED.
               </div>
               
@@ -132,11 +132,11 @@ const Footer = () => {
             transition={{ delay: 0.9, duration: 0.6 }}
             className="mt-8 text-center"
           >
-            <div className="inline-block bg-retro-black border border-retro-green p-3 pixel-corners hover:border-retro-pink transition-colors duration-200 sprite">
-              <div className="font-mono text-xs text-retro-blue">
-                <div className="text-retro-green mb-1 text-glow">$ echo "Thanks for visiting!"</div>
+            <div className="inline-block bg-retro-card border-2 border-retro-green p-3 pixel-corners hover:border-retro-pink transition-colors duration-200 sprite">
+              <div className="font-pixel text-xs text-retro-blue">
+                <div className="text-retro-green-dim mb-1 text-glow-soft">$ echo "Thanks for visiting!"</div>
                 <div>Thanks for visiting!</div>
-                <div className="text-retro-green mt-1 text-glow">$ exit</div>
+                <div className="text-retro-green-dim mt-1 text-glow-soft">$ exit</div>
               </div>
             </div>
           </motion.div>
@@ -174,13 +174,13 @@ const Footer = () => {
               onClick={() => setShowSnakeGame(true)}
               whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative p-2 bg-retro-black border border-retro-green text-retro-green hover:border-retro-pink hover:text-retro-pink transition-all duration-200 pixel-corners sprite"
+              className="group relative p-2 bg-retro-card border border-retro-green text-retro-green-dim hover:border-retro-pink hover:text-retro-pink transition-all duration-200 pixel-corners sprite"
               title="Play Snake? 🐍"
             >
               <Gamepad2 size={16} />
               
               {/* Hover tooltip */}
-              <div className="absolute bottom-full right-0 mb-2 px-2 py-1 bg-retro-black border border-retro-green text-retro-green text-xs font-pixel opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap sprite">
+              <div className="absolute bottom-full right-0 mb-2 px-2 py-1 bg-retro-card border border-retro-green text-retro-green-dim text-xs font-pixel opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap sprite">
                 Play Snake? 🐍
                 <div className="absolute top-full right-2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-retro-green"></div>
               </div>

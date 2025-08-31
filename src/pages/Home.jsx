@@ -103,7 +103,7 @@ const Home = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             href="#contact"
-            className="retro-button pixel-corners bg-retro-blue border-retro-pink text-retro-black hover:bg-retro-yellow hover:text-retro-black sprite"
+            className="retro-button pixel-corners sprite"
           >
             GET IN TOUCH
           </motion.a>
@@ -120,7 +120,7 @@ const Home = () => {
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
             onClick={scrollToAbout}
-            className="text-retro-green hover:text-retro-pink transition-colors duration-200 sprite"
+            className="text-retro-green-dim text-glow-soft font-pixel hover:text-retro-pink transition-colors duration-200 sprite"
           >
             <ChevronDown size={24} />
           </motion.button>

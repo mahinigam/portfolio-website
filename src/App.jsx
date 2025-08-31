@@ -11,7 +11,7 @@ import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className="min-h-screen bg-retro-black relative scanlines crt-effect">
+    <div className="min-h-screen bg-retro-bg relative scanlines crt-effect">
       {/* Retro background effects */}
       <div className="fixed inset-0 bg-retro-grid opacity-20 pointer-events-none"></div>
       <div className="fixed inset-0 bg-retro-stars opacity-30 pointer-events-none"></div>

@@ -96,7 +96,7 @@
   }
 
   .nav-link {
-    @apply text-retro-green hover:text-retro-pink transition-colors duration-200 text-xs font-pixel;
+    @apply text-retro-green-dim hover:text-retro-pink transition-colors duration-200 text-xs font-pixel;
   }
 
   .nav-link:hover {
@@ -104,12 +104,12 @@
   }
 
   .retro-input {
-    @apply bg-retro-bg border border-retro-green text-retro-green p-2 text-xs 
+    @apply bg-retro-bg border border-retro-green text-retro-green-dim p-2 text-xs 
            focus:border-retro-blue focus:outline-none focus:text-retro-blue;
   }
 
   .loading-screen {
-    @apply font-pixel text-retro-green bg-retro-black text-center p-12 animate-loading;
+    @apply font-pixel text-retro-green-dim bg-retro-bg text-center p-12 animate-loading;
   }
 }
 

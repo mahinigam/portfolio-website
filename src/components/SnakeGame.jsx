@@ -309,7 +309,7 @@ const SnakeGame = ({ isOpen, onClose }) => {
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.8, opacity: 0 }}
-          className="bg-retro-black border-2 border-retro-green p-8 pixel-corners relative"
+          className="bg-retro-card border-2 border-retro-green p-8 pixel-corners relative"
           style={{
             boxShadow: '0 0 30px rgba(57, 255, 20, 0.5)',
             filter: 'drop-shadow(0 0 20px rgba(57, 255, 20, 0.3))'
@@ -326,7 +326,7 @@ const SnakeGame = ({ isOpen, onClose }) => {
 
           {/* Game title */}
           <div className="text-center mb-6">
-            <h2 className="text-retro-green font-pixel text-lg text-glow sprite mb-2">
+            <h2 className="text-retro-green-dim font-pixel text-lg text-glow-soft sprite mb-2">
               &gt; SNAKE.EXE
             </h2>
             <div className="flex justify-between items-center text-xs font-pixel">
@@ -350,8 +350,8 @@ const SnakeGame = ({ isOpen, onClose }) => {
 
             {/* Game state overlays */}
             {gameState === 'menu' && (
-              <div className="absolute inset-0 bg-retro-black/90 flex flex-col items-center justify-center">
-                <div className="text-retro-green font-pixel text-sm text-glow mb-4 text-center sprite">
+              <div className="absolute inset-0 bg-retro-card/90 flex flex-col items-center justify-center">
+                <div className="text-retro-green-dim font-pixel text-sm text-glow-soft mb-4 text-center sprite">
                   RETRO SNAKE
                 </div>
                 <div className="text-retro-blue font-pixel text-xs mb-4 text-center sprite">
@@ -362,7 +362,7 @@ const SnakeGame = ({ isOpen, onClose }) => {
                 </div>
                 <button
                   onClick={startGame}
-                  className="retro-button pixel-corners bg-retro-black border-retro-green text-retro-green hover:bg-retro-green hover:text-retro-black flex items-center gap-2 sprite"
+                  className="retro-button pixel-corners bg-retro-card border-retro-green text-retro-green-dim hover:bg-retro-green hover:text-retro-bg flex items-center gap-2 sprite"
                 >
                   <Play size={16} /> START GAME
                 </button>
@@ -370,7 +370,7 @@ const SnakeGame = ({ isOpen, onClose }) => {
             )}
 
             {gameState === 'playing' && direction.x === 0 && direction.y === 0 && (
-              <div className="absolute inset-0 bg-retro-black/60 flex flex-col items-center justify-center">
+              <div className="absolute inset-0 bg-retro-card/60 flex flex-col items-center justify-center">
                 <div className="text-retro-yellow font-pixel text-xs text-glow mb-2 text-center sprite animate-bounce-retro">
                   PRESS ANY ARROW KEY TO START
                 </div>
@@ -381,7 +381,7 @@ const SnakeGame = ({ isOpen, onClose }) => {
             )}
 
             {gameState === 'gameOver' && (
-              <div className="absolute inset-0 bg-retro-black/90 flex flex-col items-center justify-center">
+              <div className="absolute inset-0 bg-retro-card/90 flex flex-col items-center justify-center">
                 <div className="text-retro-pink font-pixel text-sm text-glow mb-2 sprite">
                   GAME OVER
                 </div>
@@ -389,7 +389,7 @@ const SnakeGame = ({ isOpen, onClose }) => {
                   SCORE: {score}
                 </div>
                 {score === highScore && score > 0 && (
-                  <div className="text-retro-green font-pixel text-xs mb-4 text-glow sprite animate-bounce-retro">
+                  <div className="text-retro-green-dim font-pixel text-xs mb-4 text-glow-soft sprite animate-bounce-retro">
                     NEW HIGH SCORE!
                   </div>
                 )}
@@ -398,7 +398,7 @@ const SnakeGame = ({ isOpen, onClose }) => {
                 </div>
                 <button
                   onClick={startGame}
-                  className="retro-button pixel-corners bg-retro-black border-retro-pink text-retro-pink hover:bg-retro-pink hover:text-retro-black flex items-center gap-2 sprite"
+                  className="retro-button pixel-corners bg-retro-card border-retro-pink text-retro-pink hover:bg-retro-pink hover:text-retro-bg flex items-center gap-2 sprite"
                 >
                   <RotateCcw size={16} /> PLAY AGAIN
                 </button>
