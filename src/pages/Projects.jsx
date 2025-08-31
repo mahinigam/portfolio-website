@@ -5,59 +5,32 @@ import { Github, ExternalLink, Code, Database, BarChart3 } from 'lucide-react'
 const Projects = () => {
   const projects = [
     {
-      title: 'E-Commerce Sales Dashboard',
-      description: 'Interactive dashboard analyzing sales patterns, customer behavior, and revenue trends using Python and Tableau.',
-      tags: ['Python', 'Pandas', 'Tableau', 'Data Analysis'],
-      github: 'https://github.com/mahinigam',
+      title: 'Customer Purchase Analysis',
+      description: 'A comprehensive data science project implementing a complete data pipeline for customer purchase behavior analysis. Features MySQL data ingestion, Python preprocessing with feature engineering, exploratory data analysis with visualizations, and regression modeling using Linear Regression, Random Forest, and Gradient Boosting. Includes a Power BI dashboard for business intelligence and data-driven insights.',
+      tags: ['Python', 'MySQL', 'Jupyter Notebook', 'Pandas', 'Scikit-learn', 'Power BI', 'Matplotlib', 'Seaborn'],
+      github: 'https://github.com/mahinigam/customer_purchase_analysis',
       demo: '#',
       icon: <BarChart3 className="text-retro-blue" size={20} />,
       status: 'COMPLETED'
     },
     {
-      title: 'Movie Recommendation System',
-      description: 'ML-powered recommendation engine using collaborative filtering and content-based algorithms.',
-      tags: ['Python', 'Scikit-learn', 'Pandas', 'Flask'],
-      github: 'https://github.com/mahinigam',
-      demo: '#',
+      title: 'AutoNote',
+      description: 'A professional Flask web application that transforms documents into structured notes using Google Gemini AI. Features multi-format support (PDF, DOCX, TXT), interactive chatbot for document Q&A, smart formatting with tables and lists, multiple export options, and modern glassmorphic UI. Includes cloud-ready deployment optimized for Render with comprehensive fallback systems.',
+      tags: ['Python', 'Flask', 'Google Gemini API', 'HTML/CSS', 'JavaScript'],
+      github: 'https://github.com/mahinigam/autonote',
+      demo: 'https://autonote-br91.onrender.com',
       icon: <Code className="text-retro-green-dim" size={20} />,
       status: 'COMPLETED'
     },
     {
-      title: 'Stock Price Predictor',
-      description: 'Time series forecasting model predicting stock prices using LSTM neural networks.',
-      tags: ['Python', 'TensorFlow', 'Keras', 'NumPy'],
-      github: 'https://github.com/mahinigam',
-      demo: '#',
-      icon: <BarChart3 className="text-retro-pink" size={20} />,
-      status: 'IN PROGRESS'
-    },
-    {
-      title: 'Portfolio Website',
-      description: 'Retro-themed personal portfolio built with React, TailwindCSS, and Framer Motion.',
-      tags: ['React', 'TailwindCSS', 'Framer Motion', 'JavaScript'],
-      github: 'https://github.com/mahinigam',
-      demo: '#',
-      icon: <Code className="text-retro-yellow" size={20} />,
+      title: 'Modern URL Shortener',
+      description: 'A sleek, production-ready URL shortener built with React 19 and TypeScript featuring beautiful glassmorphism design. Supports batch processing of up to 5 URLs, custom shortcodes, validity control, click analytics with geolocation tracking, and comprehensive statistics dashboard. Includes real-time validation, responsive design, and robust error handling with Material-UI components.',
+      tags: ['React 19', 'TypeScript', 'Material-UI', 'Vite', 'React Router'],
+      github: 'https://github.com/mahinigam/url-shortener',
+      demo: 'https://url-shortener-rho-one.vercel.app',
+      icon: <Code className="text-retro-pink" size={20} />,
       status: 'COMPLETED'
     },
-    {
-      title: 'Customer Segmentation Analysis',
-      description: 'K-means clustering analysis to segment customers based on purchasing behavior and demographics.',
-      tags: ['Python', 'Scikit-learn', 'Matplotlib', 'Seaborn'],
-      github: 'https://github.com/mahinigam',
-      demo: '#',
-      icon: <Database className="text-retro-pink" size={20} />,
-      status: 'COMPLETED'
-    },
-    {
-      title: 'Weather Data Visualizer',
-      description: 'Interactive web app displaying weather patterns and climate trends with beautiful visualizations.',
-      tags: ['React', 'D3.js', 'API Integration', 'Chart.js'],
-      github: 'https://github.com/mahinigam',
-      demo: '#',
-      icon: <BarChart3 className="text-retro-blue" size={20} />,
-      status: 'COMPLETED'
-    }
   ]
 
   const containerVariants = {
@@ -172,55 +145,6 @@ const Projects = () => {
               </motion.div>
             ))}
           </div>
-
-          {/* GitHub CTA */}
-          <motion.div variants={itemVariants} className="text-center mt-16">
-            <div className="retro-card pixel-corners max-w-2xl mx-auto">
-              <h3 className="font-pixel text-sm text-retro-green-soft mb-4">
-                &gt; MORE_PROJECTS.AVAILABLE
-              </h3>
-              <p className="text-xs text-retro-cyan mb-6">
-                Want to see more? Check out my GitHub for additional projects, 
-                contributions, and code experiments.
-              </p>
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="https://github.com/mahinigam"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="retro-button pixel-corners inline-flex items-center gap-2"
-              >
-                <Github size={16} />
-                VIEW ALL REPOSITORIES
-              </motion.a>
-            </div>
-          </motion.div>
-
-          {/* Project Stats */}
-          <motion.div variants={itemVariants} className="mt-16">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {[
-                { label: 'TOTAL PROJECTS', value: '15+' },
-                { label: 'LANGUAGES USED', value: '8' },
-                { label: 'FRAMEWORKS', value: '12+' },
-                { label: 'COMMITS THIS YEAR', value: '500+' }
-              ].map((stat) => (
-                <motion.div
-                  key={stat.label}
-                  whileHover={{ scale: 1.05 }}
-                  className="retro-card pixel-corners text-center"
-                >
-                  <div className="text-lg font-pixel text-retro-green-dim mb-2 text-glow-soft">
-                    {stat.value}
-                  </div>
-                  <div className="text-xs font-pixel text-retro-cyan">
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>
