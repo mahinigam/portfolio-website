@@ -87,7 +87,7 @@ const Footer = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="border-t border-retro-green pt-6 bg-retro-card pixel-corners"
+            className="border-t border-retro-green pt-6"
           >
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-pixel">
               <div className="text-retro-green-dim text-glow-soft font-pixel sprite">
@@ -132,12 +132,10 @@ const Footer = () => {
             transition={{ delay: 0.9, duration: 0.6 }}
             className="mt-8 text-center"
           >
-            <div className="inline-block bg-retro-card border-2 border-retro-green p-3 pixel-corners hover:border-retro-pink transition-colors duration-200 sprite">
-              <div className="font-pixel text-xs text-retro-blue">
-                <div className="text-retro-green-dim mb-1 text-glow-soft">$ echo "Thanks for visiting!"</div>
-                <div>Thanks for visiting!</div>
-                <div className="text-retro-green-dim mt-1 text-glow-soft">$ exit</div>
-              </div>
+            <div className="font-pixel text-xs text-retro-blue text-center leading-relaxed">
+              <div className="text-retro-green-dim mb-2 text-glow-soft">$ echo "Thanks for visiting!"</div>
+              <div className="mb-2">Thanks for visiting!</div>
+              <div className="text-retro-green-dim text-glow-soft">$ exit</div>
             </div>
           </motion.div>
 
