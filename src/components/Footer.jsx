@@ -58,29 +58,6 @@ const Footer = () => {
             </motion.div>
           </motion.div>
 
-          {/* Tech Stack */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="mb-8"
-          >
-            <p className="text-xs font-pixel text-retro-blue mb-2 sprite">
-              BUILT WITH:
-            </p>
-            <div className="flex flex-wrap justify-center gap-2">
-              {['REACT', 'TAILWINDCSS', 'FRAMER MOTION', 'LUCIDE ICONS', 'VITE'].map((tech) => (
-                <span
-                  key={tech}
-                  className="retro-button pixel-corners sprite text-xs font-pixel"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-
           {/* Copyright and Links */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -132,10 +109,12 @@ const Footer = () => {
             transition={{ delay: 0.9, duration: 0.6 }}
             className="mt-8 text-center"
           >
-            <div className="font-pixel text-xs text-retro-blue text-center leading-relaxed">
-              <div className="text-retro-green-dim mb-2 text-glow-soft">$ echo "Thanks for visiting!"</div>
-              <div className="mb-2">Thanks for visiting!</div>
-              <div className="text-retro-green-dim text-glow-soft">$ exit</div>
+            <div className="inline-block retro-card border-2 border-retro-green px-6 py-4 hover:border-retro-pink transition-colors duration-200 sprite">
+              <div className="font-pixel text-xs text-retro-blue text-center leading-relaxed">
+                <div className="text-retro-green-dim mb-2 text-glow-soft">$ echo "Thanks for visiting!"</div>
+                <div className="mb-2">Thanks for visiting!</div>
+                <div className="text-retro-green-dim text-glow-soft">$ exit</div>
+              </div>
             </div>
           </motion.div>
 
@@ -173,13 +152,13 @@ const Footer = () => {
               whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.95 }}
               className="group relative p-2 bg-retro-card border border-retro-green text-retro-green-dim hover:border-retro-pink hover:text-retro-pink transition-all duration-200 pixel-corners sprite"
-              title="Play Snake? 🐍"
+              title="Play Snake Game"
             >
               <Gamepad2 size={16} />
               
               {/* Hover tooltip */}
               <div className="absolute bottom-full right-0 mb-2 px-2 py-1 bg-retro-card border border-retro-green text-retro-green-dim text-xs font-pixel opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap sprite">
-                Play Snake? 🐍
+                Play Snake Game
                 <div className="absolute top-full right-2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-retro-green"></div>
               </div>
 

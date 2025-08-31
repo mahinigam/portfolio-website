@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Github, Linkedin, MessageSquare, Send, MapPin, Phone } from 'lucide-react'
+import emailjs from '@emailjs/browser'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -21,22 +22,47 @@ const Contact = () => {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
+    // EmailJS configuration from environment variables
+    const emailConfig = {
+      serviceID: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      templateID: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    }
+    
+    // Template parameters for EmailJS
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.message,
+      to_name: 'Mahi', // Your name
+    }
+    
+    try {
+      await emailjs.send(
+        emailConfig.serviceID,
+        emailConfig.templateID,
+        templateParams,
+        emailConfig.publicKey
+      )
+      
+      // Success
       setFormData({ name: '', email: '', message: '' })
-      // In a real app, you'd handle the form submission here
-      alert('Message sent! Thanks for reaching out.')
-    }, 2000)
+      alert('Message sent successfully! Thanks for reaching out.')
+    } catch (error) {
+      console.error('EmailJS Error:', error)
+      alert('Failed to send message. Please try again or contact me directly via email.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const socialLinks = [
     {
       name: 'EMAIL',
       icon: <Mail size={20} />,
-      href: 'mailto:mahi.nigam@example.com',
+      href: 'mailto:mahi.nigam.000@gmail.com',
       color: 'text-retro-green-dim',
-      description: 'mahi.nigam@example.com'
+      description: 'mahi.nigam.000@gmail.com'
     },
     {
       name: 'GITHUB',
@@ -283,7 +309,7 @@ const Contact = () => {
                 <motion.a
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  href="mailto:mahi.nigam@example.com"
+                  href="mailto:mahi.nigam.000@gmail.com"
                   className="retro-button pixel-corners"
                 >
                   <Mail size={16} className="mr-2" />
