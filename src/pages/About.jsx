@@ -49,24 +49,24 @@ const About = () => {
                   <div className="text-retro-green-dim mb-2 text-glow-soft">$ whoami</div>
                   <div className="text-retro-blue mb-4">
                     user: mahi_nigam<br />
-                    status: aspiring_data_scientist<br />
+                    status: student<br />
                     location: india<br />
                     university: galgotias_university<br />
-                    passion: data_science & web_development
+                    focus: data_science & machine_learning
                   </div>
                   
-                  <div className="text-retro-green-dim mb-2 text-glow-soft">$ cat interests.txt</div>
+                  <div className="text-retro-green-dim mb-2 text-glow-soft">$ cat expertise.txt</div>
                   <div className="text-retro-pink mb-4">
-                    • Machine Learning & AI<br />
-                    • Data Visualization<br />
-                    • Web Development<br />
-                    • Problem Solving<br />
-                    • Continuous Learning
+                    • Data Science & Machine Learning<br />
+                    • Big Data Processing & Analytics<br />
+                    • Cloud Computing & AWS<br />
+                    • Data Visualization & BI<br />
+                    • Statistical Analysis & Modeling
                   </div>
                   
-                  <div className="text-retro-green-dim mb-2 text-glow-soft">$ echo $GOALS</div>
+                  <div className="text-retro-green-dim mb-2 text-glow-soft">$ echo $MISSION</div>
                   <div className="text-retro-blue">
-                    "Transforming data into insights and ideas into reality"
+                    "Passionate About Turning Data into Impact"
                   </div>
                 </div>
               </div>
@@ -80,9 +80,9 @@ const About = () => {
                   <h3 className="font-pixel text-sm text-retro-green-soft text-glow-subtle">PROFILE</h3>
                 </div>
                 <p className="text-xs text-retro-blue leading-relaxed">
-                  I'm a passionate student at Galgotias University with a deep interest in Data Science 
-                  and Full-Stack Development. I love exploring data patterns, building predictive models, 
-                  and creating intuitive web applications that solve real-world problems.
+                  I'm a student at Galgotias University with expertise in machine learning 
+                  and big data processing. A charming blend of technical skills and philosophical curiosity, 
+                  I enjoy good coffee, cracking jokes, and deep conversations about life.
                 </p>
               </div>
 
@@ -102,8 +102,8 @@ const About = () => {
                   <h3 className="font-pixel text-sm text-retro-green-soft text-glow-subtle">CURRENTLY</h3>
                 </div>
                 <p className="text-xs text-retro-blue">
-                  Pursuing my degree while building projects and expanding my skillset in 
-                  Machine Learning, Data Analysis, and Modern Web Technologies.
+                  Currently developing advanced ML models, data pipelines, and analytics solutions 
+                  using Python, AWS, and modern big data technologies like Spark and Hadoop.
                 </p>
               </div>
 
@@ -113,38 +113,13 @@ const About = () => {
                   <h3 className="font-pixel text-sm text-retro-green-soft text-glow-subtle">WHEN NOT CODING</h3>
                 </div>
                 <p className="text-xs text-retro-blue">
-                  You'll find me reading tech blogs, exploring new datasets, playing retro games, 
-                  or writing about my learning journey on my blog.
+                  You'll find me writing philosophical reflections on my blog "Remembrance", 
+                  exploring human nature and life's complexities, or experimenting with new ML algorithms 
+                  and contributing to open source projects.
                 </p>
               </div>
             </motion.div>
           </div>
-
-          {/* Stats section */}
-          <motion.div 
-            variants={itemVariants}
-            className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6"
-          >
-            {[
-              { label: 'PROJECTS', value: '15+' },
-              { label: 'TECHNOLOGIES', value: '10+' },
-              { label: 'BLOG POSTS', value: '8+' },
-              { label: 'COFFEE CUPS', value: '∞' }
-            ].map((stat) => (
-              <motion.div
-                key={stat.label}
-                whileHover={{ scale: 1.05 }}
-                className="retro-card pixel-corners text-center sprite"
-              >
-                <div className="text-lg md:text-xl font-pixel text-retro-green-dim mb-2 text-glow-soft">
-                  {stat.value}
-                </div>
-                <div className="text-xs font-pixel text-retro-blue">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
         </motion.div>
       </div>
     </section>
