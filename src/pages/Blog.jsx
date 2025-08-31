@@ -188,16 +188,6 @@ const Blog = () => {
                       <ExternalLink size={12} />
                       Visit Full Blog
                     </motion.a>
-                    <motion.a
-                      whileHover={{ x: 5 }}
-                      href="https://mahinigam.blogspot.com/feeds/posts/default"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-retro-cyan hover:text-retro-green transition-colors duration-200 text-xs"
-                    >
-                      <BookOpen size={12} />
-                      RSS Feed
-                    </motion.a>
                   </div>
                 </div>
               </div>
