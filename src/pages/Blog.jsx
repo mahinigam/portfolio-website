@@ -4,6 +4,9 @@ import { Calendar, ExternalLink, Terminal, BookOpen, Clock } from 'lucide-react'
 
 const Blog = () => {
   const [currentTime, setCurrentTime] = useState(new Date())
+  const [blogPosts, setBlogPosts] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -13,57 +16,42 @@ const Blog = () => {
     return () => clearInterval(timer)
   }, [])
 
-  // Sample blog posts - in a real app, these would come from your Blogspot API
-  const blogPosts = [
-    {
-      title: 'Getting Started with Data Science: A Beginner\'s Journey',
-      excerpt: 'My personal experience diving into the world of data science, the challenges I faced, and the resources that helped me.',
-      date: '2024-08-15',
-      readTime: '5 min read',
-      tags: ['Data Science', 'Beginners', 'Python'],
-      url: 'https://mahinigam.blogspot.com/post1'
-    },
-    {
-      title: 'Building Interactive Dashboards with Tableau',
-      excerpt: 'A step-by-step guide to creating compelling data visualizations that tell a story.',
-      date: '2024-08-08',
-      readTime: '8 min read',
-      tags: ['Tableau', 'Visualization', 'Tutorial'],
-      url: 'https://mahinigam.blogspot.com/post2'
-    },
-    {
-      title: 'Machine Learning Models: From Theory to Practice',
-      excerpt: 'Understanding different ML algorithms and implementing them in real-world scenarios.',
-      date: '2024-07-28',
-      readTime: '12 min read',
-      tags: ['Machine Learning', 'Python', 'Scikit-learn'],
-      url: 'https://mahinigam.blogspot.com/post3'
-    },
-    {
-      title: 'The Art of Data Cleaning: Tips and Tricks',
-      excerpt: 'Essential techniques for preparing messy datasets for analysis and modeling.',
-      date: '2024-07-20',
-      readTime: '6 min read',
-      tags: ['Data Cleaning', 'Pandas', 'Tips'],
-      url: 'https://mahinigam.blogspot.com/post4'
-    },
-    {
-      title: 'React Best Practices for Modern Web Development',
-      excerpt: 'Key principles and patterns I\'ve learned while building scalable React applications.',
-      date: '2024-07-12',
-      readTime: '10 min read',
-      tags: ['React', 'JavaScript', 'Best Practices'],
-      url: 'https://mahinigam.blogspot.com/post5'
-    },
-    {
-      title: 'SQL for Data Analysis: Advanced Techniques',
-      excerpt: 'Beyond basic queries - window functions, CTEs, and performance optimization.',
-      date: '2024-07-05',
-      readTime: '15 min read',
-      tags: ['SQL', 'Database', 'Analytics'],
-      url: 'https://mahinigam.blogspot.com/post6'
+  // Fetch blog posts from Blogspot RSS feed
+  useEffect(() => {
+    const fetchBlogPosts = async () => {
+      try {
+        setIsLoading(true)
+        // Using a CORS proxy to fetch RSS feed
+        const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://mahinigam.blogspot.com/feeds/posts/default')
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch blog posts')
+        }
+        
+        const data = await response.json()
+        
+        // Transform RSS data to our format
+        const transformedPosts = data.items?.slice(0, 3).map(item => ({
+          title: item.title,
+          excerpt: item.description.replace(/<[^>]*>/g, '').substring(0, 150) + '...',
+          date: new Date(item.pubDate).toISOString().split('T')[0],
+          readTime: Math.ceil(item.description.replace(/<[^>]*>/g, '').split(' ').length / 200) + ' min read',
+          tags: item.categories?.slice(0, 3) || ['Blog'],
+          url: item.link
+        })) || []
+        
+        setBlogPosts(transformedPosts)
+      } catch (err) {
+        console.error('Error fetching blog posts:', err)
+        setError('Failed to load blog posts')
+        setBlogPosts([])
+      } finally {
+        setIsLoading(false)
+      }
     }
-  ]
+
+    fetchBlogPosts()
+  }, [])
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -110,7 +98,7 @@ const Blog = () => {
               &gt; BLOG_TERMINAL.EXE
             </h2>
             <p className="text-sm font-pixel text-retro-cyan mb-6">
-              Thoughts, tutorials, and insights from my coding journey
+              Thoughts and insights from my coding journey
             </p>
             <div className="w-32 h-0.5 bg-retro-green mx-auto"></div>
           </motion.div>
@@ -145,15 +133,27 @@ const Blog = () => {
                   <motion.div variants={lineVariants} className="text-retro-green-dim">
                     $ cat blog_stats.txt
                   </motion.div>
-                  <motion.div variants={lineVariants} className="text-retro-cyan">
-                    Total Posts: {blogPosts.length}
-                  </motion.div>
-                  <motion.div variants={lineVariants} className="text-retro-cyan">
-                    Categories: 6
-                  </motion.div>
-                  <motion.div variants={lineVariants} className="text-retro-cyan">
-                    Est. Reading Time: 56 minutes
-                  </motion.div>
+                  {isLoading ? (
+                    <motion.div variants={lineVariants} className="text-retro-yellow">
+                      Loading blog data...
+                    </motion.div>
+                  ) : error ? (
+                    <motion.div variants={lineVariants} className="text-retro-pink">
+                      Error: {error}
+                    </motion.div>
+                  ) : (
+                    <>
+                      <motion.div variants={lineVariants} className="text-retro-cyan">
+                        Total Posts: {blogPosts.length}
+                      </motion.div>
+                      <motion.div variants={lineVariants} className="text-retro-cyan">
+                        Categories: {[...new Set(blogPosts.flatMap(post => post.tags))].length}
+                      </motion.div>
+                      <motion.div variants={lineVariants} className="text-retro-cyan">
+                        Est. Reading Time: {blogPosts.reduce((total, post) => total + parseInt(post.readTime), 0)} minutes
+                      </motion.div>
+                    </>
+                  )}
                   
                   <motion.div variants={lineVariants} className="text-retro-green-dim">
                     $ date
@@ -206,6 +206,26 @@ const Blog = () => {
             {/* Blog Posts */}
             <div className="lg:col-span-2">
               <motion.div variants={containerVariants} className="space-y-6">
+                {isLoading ? (
+                  <div className="retro-card pixel-corners text-center">
+                    <div className="text-retro-yellow font-pixel text-sm mb-4">
+                      &gt; LOADING_BLOG_POSTS.EXE
+                    </div>
+                    <div className="text-retro-cyan text-xs">
+                      Fetching latest articles from the blogosphere...
+                    </div>
+                  </div>
+                ) : error ? (
+                  <div className="retro-card pixel-corners text-center">
+                    <div className="text-retro-pink font-pixel text-sm mb-4">
+                      &gt; CONNECTION_ERROR.LOG
+                    </div>
+                    <div className="text-retro-cyan text-xs mb-4">
+                      {error}. Showing cached blog posts instead.
+                    </div>
+                  </div>
+                ) : null}
+                
                 {blogPosts.map((post) => (
                   <motion.article
                     key={post.title}

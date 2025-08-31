@@ -131,7 +131,6 @@ const Resume = () => {
                     className="w-full h-full min-h-[350px] min-w-[250px] bg-white"
                     style={{ border: 'none', borderRadius: '8px' }}
                   />
-                  {/* ...existing code... */}
                 </motion.div>
               </div>
             </div>
