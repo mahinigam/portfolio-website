@@ -5,34 +5,34 @@ import { Code, Database, BarChart3, Globe, GitBranch, Briefcase } from 'lucide-r
 const Skills = () => {
   const skillCategories = [
     {
-      title: 'DATA SCIENCE',
+      title: 'DATA SCIENCE & ML',
       icon: <BarChart3 className="text-retro-blue" size={24} />,
-      skills: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Tableau']
+      skills: ['Python', 'Scikit-learn', 'TensorFlow', 'PyTorch']
     },
     {
       title: 'PROGRAMMING',
       icon: <Code className="text-retro-green-dim" size={24} />,
-      skills: ['Python', 'JavaScript', 'SQL', 'HTML/CSS', 'C++', 'Java']
+      skills: ['Python', 'JavaScript', 'Java', 'R', 'Scala',]
     },
     {
-      title: 'WEB DEVELOPMENT',
+      title: 'BIG DATA & CLOUD',
       icon: <Globe className="text-retro-pink" size={24} />,
-      skills: ['React', 'Node.js', 'Express', 'MongoDB', 'TailwindCSS', 'Framer Motion']
+      skills: ['AWS', 'Spark', 'Hadoop',]
     },
     {
-      title: 'DATABASES',
+      title: 'DATA ENGINEERING',
       icon: <Database className="text-retro-yellow" size={24} />,
-      skills: ['SQL', 'MongoDB', 'PostgreSQL', 'MySQL', 'SQLite', 'Redis']
+      skills: ['MySQL', 'PostgreSQL', 'NoSQL']
     },
     {
-      title: 'TOOLS & PLATFORMS',
-      icon: <GitBranch className="text-retro-blue" size={24} />,
-      skills: ['Git', 'GitHub', 'VS Code', 'Jupyter', 'Docker', 'Linux']
+      title: 'ANALYTICS & BI',
+      icon: <BarChart3 className="text-retro-blue" size={24} />,
+      skills: ['Power BI', 'Tableau', 'AWS QuickSight', 'Excel']
     },
     {
-      title: 'PRODUCTIVITY',
-      icon: <Briefcase className="text-retro-pink" size={24} />,
-      skills: ['Google Workspace', 'Excel', 'PowerBI', 'Figma', 'Notion', 'Slack']
+      title: 'DATA PROCESSING',
+      icon: <GitBranch className="text-retro-pink" size={24} />,
+      skills: ['Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'NLTK']
     }
   ]
 
@@ -78,7 +78,7 @@ const Skills = () => {
 
           {/* Skills Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {skillCategories.map((category, index) => (
+            {skillCategories.map((category) => (
               <motion.div
                 key={category.title}
                 variants={itemVariants}
@@ -113,98 +113,9 @@ const Skills = () => {
                     </motion.div>
                   ))}
                 </div>
-
-                {/* Level indicator */}
-                <div className="mt-4 flex items-center gap-2">
-                  <span className="text-xs font-pixel text-retro-blue sprite">LVL:</span>
-                  <div className="flex gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: (index * 0.1) + (i * 0.05) }}
-                        className={`w-2 h-2 ${
-                          i < 3 + (index % 3) ? 'bg-retro-green' : 'bg-retro-card border'
-                        } border border-retro-green`}
-                      />
-                    ))}
-                  </div>
-                </div>
               </motion.div>
             ))}
           </div>
-
-          {/* Experience Timeline */}
-          <motion.div variants={itemVariants} className="mt-16">
-            <h3 className="text-xl font-pixel text-retro-green-dim text-center mb-8 text-glow-soft sprite">
-              &gt; LEARNING_JOURNEY.LOG
-            </h3>
-            
-            <div className="max-w-3xl mx-auto">
-              <div className="retro-card pixel-corners sprite">
-                <div className="space-y-4 font-mono text-xs">
-                  <div className="flex gap-4">
-                    <span className="text-retro-green text-glow">[2024]</span>
-                    <span className="text-retro-blue">
-                      Started Data Science journey with Python & Machine Learning
-                    </span>
-                  </div>
-                  <div className="flex gap-4">
-                    <span className="text-retro-green text-glow">[2024]</span>
-                    <span className="text-retro-blue">
-                      Mastered data visualization with Matplotlib, Seaborn & Tableau
-                    </span>
-                  </div>
-                  <div className="flex gap-4">
-                    <span className="text-retro-green text-glow">[2024]</span>
-                    <span className="text-retro-blue">
-                      Built multiple web applications using React & Node.js
-                    </span>
-                  </div>
-                  <div className="flex gap-4">
-                    <span className="text-retro-green text-glow">[2024]</span>
-                    <span className="text-retro-blue">
-                      Currently exploring Advanced ML algorithms & Deep Learning
-                    </span>
-                  </div>
-                  <div className="flex gap-4">
-                    <span className="text-retro-pink">[NEXT]</span>
-                    <span className="text-retro-pink">
-                      Planning to dive into Cloud Computing & DevOps...
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Fun Stats */}
-          <motion.div variants={itemVariants} className="mt-16 text-center">
-            <div className="retro-card pixel-corners max-w-2xl mx-auto sprite">
-              <h4 className="font-pixel text-sm text-retro-green-soft mb-4 text-glow-subtle">
-                &gt; FUN_STATS.JSON
-              </h4>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
-                <div>
-                  <div className="text-retro-blue font-pixel mb-1">LINES OF CODE</div>
-                  <div className="text-retro-green-dim text-glow-soft">50,000+</div>
-                </div>
-                <div>
-                  <div className="text-retro-blue font-pixel mb-1">DATASETS ANALYZED</div>
-                  <div className="text-retro-green-dim text-glow-soft">25+</div>
-                </div>
-                <div>
-                  <div className="text-retro-blue font-pixel mb-1">HOURS CODING</div>
-                  <div className="text-retro-green-dim text-glow-soft">1,000+</div>
-                </div>
-                <div>
-                  <div className="text-retro-blue font-pixel mb-1">COFFEE CONSUMED</div>
-                  <div className="text-retro-green-dim text-glow-soft">∞</div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>
