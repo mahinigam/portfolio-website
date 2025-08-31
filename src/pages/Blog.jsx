@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Calendar, ExternalLink, Terminal, BookOpen, Clock } from 'lucide-react'
+import { useTheme } from '../hooks/useTheme'
 
 const Blog = () => {
+  const { theme } = useTheme()
+  const isRetro = theme === 'retro'
   const [currentTime, setCurrentTime] = useState(new Date())
   const [blogPosts, setBlogPosts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -94,102 +97,212 @@ const Blog = () => {
         >
           {/* Section Title */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl font-pixel text-retro-green-dim text-glow-soft mb-4 sprite">
-              &gt; BLOG_TERMINAL.EXE
+            <h2 className={`text-2xl md:text-3xl mb-4 ${
+              isRetro 
+                ? 'font-pixel text-retro-green-dim text-glow-soft sprite' 
+                : 'font-light text-glass-text tracking-wide'
+            }`}>
+              {isRetro ? '> BLOG_TERMINAL.EXE' : 'Blog'}
             </h2>
-            <p className="text-sm font-pixel text-retro-cyan mb-6">
+            <p className={`text-sm mb-6 ${
+              isRetro 
+                ? 'font-pixel text-retro-cyan' 
+                : 'font-light text-glass-text-secondary tracking-wide'
+            }`}>
               Thoughts and insights from my coding journey
             </p>
-            <div className="w-32 h-0.5 bg-retro-green mx-auto"></div>
+            <div className={`w-32 h-0.5 mx-auto ${
+              isRetro ? 'bg-retro-green' : 'bg-glass-accent'
+            }`}></div>
           </motion.div>
 
           <div className="grid lg:grid-cols-3 gap-8">
-            {/* Terminal Interface */}
+            {/* Blog Information Interface */}
             <motion.div variants={itemVariants} className="lg:col-span-1">
-              <div className="retro-card pixel-corners sticky top-24">
-                {/* Terminal Header */}
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="w-3 h-3 rounded-full bg-retro-pink"></div>
-                  <div className="w-3 h-3 rounded-full bg-retro-yellow"></div>
-                  <div className="w-3 h-3 rounded-full bg-retro-green"></div>
-                  <span className="text-retro-green-dim text-xs font-pixel ml-2 flex items-center gap-2">
-                    <Terminal size={14} />
-                    BLOG_READER v2.0
-                  </span>
-                </div>
+              <div className={isRetro ? "retro-card pixel-corners sticky top-24" : "glass-card p-6 sticky top-24"}>
+                {isRetro ? (
+                  <>
+                    {/* Terminal Header */}
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="w-3 h-3 rounded-full bg-retro-pink"></div>
+                      <div className="w-3 h-3 rounded-full bg-retro-yellow"></div>
+                      <div className="w-3 h-3 rounded-full bg-retro-green"></div>
+                      <span className="text-xs ml-2 flex items-center gap-2 text-retro-green-dim font-pixel">
+                        <Terminal size={14} />
+                        BLOG_READER v2.0
+                      </span>
+                    </div>
 
-                {/* Terminal Content */}
-                <motion.div
-                  variants={terminalVariants}
-                  className="bg-retro-bg p-4 font-mono text-xs space-y-2"
-                >
-                  <motion.div variants={lineVariants} className="text-retro-green-dim">
-                    $ whoami
-                  </motion.div>
-                  <motion.div variants={lineVariants} className="text-retro-cyan">
-                    mahi@portfolio:~$ blogger & writer
-                  </motion.div>
-                  
-                  <motion.div variants={lineVariants} className="text-retro-green-dim">
-                    $ cat blog_stats.txt
-                  </motion.div>
-                  {isLoading ? (
-                    <motion.div variants={lineVariants} className="text-retro-yellow">
-                      Loading blog data...
-                    </motion.div>
-                  ) : error ? (
-                    <motion.div variants={lineVariants} className="text-retro-pink">
-                      Error: {error}
-                    </motion.div>
-                  ) : (
-                    <>
-                      <motion.div variants={lineVariants} className="text-retro-cyan">
-                        Total Posts: {blogPosts.length}
-                      </motion.div>
-                      <motion.div variants={lineVariants} className="text-retro-cyan">
-                        Categories: {[...new Set(blogPosts.flatMap(post => post.tags))].length}
-                      </motion.div>
-                      <motion.div variants={lineVariants} className="text-retro-cyan">
-                        Est. Reading Time: {blogPosts.reduce((total, post) => total + parseInt(post.readTime), 0)} minutes
-                      </motion.div>
-                    </>
-                  )}
-                  
-                  <motion.div variants={lineVariants} className="text-retro-green-dim">
-                    $ date
-                  </motion.div>
-                  <motion.div variants={lineVariants} className="text-retro-cyan">
-                    {currentTime.toLocaleString()}
-                  </motion.div>
-                  
-                  <motion.div variants={lineVariants} className="text-retro-green-dim">
-                    $ echo "Status"
-                  </motion.div>
-                  <motion.div variants={lineVariants} className="text-retro-pink">
-                    Ready to share knowledge...
-                  </motion.div>
-                  
-                  <motion.div variants={lineVariants} className="text-retro-green-dim">
-                    $ █
-                  </motion.div>
-                </motion.div>
-
-                {/* Quick Links */}
-                <div className="mt-6">
-                  <h4 className="font-pixel text-xs text-retro-green-soft mb-3">QUICK ACCESS:</h4>
-                  <div className="space-y-2">
-                    <motion.a
-                      whileHover={{ x: 5 }}
-                      href="https://mahinigam.blogspot.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-retro-cyan hover:text-retro-green transition-colors duration-200 text-xs"
+                    {/* Terminal Content */}
+                    <motion.div
+                      variants={terminalVariants}
+                      className="p-4 font-mono text-xs space-y-2 bg-retro-bg"
                     >
-                      <ExternalLink size={12} />
-                      Visit Full Blog
-                    </motion.a>
-                  </div>
-                </div>
+                      <motion.div variants={lineVariants} className="text-retro-green-dim">
+                        $ whoami
+                      </motion.div>
+                      <motion.div variants={lineVariants} className="text-retro-cyan">
+                        mahi@portfolio:~$ blogger & writer
+                      </motion.div>
+                      
+                      <motion.div variants={lineVariants} className="text-retro-green-dim">
+                        $ cat blog_stats.txt
+                      </motion.div>
+                      {isLoading ? (
+                        <motion.div variants={lineVariants} className="text-retro-yellow">
+                          Loading blog data...
+                        </motion.div>
+                      ) : error ? (
+                        <motion.div variants={lineVariants} className="text-retro-pink">
+                          Error: {error}
+                        </motion.div>
+                      ) : (
+                        <>
+                          <motion.div variants={lineVariants} className="text-retro-cyan">
+                            Total Posts: {blogPosts.length}
+                          </motion.div>
+                          <motion.div variants={lineVariants} className="text-retro-cyan">
+                            Categories: {[...new Set(blogPosts.flatMap(post => post.tags))].length}
+                          </motion.div>
+                          <motion.div variants={lineVariants} className="text-retro-cyan">
+                            Est. Reading Time: {blogPosts.reduce((total, post) => total + parseInt(post.readTime), 0)} minutes
+                          </motion.div>
+                        </>
+                      )}
+                      
+                      <motion.div variants={lineVariants} className="text-retro-green-dim">
+                        $ date
+                      </motion.div>
+                      <motion.div variants={lineVariants} className="text-retro-cyan">
+                        {currentTime.toLocaleString()}
+                      </motion.div>
+                      
+                      <motion.div variants={lineVariants} className="text-retro-green-dim">
+                        $ echo "Status"
+                      </motion.div>
+                      <motion.div variants={lineVariants} className="text-retro-pink">
+                        Ready to share knowledge...
+                      </motion.div>
+                      
+                      <motion.div variants={lineVariants} className="text-retro-green-dim">
+                        $ █
+                      </motion.div>
+                    </motion.div>
+
+                    {/* Quick Links */}
+                    <div className="mt-6">
+                      <h4 className="text-xs mb-3 font-pixel text-retro-green-soft">
+                        QUICK ACCESS:
+                      </h4>
+                      <div className="space-y-2">
+                        <motion.a
+                          whileHover={{ x: 5 }}
+                          href="https://mahinigam.blogspot.com"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 transition-colors duration-200 text-xs text-retro-cyan hover:text-retro-green"
+                        >
+                          <ExternalLink size={12} />
+                          Visit Full Blog
+                        </motion.a>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    {/* Professional Blog Information Dashboard */}
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="p-2 rounded-lg bg-glass-accent/10">
+                        <BookOpen className="w-5 h-5 text-glass-accent" />
+                      </div>
+                      <div>
+                        <h3 className="font-normal text-glass-text tracking-wide">Blog Overview</h3>
+                        <p className="text-sm text-glass-text-secondary font-light">Writing & Development Insights</p>
+                      </div>
+                    </div>
+
+                    {/* Author Section */}
+                    <motion.div variants={terminalVariants} className="space-y-4">
+                      <motion.div variants={lineVariants} className="border-l-2 border-glass-accent/30 pl-4">
+                        <div className="flex items-center gap-2 mb-2">
+                          <div className="w-2 h-2 rounded-full bg-glass-accent"></div>
+                          <span className="text-sm font-light text-glass-text-secondary tracking-wide">Author</span>
+                        </div>
+                        <p className="font-normal text-glass-text">Mahi Nigam</p>
+                        <p className="text-sm text-glass-text-secondary font-light italic">Blogger & Developer</p>
+                      </motion.div>
+
+                      {/* Statistics Grid */}
+                      <motion.div variants={lineVariants} className="grid grid-cols-2 gap-4">
+                        <div className="text-center p-3 rounded-lg bg-glass-accent/5 border border-glass-accent/10">
+                          <div className="text-lg font-normal text-glass-accent">
+                            {isLoading ? '...' : error ? '0' : blogPosts.length}
+                          </div>
+                          <div className="text-xs text-glass-text-secondary font-light tracking-wide">Articles</div>
+                        </div>
+                        <div className="text-center p-3 rounded-lg bg-glass-accent/5 border border-glass-accent/10">
+                          <div className="text-lg font-normal text-glass-accent">
+                            {isLoading ? '...' : error ? '0' : [...new Set(blogPosts.flatMap(post => post.tags))].length}
+                          </div>
+                          <div className="text-xs text-glass-text-secondary font-light tracking-wide">Topics</div>
+                        </div>
+                      </motion.div>
+
+                      {/* Reading Time */}
+                      <motion.div variants={lineVariants} className="flex items-center gap-3 p-3 rounded-lg bg-glass-accent/5 border border-glass-accent/10">
+                        <Clock className="w-4 h-4 text-glass-accent" />
+                        <div>
+                          <p className="text-sm font-normal text-glass-text">
+                            {isLoading ? 'Loading...' : error ? '0' : blogPosts.reduce((total, post) => total + parseInt(post.readTime), 0)} min
+                          </p>
+                          <p className="text-xs text-glass-text-secondary font-light">Total Reading Time</p>
+                        </div>
+                      </motion.div>
+
+                      {/* Last Updated */}
+                      <motion.div variants={lineVariants} className="flex items-center gap-3 p-3 rounded-lg bg-glass-accent/5 border border-glass-accent/10">
+                        <Calendar className="w-4 h-4 text-glass-accent" />
+                        <div>
+                          <p className="text-sm font-normal text-glass-text">
+                            {currentTime.toLocaleDateString('en-US', { 
+                              month: 'short', 
+                              day: 'numeric', 
+                              year: 'numeric' 
+                            })}
+                          </p>
+                          <p className="text-xs text-glass-text-secondary font-light">Last Updated</p>
+                        </div>
+                      </motion.div>
+
+                      {/* Status Indicator */}
+                      <motion.div variants={lineVariants} className="flex items-center gap-3 p-3 rounded-lg bg-gradient-to-r from-glass-accent/5 to-glass-accent/10 border border-glass-accent/20">
+                        <div className="w-2 h-2 rounded-full bg-white animate-pulse"></div>
+                        <p className="text-sm font-light text-glass-text italic">
+                          Ready to share knowledge & insights
+                        </p>
+                      </motion.div>
+                    </motion.div>
+
+                    {/* Quick Links */}
+                    <div className="mt-6">
+                      <h4 className="text-xs mb-3 font-normal text-glass-text tracking-wide">
+                        Quick Access
+                      </h4>
+                      <div className="space-y-2">
+                        <motion.a
+                          whileHover={{ x: 5 }}
+                          href="https://mahinigam.blogspot.com"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 transition-colors duration-200 text-xs text-glass-text-secondary hover:text-glass-accent"
+                        >
+                          <ExternalLink size={12} />
+                          Visit Full Blog
+                        </motion.a>
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
             </motion.div>
 
@@ -197,20 +310,32 @@ const Blog = () => {
             <div className="lg:col-span-2">
               <motion.div variants={containerVariants} className="space-y-6">
                 {isLoading ? (
-                  <div className="retro-card pixel-corners text-center">
-                    <div className="text-retro-yellow font-pixel text-sm mb-4">
-                      &gt; LOADING_BLOG_POSTS.EXE
+                  <div className={isRetro ? "retro-card pixel-corners text-center" : "glass-card p-6 text-center"}>
+                    <div className={`text-sm mb-4 ${
+                      isRetro 
+                        ? 'text-retro-yellow font-pixel' 
+                        : 'text-glass-accent font-light tracking-wide'
+                    }`}>
+                      {isRetro ? '> LOADING_BLOG_POSTS.EXE' : 'Loading Blog Posts...'}
                     </div>
-                    <div className="text-retro-cyan text-xs">
+                    <div className={`text-xs ${
+                      isRetro ? 'text-retro-cyan' : 'text-glass-text-secondary font-light'
+                    }`}>
                       Fetching latest articles from the blogosphere...
                     </div>
                   </div>
                 ) : error ? (
-                  <div className="retro-card pixel-corners text-center">
-                    <div className="text-retro-pink font-pixel text-sm mb-4">
-                      &gt; CONNECTION_ERROR.LOG
+                  <div className={isRetro ? "retro-card pixel-corners text-center" : "glass-card p-6 text-center"}>
+                    <div className={`text-sm mb-4 ${
+                      isRetro 
+                        ? 'text-retro-pink font-pixel' 
+                        : 'text-gray-400 font-light tracking-wide'
+                    }`}>
+                      {isRetro ? '> CONNECTION_ERROR.LOG' : 'Connection Error'}
                     </div>
-                    <div className="text-retro-cyan text-xs mb-4">
+                    <div className={`text-xs mb-4 ${
+                      isRetro ? 'text-retro-cyan' : 'text-glass-text-secondary font-light'
+                    }`}>
                       {error}. Showing cached blog posts instead.
                     </div>
                   </div>
@@ -221,15 +346,21 @@ const Blog = () => {
                     key={post.title}
                     variants={itemVariants}
                     whileHover={{ scale: 1.01 }}
-                    className="retro-card pixel-corners group"
+                    className={isRetro ? "retro-card pixel-corners group" : "glass-card p-6 group"}
                   >
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1">
-                        <h3 className="font-pixel text-sm text-retro-green-soft mb-2 group-hover:text-retro-cyan transition-colors duration-200">
+                        <h3 className={`text-sm mb-2 transition-colors duration-200 ${
+                          isRetro 
+                            ? 'font-pixel text-retro-green-soft group-hover:text-retro-cyan' 
+                            : 'font-normal text-glass-text group-hover:text-glass-accent tracking-wide'
+                        }`}>
                           {post.title}
                         </h3>
                         
-                        <div className="flex items-center gap-4 text-xs text-retro-pink mb-3">
+                        <div className={`flex items-center gap-4 text-xs mb-3 ${
+                          isRetro ? 'text-retro-pink' : 'text-glass-text-secondary font-light'
+                        }`}>
                           <span className="flex items-center gap-1">
                             <Calendar size={12} />
                             {new Date(post.date).toLocaleDateString()}
@@ -242,7 +373,9 @@ const Blog = () => {
                       </div>
                     </div>
 
-                    <p className="text-xs text-retro-cyan mb-4 leading-relaxed">
+                    <p className={`text-xs mb-4 leading-relaxed ${
+                      isRetro ? 'text-retro-cyan' : 'text-glass-text-secondary font-light'
+                    }`}>
                       {post.excerpt}
                     </p>
 
@@ -251,7 +384,11 @@ const Blog = () => {
                       {post.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="text-xs font-pixel px-2 py-1 bg-retro-bg border border-retro-purple text-retro-purple"
+                          className={`text-xs px-2 py-1 border ${
+                            isRetro 
+                              ? 'font-pixel bg-retro-bg border-retro-purple text-retro-purple' 
+                              : 'font-light tracking-wide bg-glass-accent/10 border-glass-accent text-glass-accent'
+                          }`}
                         >
                           #{tag}
                         </span>
@@ -265,9 +402,13 @@ const Blog = () => {
                       href={post.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-retro-green-dim hover:text-retro-cyan transition-colors duration-200 font-pixel text-xs"
+                      className={`inline-flex items-center gap-2 transition-colors duration-200 text-xs ${
+                        isRetro 
+                          ? 'text-retro-green-dim hover:text-retro-cyan font-pixel' 
+                          : 'text-glass-text hover:text-glass-accent font-light tracking-wide'
+                      }`}
                     >
-                      READ_MORE.TXT
+                      {isRetro ? 'READ_MORE.TXT' : 'Read More'}
                       <ExternalLink size={12} />
                     </motion.a>
                   </motion.article>
@@ -276,11 +417,17 @@ const Blog = () => {
 
               {/* View All Posts CTA */}
               <motion.div variants={itemVariants} className="mt-12 text-center">
-                <div className="retro-card pixel-corners">
-                  <h3 className="font-pixel text-sm text-retro-green-soft mb-4">
-                    &gt; EXPLORE_MORE.DIR
+                <div className={isRetro ? "retro-card pixel-corners" : "glass-card p-6"}>
+                  <h3 className={`text-sm mb-4 ${
+                    isRetro 
+                      ? 'font-pixel text-retro-green-soft' 
+                      : 'font-normal text-glass-text tracking-wide'
+                  }`}>
+                    {isRetro ? '> EXPLORE_MORE.DIR' : 'Explore More'}
                   </h3>
-                  <p className="text-xs text-retro-cyan mb-6">
+                  <p className={`text-xs mb-6 ${
+                    isRetro ? 'text-retro-cyan' : 'text-glass-text-secondary font-light'
+                  }`}>
                     These are just a few of my latest posts. Visit my blog to explore 
                     more articles, tutorials, and insights from my learning journey.
                   </p>
@@ -290,10 +437,10 @@ const Blog = () => {
                     href="https://mahinigam.blogspot.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="retro-button pixel-corners inline-flex items-center gap-2"
+                    className={isRetro ? "retro-button pixel-corners inline-flex items-center gap-2" : "glass-button inline-flex items-center gap-2"}
                   >
                     <BookOpen size={16} />
-                    VISIT FULL BLOG
+                    {isRetro ? 'VISIT FULL BLOG' : 'Visit Full Blog'}
                   </motion.a>
                 </div>
               </motion.div>

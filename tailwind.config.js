@@ -8,6 +8,9 @@ export default {
     extend: {
       fontFamily: {
         'pixel': ['"Press Start 2P"', 'monospace'],
+        'glass': ['Inter', 'Outfit', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        'glass-heading': ['Outfit', 'Inter', 'system-ui', 'sans-serif'],
+        'glass-body': ['Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
         'retro': {
@@ -24,6 +27,25 @@ export default {
           'green-soft': '#1F9908', 
           'yellow': '#FFFF00',
           'white': '#FFFFFF',
+        },
+        'glass': {
+          'bg': '#000000',
+          'bg-secondary': '#111111',
+          'dark': 'rgba(10, 10, 10, 0.9)',
+          'card': 'rgba(20, 20, 20, 0.3)',
+          'card-hover': 'rgba(30, 30, 30, 0.4)',
+          'card-light': 'rgba(40, 40, 40, 0.3)',
+          'border': 'rgba(255, 255, 255, 0.1)',
+          'border-hover': 'rgba(255, 255, 255, 0.2)',
+          'text': '#ffffff',
+          'text-secondary': '#b0b0b0',
+          'text-muted': '#808080',
+          'text-dim': '#666666',
+          'light': 'rgba(255, 255, 255, 0.9)',
+          'accent': '#ffffff',
+          'accent-light': '#e5e5e5',
+          'accent-dark': '#d4d4d4',
+          'nav': 'rgba(0, 0, 0, 0.8)',
         }
       },
       animation: {

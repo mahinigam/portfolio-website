@@ -8,21 +8,32 @@ import Blog from './pages/Blog'
 import Resume from './pages/Resume'
 import Contact from './pages/Contact'
 import Footer from './components/Footer'
+import { useTheme } from './hooks/useTheme'
 
 function App() {
+  const { theme } = useTheme()
+  
+  const isRetro = theme === 'retro'
+
   return (
-    <div className="min-h-screen bg-retro-bg relative scanlines crt-effect">
-      {/* Retro background effects */}
-      <div className="fixed inset-0 bg-retro-grid opacity-20 pointer-events-none"></div>
-      <div className="fixed inset-0 bg-retro-stars opacity-30 pointer-events-none"></div>
-      
-      {/* Enhanced scanline effect */}
-      <div
-        className="fixed w-full h-1 bg-gradient-to-r from-transparent via-retro-green to-transparent opacity-30 z-10 pointer-events-none"
-        style={{
-          animation: 'moveDown 3s linear infinite'
-        }}
-      />
+    <div className={`min-h-screen relative ${
+      isRetro ? 'bg-retro-bg scanlines crt-effect font-pixel' : 'glass-theme glass-backdrop font-glass'
+    }`}>
+      {/* Retro background effects - only show in retro theme */}
+      {isRetro && (
+        <>
+          <div className="fixed inset-0 bg-retro-grid opacity-20 pointer-events-none"></div>
+          <div className="fixed inset-0 bg-retro-stars opacity-30 pointer-events-none"></div>
+          
+          {/* Enhanced scanline effect */}
+          <div
+            className="fixed w-full h-1 bg-gradient-to-r from-transparent via-retro-green to-transparent opacity-30 z-10 pointer-events-none"
+            style={{
+              animation: 'moveDown 3s linear infinite'
+            }}
+          />
+        </>
+      )}
 
       {/* Main content */}
       <div className="relative z-20">

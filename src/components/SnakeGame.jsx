@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Play, RotateCcw } from 'lucide-react'
+import { useTheme } from '../hooks/useTheme'
 
 const SnakeGame = ({ isOpen, onClose }) => {
+  const { theme } = useTheme()
+  const isRetro = theme === 'retro'
   const canvasRef = useRef(null)
   const gameLoopRef = useRef(null)
   const [gameState, setGameState] = useState('menu') // 'menu', 'playing', 'gameOver'
@@ -230,12 +233,12 @@ const SnakeGame = ({ isOpen, onClose }) => {
     if (!ctx) return
 
     // Clear canvas
-    ctx.fillStyle = '#000000'
+    ctx.fillStyle = isRetro ? '#000000' : '#0f0f0f'
     ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE)
 
     // Draw grid
-    ctx.strokeStyle = '#39FF14'
-    ctx.globalAlpha = 0.1
+    ctx.strokeStyle = isRetro ? '#39FF14' : 'rgba(129, 140, 248, 0.3)'
+    ctx.globalAlpha = isRetro ? 0.1 : 0.2
     ctx.lineWidth = 1
     for (let i = 0; i <= GRID_COUNT; i++) {
       ctx.beginPath()
@@ -252,8 +255,13 @@ const SnakeGame = ({ isOpen, onClose }) => {
 
     // Draw snake
     snake.forEach((segment, index) => {
-      ctx.fillStyle = index === 0 ? '#39FF14' : '#00FFFF'
-      ctx.shadowColor = index === 0 ? '#39FF14' : '#00FFFF'
+      if (isRetro) {
+        ctx.fillStyle = index === 0 ? '#39FF14' : '#00FFFF'
+        ctx.shadowColor = index === 0 ? '#39FF14' : '#00FFFF'
+      } else {
+        ctx.fillStyle = index === 0 ? '#818cf8' : '#a78bfa'
+        ctx.shadowColor = index === 0 ? '#818cf8' : '#a78bfa'
+      }
       ctx.shadowBlur = 10
       ctx.fillRect(
         segment.x * GRID_SIZE + 2,
@@ -265,8 +273,8 @@ const SnakeGame = ({ isOpen, onClose }) => {
     })
 
     // Draw food
-    ctx.fillStyle = '#FF00FF'
-    ctx.shadowColor = '#FF00FF'
+    ctx.fillStyle = isRetro ? '#FF00FF' : '#ec4899'
+    ctx.shadowColor = isRetro ? '#FF00FF' : '#ec4899'
     ctx.shadowBlur = 15
     ctx.fillRect(
       food.x * GRID_SIZE + 3,
@@ -280,8 +288,8 @@ const SnakeGame = ({ isOpen, onClose }) => {
     if (specialFood) {
       const flicker = Math.sin(Date.now() * 0.01) > 0
       if (flicker) {
-        ctx.fillStyle = '#FFFF00'
-        ctx.shadowColor = '#FFFF00'
+        ctx.fillStyle = isRetro ? '#FFFF00' : '#eab308'
+        ctx.shadowColor = isRetro ? '#FFFF00' : '#eab308'
         ctx.shadowBlur = 20
         ctx.fillRect(
           specialFood.x * GRID_SIZE + 1,
@@ -292,9 +300,9 @@ const SnakeGame = ({ isOpen, onClose }) => {
         ctx.shadowBlur = 0
       }
     }
-  }, [isOpen, snake, food, specialFood, CANVAS_SIZE, GRID_SIZE, GRID_COUNT])
+  }, [isOpen, snake, food, specialFood, CANVAS_SIZE, GRID_SIZE, GRID_COUNT, isRetro])
 
-  if (!isOpen) return null
+  if (!isOpen || !isRetro) return null
 
   return (
     <AnimatePresence>
@@ -302,67 +310,136 @@ const SnakeGame = ({ isOpen, onClose }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 backdrop-blur-sm"
+        className={`${
+          isRetro ? 'bg-black/90' : 'bg-black/50'
+        }`}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          width: '100vw',
+          height: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 50,
+          backdropFilter: 'blur(4px)',
+          padding: '1rem',
+          boxSizing: 'border-box'
+        }}
         onClick={onClose}
       >
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.8, opacity: 0 }}
-          className="bg-retro-card border-2 border-retro-green p-8 pixel-corners relative"
+          className={`p-6 md:p-8 relative max-w-lg w-full max-h-[90vh] overflow-y-auto flex flex-col items-center ${
+            isRetro 
+              ? 'bg-retro-card border-2 border-retro-green pixel-corners' 
+              : 'bg-retro-card border-2 border-retro-green pixel-corners'
+          }`}
           style={{
-            boxShadow: '0 0 30px rgba(57, 255, 20, 0.5)',
-            filter: 'drop-shadow(0 0 20px rgba(57, 255, 20, 0.3))'
+            ...(isRetro ? {
+              boxShadow: '0 0 30px rgba(57, 255, 20, 0.5)',
+              filter: 'drop-shadow(0 0 20px rgba(57, 255, 20, 0.3))'
+            } : {
+              background: 'rgba(20, 20, 20, 0.8)',
+              backdropFilter: 'blur(20px)',
+              borderColor: 'rgba(255, 255, 255, 0.2)',
+              boxShadow: '0 0 30px rgba(129, 140, 248, 0.3)',
+              borderRadius: '16px'
+            }),
+            // Force identical positioning
+            position: 'relative',
+            transform: 'none',
+            margin: '0'
           }}
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 text-retro-pink hover:text-retro-yellow transition-colors duration-200 sprite"
+            className={`absolute top-4 right-4 transition-colors duration-200 ${
+              isRetro 
+                ? 'text-retro-pink hover:text-retro-yellow sprite' 
+                : 'text-white hover:text-glass-accent-light'
+            }`}
           >
             <X size={20} />
           </button>
 
           {/* Game title */}
           <div className="text-center mb-6">
-            <h2 className="text-retro-green-dim font-pixel text-lg text-glow-soft sprite mb-2">
-              &gt; SNAKE.EXE
+            <h2 className={`text-lg mb-2 ${
+              isRetro 
+                ? 'text-retro-green-dim font-pixel text-glow-soft sprite' 
+                : 'text-white font-light tracking-wide text-shadow-glow'
+            }`}>
+              {isRetro ? '> SNAKE.EXE' : 'Snake Game'}
             </h2>
-            <div className="flex justify-between items-center text-xs font-pixel">
-              <div className="text-retro-blue sprite">
-                SCORE: <span className="text-retro-yellow text-glow">{score}</span>
+            <div className={`flex justify-between items-center text-xs ${
+              isRetro ? 'font-pixel' : 'font-light tracking-wide'
+            }`}>
+              <div className={isRetro ? 'text-retro-blue sprite' : 'text-glass-accent-light'}>
+                SCORE: <span className={`${
+                  isRetro ? 'text-retro-yellow text-glow' : 'text-white font-normal'
+                }`}>{score}</span>
               </div>
-              <div className="text-retro-blue sprite">
-                HIGH: <span className="text-retro-pink text-glow">{highScore}</span>
+              <div className={isRetro ? 'text-retro-blue sprite' : 'text-glass-accent-light'}>
+                HIGH: <span className={`${
+                  isRetro ? 'text-retro-pink text-glow' : 'text-white font-normal'
+                }`}>{highScore}</span>
               </div>
             </div>
           </div>
 
           {/* Game canvas */}
-          <div className="relative border-2 border-retro-green mb-6" style={{ width: CANVAS_SIZE, height: CANVAS_SIZE }}>
+          <div className={`relative mb-6 flex justify-center ${
+            isRetro ? 'border-2 border-retro-green' : 'border border-glass-border rounded-lg overflow-hidden'
+          }`} style={{ width: 'min(400px, 90vw)', height: 'min(400px, 90vw)' }}>
             <canvas
               ref={canvasRef}
               width={CANVAS_SIZE}
               height={CANVAS_SIZE}
-              className="block"
+              className="block max-w-full max-h-full"
+              style={{ width: '100%', height: '100%', imageRendering: 'pixelated' }}
             />
 
             {/* Game state overlays */}
             {gameState === 'menu' && (
-              <div className="absolute inset-0 bg-retro-card/90 flex flex-col items-center justify-center">
-                <div className="text-retro-green-dim font-pixel text-sm text-glow-soft mb-4 text-center sprite">
-                  RETRO SNAKE
+              <div className={`absolute inset-0 flex flex-col items-center justify-center ${
+                isRetro ? 'bg-retro-card/90' : 'bg-black/80 backdrop-blur-sm'
+              }`}>
+                <div className={`text-sm mb-4 text-center ${
+                  isRetro 
+                    ? 'text-retro-green-dim font-pixel text-glow-soft sprite' 
+                    : 'text-white font-light tracking-wide'
+                }`}>
+                  {isRetro ? 'RETRO SNAKE' : 'Snake Game'}
                 </div>
-                <div className="text-retro-blue font-pixel text-xs mb-4 text-center sprite">
+                <div className={`text-xs mb-4 text-center ${
+                  isRetro 
+                    ? 'text-retro-blue font-pixel sprite' 
+                    : 'text-glass-accent-light font-light tracking-wide'
+                }`}>
                   USE ARROW KEYS OR WASD
                 </div>
-                <div className="text-retro-cyan font-pixel text-xs mb-6 text-center sprite">
+                <div className={`text-xs mb-6 text-center ${
+                  isRetro 
+                    ? 'text-retro-cyan font-pixel sprite' 
+                    : 'text-glass-accent-light font-light tracking-wide'
+                }`}>
                   PRESS SPACE TO START
                 </div>
                 <button
                   onClick={startGame}
-                  className="retro-button pixel-corners bg-retro-card border-retro-green text-retro-green-dim hover:bg-retro-green hover:text-retro-bg flex items-center gap-2 sprite"
+                  className={`flex items-center gap-2 ${
+                    isRetro 
+                      ? 'retro-button pixel-corners bg-retro-card border-retro-green text-retro-green-dim hover:bg-retro-green hover:text-retro-bg sprite' 
+                      : 'glass-button font-light tracking-wide'
+                  }`}
                 >
                   <Play size={16} /> START GAME
                 </button>
@@ -370,35 +447,67 @@ const SnakeGame = ({ isOpen, onClose }) => {
             )}
 
             {gameState === 'playing' && direction.x === 0 && direction.y === 0 && (
-              <div className="absolute inset-0 bg-retro-card/60 flex flex-col items-center justify-center">
-                <div className="text-retro-yellow font-pixel text-xs text-glow mb-2 text-center sprite animate-bounce-retro">
+              <div className={`absolute inset-0 flex flex-col items-center justify-center ${
+                isRetro ? 'bg-retro-card/60' : 'bg-black/60 backdrop-blur-sm'
+              }`}>
+                <div className={`text-xs mb-2 text-center ${
+                  isRetro 
+                    ? 'text-retro-yellow font-pixel text-glow sprite animate-bounce-retro' 
+                    : 'text-white font-light tracking-wide animate-pulse'
+                }`}>
                   PRESS ANY ARROW KEY TO START
                 </div>
-                <div className="text-retro-blue font-pixel text-xs text-center sprite">
+                <div className={`text-xs text-center ${
+                  isRetro 
+                    ? 'text-retro-blue font-pixel sprite' 
+                    : 'text-glass-accent-light font-light tracking-wide'
+                }`}>
                   ↑ ↓ ← → OR W A S D
                 </div>
               </div>
             )}
 
             {gameState === 'gameOver' && (
-              <div className="absolute inset-0 bg-retro-card/90 flex flex-col items-center justify-center">
-                <div className="text-retro-pink font-pixel text-sm text-glow mb-2 sprite">
+              <div className={`absolute inset-0 flex flex-col items-center justify-center ${
+                isRetro ? 'bg-retro-card/90' : 'bg-black/80 backdrop-blur-sm'
+              }`}>
+                <div className={`text-sm mb-2 ${
+                  isRetro 
+                    ? 'text-retro-pink font-pixel text-glow sprite' 
+                    : 'text-gray-400 font-light tracking-wide'
+                }`}>
                   GAME OVER
                 </div>
-                <div className="text-retro-yellow font-pixel text-xs mb-4 sprite">
+                <div className={`text-xs mb-4 ${
+                  isRetro 
+                    ? 'text-retro-yellow font-pixel sprite' 
+                    : 'text-white font-light tracking-wide'
+                }`}>
                   SCORE: {score}
                 </div>
                 {score === highScore && score > 0 && (
-                  <div className="text-retro-green-dim font-pixel text-xs mb-4 text-glow-soft sprite animate-bounce-retro">
+                  <div className={`text-xs mb-4 text-center ${
+                    isRetro 
+                      ? 'text-retro-green-dim font-pixel text-glow-soft sprite animate-bounce-retro' 
+                      : 'text-white font-light tracking-wide animate-pulse'
+                  }`}>
                     NEW HIGH SCORE!
                   </div>
                 )}
-                <div className="text-retro-cyan font-pixel text-xs mb-4 text-center sprite">
+                <div className={`text-xs mb-4 text-center ${
+                  isRetro 
+                    ? 'text-retro-cyan font-pixel sprite' 
+                    : 'text-glass-accent-light font-light tracking-wide'
+                }`}>
                   PRESS SPACE TO PLAY AGAIN
                 </div>
                 <button
                   onClick={startGame}
-                  className="retro-button pixel-corners bg-retro-card border-retro-pink text-retro-pink hover:bg-retro-pink hover:text-retro-bg flex items-center gap-2 sprite"
+                  className={`flex items-center gap-2 ${
+                    isRetro 
+                      ? 'retro-button pixel-corners bg-retro-card border-retro-pink text-retro-pink hover:bg-retro-pink hover:text-retro-bg sprite' 
+                      : 'glass-button font-light tracking-wide'
+                  }`}
                 >
                   <RotateCcw size={16} /> PLAY AGAIN
                 </button>
@@ -407,29 +516,43 @@ const SnakeGame = ({ isOpen, onClose }) => {
           </div>
 
           {/* Instructions */}
-          <div className="text-center text-xs font-pixel text-retro-blue sprite">
+          <div className={`text-center text-xs ${
+            isRetro 
+              ? 'font-pixel text-retro-blue sprite' 
+              : 'font-light tracking-wide text-glass-accent-light'
+          }`}>
             <div className="mb-1 flex items-center justify-center gap-2">
-              <div className="w-3 h-3 bg-retro-pink border border-retro-pink" style={{boxShadow: '0 0 5px #FF00FF'}}></div>
+              <div className={`w-3 h-3 border ${
+                isRetro 
+                  ? 'bg-retro-pink border-retro-pink' 
+                  : 'bg-pink-500 border-pink-500'
+              }`} style={isRetro ? {boxShadow: '0 0 5px #FF00FF'} : {boxShadow: '0 0 5px rgba(236, 72, 153, 0.5)'}}></div>
               <span>FOOD = 20 PTS</span>
             </div>
             <div className="mb-1 flex items-center justify-center gap-2">
-              <div className="w-3 h-3 bg-retro-yellow border border-retro-yellow" style={{boxShadow: '0 0 8px #FFFF00'}}></div>
+              <div className={`w-3 h-3 border ${
+                isRetro 
+                  ? 'bg-retro-yellow border-retro-yellow' 
+                  : 'bg-white border-white'
+              }`} style={isRetro ? {boxShadow: '0 0 8px #FFFF00'} : {boxShadow: '0 0 8px rgba(234, 179, 8, 0.5)'}}></div>
               <span>SPECIAL = 100 PTS</span>
             </div>
             <div className="mb-1">SPACE = START</div>
             <div>ESC TO CLOSE</div>
           </div>
 
-          {/* Scanline effect */}
-          <div className="absolute inset-0 pointer-events-none">
-            {[...Array(20)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-full h-px bg-retro-green opacity-5"
-                style={{ top: `${i * 5}%` }}
-              />
-            ))}
-          </div>
+          {/* Scanline effect - retro only */}
+          {isRetro && (
+            <div className="absolute inset-0 pointer-events-none">
+              {[...Array(20)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute w-full h-px bg-retro-green opacity-5"
+                  style={{ top: `${i * 5}%` }}
+                />
+              ))}
+            </div>
+          )}
         </motion.div>
       </motion.div>
     </AnimatePresence>

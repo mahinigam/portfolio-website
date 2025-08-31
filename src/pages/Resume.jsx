@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Download, FileText, Eye, ExternalLink } from 'lucide-react'
+import { useTheme } from '../hooks/useTheme'
 
 const Resume = () => {
+  const { theme } = useTheme()
+  const isRetro = theme === 'retro'
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -62,35 +65,49 @@ const Resume = () => {
         >
           {/* Section Title */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl font-pixel text-retro-green-dim text-glow-soft mb-4">
-              &gt; RESUME.PDF
+            <h2 className={`text-2xl md:text-3xl mb-4 ${
+              isRetro 
+                ? 'font-pixel text-retro-green-dim text-glow-soft' 
+                : 'font-light text-glass-text tracking-wide'
+            }`}>
+              {isRetro ? '> RESUME.PDF' : 'Resume'}
             </h2>
-            <p className="text-sm font-pixel text-retro-cyan mb-6">
+            <p className={`text-sm mb-6 ${
+              isRetro 
+                ? 'font-pixel text-retro-cyan' 
+                : 'font-light text-glass-text-secondary tracking-wide'
+            }`}>
               Download or preview my resume
             </p>
-            <div className="w-32 h-0.5 bg-retro-green mx-auto"></div>
+            <div className={`w-32 h-0.5 mx-auto ${
+              isRetro ? 'bg-retro-green' : 'bg-glass-accent'
+            }`}></div>
           </motion.div>
 
           {/* Resume Preview Card */}
-          <motion.div variants={itemVariants} className="retro-card pixel-corners mb-12">
+          <motion.div variants={itemVariants} className={isRetro ? "retro-card pixel-corners mb-12" : "glass-card p-8 mb-12"}>
             <div className="grid md:grid-cols-2 gap-8 items-center">
               {/* Resume Info */}
               <div>
                 <div className="flex items-center gap-3 mb-6">
-                  <FileText className="text-retro-cyan" size={24} />
-                  <h3 className="font-pixel text-lg text-retro-green-dim text-glow-soft">
-                    MY RESUME
+                  <FileText className={isRetro ? "text-retro-cyan" : "text-glass-accent"} size={24} />
+                  <h3 className={`text-lg ${
+                    isRetro 
+                      ? 'font-pixel text-retro-green-dim text-glow-soft' 
+                      : 'font-normal text-glass-text tracking-wide'
+                  }`}>
+                    {isRetro ? 'MY RESUME' : 'My Resume'}
                   </h3>
                 </div>
 
                   <div className="space-y-4 text-xs">
                     <div className="flex justify-between">
-                      <span className="text-retro-cyan">Format:</span>
-                      <span className="text-retro-green-dim">{fileInfo.format || '...'}</span>
+                      <span className={isRetro ? "text-retro-cyan" : "text-glass-text-secondary font-light"}>Format:</span>
+                      <span className={isRetro ? "text-retro-green-dim" : "text-glass-text font-light"}>{fileInfo.format || '...'}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-retro-cyan">File Size:</span>
-                      <span className="text-retro-green-dim">{fileInfo.size ? `${fileInfo.size} KB` : '...'}</span>
+                      <span className={isRetro ? "text-retro-cyan" : "text-glass-text-secondary font-light"}>File Size:</span>
+                      <span className={isRetro ? "text-retro-green-dim" : "text-glass-text font-light"}>{fileInfo.size ? `${fileInfo.size} KB` : '...'}</span>
                     </div>
                   </div>
 
@@ -100,20 +117,23 @@ const Resume = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={handleDownload}
-                    className="retro-button pixel-corners flex items-center justify-center gap-2"
+                    className={isRetro ? "retro-button pixel-corners flex items-center justify-center gap-2" : "glass-button flex items-center justify-center gap-2"}
                   >
                     <Download size={16} />
-                    DOWNLOAD PDF
+                    {isRetro ? 'DOWNLOAD PDF' : 'Download PDF'}
                   </motion.button>
                   
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={handlePreview}
-                    className="retro-button pixel-corners bg-retro-bg border-retro-cyan text-retro-cyan hover:bg-retro-cyan hover:text-retro-black flex items-center justify-center gap-2"
+                    className={isRetro 
+                      ? "retro-button pixel-corners bg-retro-bg border-retro-cyan text-retro-cyan hover:bg-retro-cyan hover:text-retro-black flex items-center justify-center gap-2"
+                      : "glass-button-sm flex items-center justify-center gap-2 border-glass-accent-light text-glass-accent-light hover:bg-glass-accent-light/20"
+                    }
                   >
                     <Eye size={16} />
-                    PREVIEW
+                    {isRetro ? 'PREVIEW' : 'Preview'}
                   </motion.button>
                 </div>
               </div>
@@ -122,14 +142,18 @@ const Resume = () => {
               <div className="relative">
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  className="bg-retro-card border-2 border-retro-green p-0 aspect-[3/4] relative overflow-hidden pixel-corners flex items-center justify-center"
+                  className={`aspect-[3/4] relative overflow-hidden flex items-center justify-center ${
+                    isRetro 
+                      ? 'bg-retro-card border-2 border-retro-green p-0 pixel-corners' 
+                      : 'glass-card p-0 rounded-lg border border-glass-accent/30'
+                  }`}
                 >
                   {/* PDF Thumbnail Preview */}
                   <iframe
                     src={`/${resumeFileName}#toolbar=0&navpanes=0&scrollbar=0`}
                     title="Resume Preview"
                     className="w-full h-full min-h-[350px] min-w-[250px] bg-white"
-                    style={{ border: 'none', borderRadius: '8px' }}
+                    style={{ border: 'none', borderRadius: isRetro ? '0px' : '8px' }}
                   />
                 </motion.div>
               </div>

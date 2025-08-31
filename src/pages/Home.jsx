@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
+import { useTheme } from '../hooks/useTheme'
 
 const Home = () => {
+  const { theme } = useTheme()
+  const isRetro = theme === 'retro'
   const [currentText, setCurrentText] = useState('')
   const [currentIndex, setCurrentIndex] = useState(0)
   const [showCursor, setShowCursor] = useState(true)
@@ -44,9 +47,15 @@ const Home = () => {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <h1 className="text-2xl md:text-4xl lg:text-5xl font-pixel text-retro-green-dim text-glow-soft mb-4">
+          <h1 className={`text-2xl md:text-4xl lg:text-5xl mb-4 ${
+            isRetro 
+              ? 'font-pixel text-retro-green-dim text-glow-soft' 
+              : 'font-light text-glass-text tracking-wide'
+          }`}>
             {currentText}
-            <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100 text-retro-yellow`}>
+            <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100 ${
+              isRetro ? 'text-retro-yellow' : 'text-glass-accent'
+            }`}>
               _
             </span>
           </h1>
@@ -59,7 +68,11 @@ const Home = () => {
           transition={{ delay: text.length * 0.1 + 0.5, duration: 0.8 }}
           className="mb-12"
         >
-          <p className="text-sm md:text-base lg:text-lg font-pixel text-retro-blue text-glow-blue mb-2">
+          <p className={`text-sm md:text-base lg:text-lg mb-2 ${
+            isRetro 
+              ? 'font-pixel text-retro-blue text-glow-blue' 
+              : 'font-light text-glass-text-secondary tracking-wide'
+          }`}>
             {tagline}
           </p>
         </motion.div>
@@ -75,18 +88,18 @@ const Home = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={scrollToAbout}
-            className="retro-button pixel-corners sprite"
+            className={isRetro ? "retro-button pixel-corners sprite" : "glass-button"}
           >
-            EXPLORE PORTFOLIO
+            {isRetro ? 'EXPLORE PORTFOLIO' : 'Explore Portfolio'}
           </motion.button>
           
           <motion.a
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             href="#contact"
-            className="retro-button pixel-corners sprite"
+            className={isRetro ? "retro-button pixel-corners sprite" : "glass-button"}
           >
-            GET IN TOUCH
+            {isRetro ? 'GET IN TOUCH' : 'Get in Touch'}
           </motion.a>
         </motion.div>
 
@@ -101,7 +114,11 @@ const Home = () => {
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
             onClick={scrollToAbout}
-            className="text-retro-green-dim text-glow-soft font-pixel hover:text-retro-pink transition-colors duration-200 sprite"
+            className={`transition-colors duration-200 ${
+              isRetro 
+                ? 'text-retro-green-dim text-glow-soft font-pixel hover:text-retro-pink sprite' 
+                : 'text-glass-text hover:text-glass-accent'
+            }`}
           >
             <ChevronDown size={24} />
           </motion.button>
@@ -112,7 +129,9 @@ const Home = () => {
       {[...Array(5)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-1 h-1 bg-retro-blue rounded-full"
+          className={`absolute w-1 h-1 rounded-full ${
+            isRetro ? 'bg-retro-blue' : 'bg-glass-accent'
+          }`}
           style={{
             left: `${20 + i * 15}%`,
             top: `${30 + i * 10}%`,

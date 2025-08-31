@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -333,4 +334,224 @@ textarea {
 /* Special cursors for specific actions */
 .snake-game-container {
   cursor: crosshair !important;
+}
+
+/* Glass Theme Styles */
+.glass-theme {
+  background: #000000;
+  font-family: 'Inter', 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  transition: all 0.3s ease;
+}
+
+.glass-card {
+  background: rgba(20, 20, 20, 0.3);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  background: rgba(30, 30, 30, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(25px);
+}
+
+.glass-card-hover {
+  background: rgba(35, 35, 35, 0.5);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.glass-button {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.025em;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+  backdrop-filter: blur(15px);
+}
+
+.glass-button-sm {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.025em;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.glass-button-sm:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+  backdrop-filter: blur(12px);
+}
+
+.glass-nav {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-nav-link {
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.025em;
+}
+
+.glass-nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  backdrop-filter: blur(15px);
+}
+
+.glass-input {
+  background: rgba(20, 20, 20, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+  border-color: rgba(255, 255, 255, 0.3);
+  outline: none;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+}
+
+.glass-text-glow {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.025em;
+}
+
+.glass-backdrop {
+  background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.05) 0%, transparent 70%),
+              radial-gradient(ellipse at bottom, rgba(128, 128, 128, 0.05) 0%, transparent 70%);
+}
+
+.theme-toggle {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 8px 12px;
+  color: #ffffff;
+  font-size: 12px;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.025em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+  backdrop-filter: blur(15px);
+}
+
+/* Professional Glass Theme Typography */
+.glass-text-primary {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.015em;
+  line-height: 1.5;
+}
+
+.glass-text-heading {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.025em;
+  line-height: 1.2;
+}
+
+.glass-text-body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  line-height: 1.6;
+}
+
+.glass-text-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+}
+
+.glass-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 300;
+}
+
+/* Snake Game Modal - No hover transforms */
+.snake-game-modal {
+  background: rgba(20, 20, 20, 0.3);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  transition: opacity 0.3s ease;
+  /* Ensure no positioning interference */
+  position: static;
+  transform: none;
+  margin: 0;
+}
+
+.snake-game-modal:hover {
+  /* Enhanced frosted glass effect on hover */
+  background: rgba(25, 25, 25, 0.4);
+  border-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(25px);
+  /* Explicitly prevent any transforms */
+  transform: none;
 }

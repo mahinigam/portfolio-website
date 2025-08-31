@@ -1,8 +1,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Github, ExternalLink, Code, Database, BarChart3 } from 'lucide-react'
+import { useTheme } from '../hooks/useTheme'
 
 const Projects = () => {
+  const { theme } = useTheme()
+  const isRetro = theme === 'retro'
   const projects = [
     {
       title: 'Customer Purchase Analysis',
@@ -10,16 +13,16 @@ const Projects = () => {
       tags: ['Python', 'MySQL', 'Jupyter Notebook', 'Pandas', 'Scikit-learn', 'Power BI', 'Matplotlib', 'Seaborn'],
       github: 'https://github.com/mahinigam/customer_purchase_analysis',
       demo: '#',
-      icon: <BarChart3 className="text-retro-blue" size={20} />,
+      icon: <BarChart3 className={isRetro ? "text-retro-blue" : "text-glass-accent"} size={20} />,
       status: 'COMPLETED'
     },
     {
       title: 'AutoNote',
-      description: 'A professional Flask web application that transforms documents into structured notes using Google Gemini AI. Features multi-format support (PDF, DOCX, TXT), interactive chatbot for document Q&A, smart formatting with tables and lists, multiple export options, and modern glassmorphic UI. Includes cloud-ready deployment optimized for Render with comprehensive fallback systems.',
+      description: 'A professional Flask web application that transforms documents into structured notes using Google Gemini AI. Features multi-format support (PDF, DOCX, TXT), interactive chatbot for document Q&A, smart formatting with tables and lists, multiple export options, and modern glass UI. Includes cloud-ready deployment optimized for Render with comprehensive fallback systems.',
       tags: ['Python', 'Flask', 'Google Gemini API', 'HTML/CSS', 'JavaScript'],
       github: 'https://github.com/mahinigam/autonote',
       demo: 'https://autonote-br91.onrender.com',
-      icon: <Code className="text-retro-green-dim" size={20} />,
+      icon: <Code className={isRetro ? "text-retro-green-dim" : "text-glass-accent-light"} size={20} />,
       status: 'COMPLETED'
     },
     {
@@ -28,7 +31,7 @@ const Projects = () => {
       tags: ['React 19', 'TypeScript', 'Material-UI', 'Vite', 'React Router'],
       github: 'https://github.com/mahinigam/url-shortener',
       demo: 'https://url-shortener-rho-one.vercel.app',
-      icon: <Code className="text-retro-pink" size={20} />,
+      icon: <Code className={isRetro ? "text-retro-pink" : "text-glass-accent-dark"} size={20} />,
       status: 'COMPLETED'
     },
   ]
@@ -59,13 +62,23 @@ const Projects = () => {
         >
           {/* Section Title */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl font-pixel text-retro-green-dim text-glow-soft mb-4 sprite">
-              &gt; PROJECTS.DIR
+            <h2 className={`text-2xl md:text-3xl mb-4 ${
+              isRetro 
+                ? 'font-pixel text-retro-green-dim text-glow-soft sprite' 
+                : 'font-light text-glass-text tracking-wide'
+            }`}>
+              {isRetro ? '> PROJECTS.DIR' : 'Projects'}
             </h2>
-            <p className="text-sm font-pixel text-retro-blue mb-6 sprite">
-              A collection of my work and experiments
+            <p className={`text-sm mb-6 ${
+              isRetro 
+                ? 'font-pixel text-retro-blue sprite' 
+                : 'font-light text-glass-text-secondary tracking-wide'
+            }`}>
+              {isRetro ? 'A collection of my work and experiments' : 'A collection of my work and experiments'}
             </p>
-            <div className="w-32 h-0.5 bg-retro-green mx-auto"></div>
+            <div className={`w-32 h-0.5 mx-auto ${
+              isRetro ? 'bg-retro-green' : 'bg-glass-accent'
+            }`}></div>
           </motion.div>
 
           {/* Projects Grid */}
@@ -75,13 +88,17 @@ const Projects = () => {
                 key={project.title}
                 variants={itemVariants}
                 whileHover={{ scale: 1.02 }}
-                className="retro-card pixel-corners group relative overflow-hidden"
+                className={isRetro ? "retro-card pixel-corners group relative overflow-hidden" : "glass-card p-6 group relative overflow-hidden"}
               >
                 {/* Status Badge */}
-                <div className={`absolute top-4 right-4 px-2 py-1 text-xs font-pixel border ${
-                  project.status === 'COMPLETED' 
-                    ? 'border-retro-green text-retro-green' 
-                    : 'border-retro-yellow text-retro-yellow'
+                <div className={`absolute top-4 right-4 px-2 py-1 text-xs border ${
+                  isRetro 
+                    ? `font-pixel ${project.status === 'COMPLETED' 
+                        ? 'border-retro-green text-retro-green' 
+                        : 'border-retro-yellow text-retro-yellow'}`
+                    : `font-light tracking-wide ${project.status === 'COMPLETED'
+                        ? 'border-glass-accent text-glass-accent'
+                        : 'border-glass-accent-light text-glass-accent-light'}`
                 }`}>
                   {project.status}
                 </div>
@@ -89,13 +106,21 @@ const Projects = () => {
                 {/* Project Icon */}
                 <div className="flex items-center gap-3 mb-4">
                   {project.icon}
-                  <h3 className="font-pixel text-sm text-retro-green-soft text-glow-subtle">
+                  <h3 className={`text-sm ${
+                    isRetro 
+                      ? 'font-pixel text-retro-green-soft text-glow-subtle' 
+                      : 'font-normal text-glass-text tracking-wide'
+                  }`}>
                     {project.title}
                   </h3>
                 </div>
 
                 {/* Description */}
-                <p className="text-xs text-retro-cyan mb-6 leading-relaxed">
+                <p className={`text-xs mb-6 leading-relaxed ${
+                  isRetro 
+                    ? 'text-retro-cyan' 
+                    : 'text-glass-text-secondary font-light'
+                }`}>
                   {project.description}
                 </p>
 
@@ -104,7 +129,11 @@ const Projects = () => {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-xs font-pixel px-2 py-1 bg-retro-bg border border-retro-pink text-retro-pink"
+                      className={`text-xs px-2 py-1 border ${
+                        isRetro 
+                          ? 'font-pixel bg-retro-bg border-retro-pink text-retro-pink' 
+                          : 'font-light tracking-wide bg-glass-accent/10 border-glass-accent text-glass-accent'
+                      }`}
                     >
                       {tag}
                     </span>
@@ -119,10 +148,18 @@ const Projects = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-retro-green-dim hover:text-retro-cyan transition-colors duration-200"
+                    className={`flex items-center gap-2 transition-colors duration-200 ${
+                      isRetro 
+                        ? 'text-retro-green-dim hover:text-retro-cyan' 
+                        : 'text-glass-text hover:text-glass-accent'
+                    }`}
                   >
                     <Github size={16} />
-                    <span className="text-xs font-pixel">CODE</span>
+                    <span className={`text-xs ${
+                      isRetro ? 'font-pixel' : 'font-light tracking-wide'
+                    }`}>
+                      {isRetro ? 'CODE' : 'Code'}
+                    </span>
                   </motion.a>
                   
                   {project.demo !== '#' && (
@@ -132,16 +169,28 @@ const Projects = () => {
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-retro-pink hover:text-retro-cyan transition-colors duration-200"
+                      className={`flex items-center gap-2 transition-colors duration-200 ${
+                        isRetro 
+                          ? 'text-retro-pink hover:text-retro-cyan' 
+                          : 'text-glass-text-secondary hover:text-glass-accent'
+                      }`}
                     >
                       <ExternalLink size={16} />
-                      <span className="text-xs font-pixel">DEMO</span>
+                      <span className={`text-xs ${
+                        isRetro ? 'font-pixel' : 'font-light tracking-wide'
+                      }`}>
+                        {isRetro ? 'DEMO' : 'Demo'}
+                      </span>
                     </motion.a>
                   )}
                 </div>
 
                 {/* Hover effect overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-retro-green/5 to-retro-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none ${
+                  isRetro 
+                    ? 'bg-gradient-to-r from-retro-green/5 to-retro-cyan/5'
+                    : 'bg-gradient-to-r from-white/5 to-gray-400/5'
+                }`} />
               </motion.div>
             ))}
           </div>
