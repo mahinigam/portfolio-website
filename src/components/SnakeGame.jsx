@@ -527,7 +527,7 @@ const SnakeGame = ({ isOpen, onClose }) => {
                   ? 'bg-retro-pink border-retro-pink' 
                   : 'bg-pink-500 border-pink-500'
               }`} style={isRetro ? {boxShadow: '0 0 5px #FF00FF'} : {boxShadow: '0 0 5px rgba(236, 72, 153, 0.5)'}}></div>
-              <span>FOOD = 20 PTS</span>
+              <span>FOOD = 10 PTS</span>
             </div>
             <div className="mb-1 flex items-center justify-center gap-2">
               <div className={`w-3 h-3 border ${
@@ -535,7 +535,7 @@ const SnakeGame = ({ isOpen, onClose }) => {
                   ? 'bg-retro-yellow border-retro-yellow' 
                   : 'bg-white border-white'
               }`} style={isRetro ? {boxShadow: '0 0 8px #FFFF00'} : {boxShadow: '0 0 8px rgba(234, 179, 8, 0.5)'}}></div>
-              <span>SPECIAL = 100 PTS</span>
+              <span>SPECIAL = 50 PTS</span>
             </div>
             <div className="mb-1">SPACE = START</div>
             <div>ESC TO CLOSE</div>

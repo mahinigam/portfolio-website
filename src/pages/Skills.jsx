@@ -15,7 +15,7 @@ const Skills = () => {
     {
       title: 'PROGRAMMING',
       icon: <Code className={isRetro ? "text-retro-green-dim" : "text-glass-accent-light"} size={24} />,
-      skills: ['Python', 'JavaScript', 'Java', 'R', 'Scala',]
+      skills: ['Python', 'R',]
     },
     {
       title: 'BIG DATA & CLOUD',
@@ -25,7 +25,7 @@ const Skills = () => {
     {
       title: 'DATA ENGINEERING',
       icon: <Database className={isRetro ? "text-retro-yellow" : "text-glass-accent"} size={24} />,
-      skills: ['MySQL', 'PostgreSQL', 'NoSQL']
+      skills: ['MySQL', 'PostgreSQL', 'MongoDB']
     },
     {
       title: 'ANALYTICS & BI',
