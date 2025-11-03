@@ -314,6 +314,11 @@ const Contact = () => {
                     SOCIAL_NETWORKS.DIR
                   </h3>
                   
+                  <p className="text-sm text-retro-cyan mb-6">
+                    Whether you have a project in mind, want to collaborate, or just want to chat 
+                    about data science and technology, I'd love to hear from you!
+                  </p>
+                  
                   <div className="space-y-4">
                     {socialLinks.map((link) => (
                       <motion.a
@@ -346,6 +351,11 @@ const Contact = () => {
                     Connect With Me
                   </h3>
                   
+                  <p className="text-glass-text-secondary mb-6 leading-relaxed font-light">
+                    Whether you have a project in mind, want to collaborate, or just want to chat 
+                    about data science and technology, I'd love to hear from you!
+                  </p>
+                  
                   <div className="space-y-4">
                     {socialLinks.map((link) => (
                       <motion.a
@@ -376,74 +386,7 @@ const Contact = () => {
             </motion.div>
           </div>
 
-          {/* Call to Action */}
-          <motion.div variants={itemVariants} className="mt-16 text-center">
-            {isRetro ? (
-              <div className="retro-card pixel-corners max-w-2xl mx-auto">
-                <h3 className="font-pixel text-lg text-retro-green-dim mb-4 text-glow-soft">
-                  &gt; READY_TO_CONNECT.BAT
-                </h3>
-                <p className="text-sm text-retro-cyan mb-6">
-                  Whether you have a project in mind, want to collaborate, or just want to chat 
-                  about data science and technology, I'd love to hear from you!
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <motion.a
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    href="mailto:mahi.nigam.000@gmail.com"
-                    className="retro-button pixel-corners"
-                  >
-                    <Mail size={16} className="mr-2" />
-                    SEND EMAIL
-                  </motion.a>
-                  <motion.a
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    href="https://linkedin.com/in/mahinigam"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="retro-button pixel-corners bg-retro-bg border-retro-cyan text-retro-cyan hover:bg-retro-cyan hover:text-retro-black"
-                  >
-                    <Linkedin size={16} className="mr-2" />
-                    CONNECT ON LINKEDIN
-                  </motion.a>
-                </div>
-              </div>
-            ) : (
-              <div className="glass-card backdrop-filter backdrop-blur-xl border border-glass-border p-8 max-w-2xl mx-auto">
-                <h3 className="text-2xl font-light tracking-wide text-glass-text mb-4">
-                  Ready to Connect?
-                </h3>
-                <p className="text-glass-text-secondary mb-6 leading-relaxed font-light">
-                  Whether you have a project in mind, want to collaborate, or just want to chat 
-                  about data science and technology, I'd love to hear from you!
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <motion.a
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    href="mailto:mahi.nigam.000@gmail.com"
-                    className="glass-button flex items-center justify-center gap-2"
-                  >
-                    <Mail size={16} />
-                    Send Email
-                  </motion.a>
-                  <motion.a
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    href="https://linkedin.com/in/mahinigam"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="glass-button flex items-center justify-center gap-2"
-                  >
-                    <Linkedin size={16} />
-                    Connect on LinkedIn
-                  </motion.a>
-                </div>
-              </div>
-            )}
-          </motion.div>
+          {/* End of grid */}
         </motion.div>
       </div>
     </section>
