@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Heart, Code, Coffee, Gamepad2 } from 'lucide-react'
-import SnakeGame from './SnakeGame'
+
 
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
-  const [showSnakeGame, setShowSnakeGame] = useState(false)
+
   const isRetro = false
 
   return (
@@ -129,8 +129,8 @@ const Footer = () => {
             className="mt-8 text-center"
           >
             <div className={`inline-block px-6 py-4 transition-colors duration-200 ${isRetro
-                ? 'retro-card border-2 border-retro-green hover:border-retro-pink sprite'
-                : 'glass-card hover:glass-card-hover'
+              ? 'retro-card border-2 border-retro-green hover:border-retro-pink sprite'
+              : 'glass-card hover:glass-card-hover'
               }`}>
               <div className={`text-xs text-center leading-relaxed ${isRetro ? 'font-pixel text-retro-blue' : 'font-light text-glass-text-secondary tracking-wide'
                 }`}>
@@ -168,54 +168,9 @@ const Footer = () => {
               }}
             />
           ))}
-
-          {/* Snake Game Easter Egg - Retro only */}
-          {isRetro && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 1.0, duration: 0.6 }}
-              className="absolute bottom-4 right-4"
-            >
-              <motion.button
-                onClick={() => setShowSnakeGame(true)}
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                whileTap={{ scale: 0.95 }}
-                className={`group relative p-2 transition-all duration-200 ${isRetro
-                    ? 'bg-retro-card border border-retro-green text-retro-green-dim hover:border-retro-pink hover:text-retro-pink pixel-corners sprite'
-                    : 'glass-button'
-                  }`}
-                title="Play Snake Game"
-              >
-                <Gamepad2 size={16} />
-
-                {/* Hover tooltip */}
-                <div className={`absolute bottom-full right-0 mb-2 px-2 py-1 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap ${isRetro
-                    ? 'bg-retro-card border border-retro-green text-retro-green-dim font-pixel sprite'
-                    : 'glass-card text-glass-text font-medium'
-                  }`}>
-                  Play Snake Game
-                  {isRetro && (
-                    <div className="absolute top-full right-2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-retro-green"></div>
-                  )}
-                </div>
-
-                {/* Glow effect - Only in retro theme */}
-                {isRetro && (
-                  <div className="absolute inset-0 bg-retro-green opacity-0 group-hover:opacity-20 transition-opacity duration-200 pixel-corners"></div>
-                )}
-              </motion.button>
-            </motion.div>
-          )}
         </motion.div>
       </div>
 
-      {/* Snake Game Modal */}
-      <SnakeGame
-        isOpen={showSnakeGame}
-        onClose={() => setShowSnakeGame(false)}
-      />
     </footer>
   )
 }

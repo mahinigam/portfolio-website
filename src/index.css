@@ -232,27 +232,7 @@
     font-weight: 300;
   }
 
-  /* Snake Game Modal - No hover transforms */
-  .snake-game-modal {
-    background: rgba(20, 20, 20, 0.3);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    transition: opacity 0.3s ease;
-    /* Ensure no positioning interference */
-    position: static;
-    transform: none;
-    margin: 0;
-  }
 
-  .snake-game-modal:hover {
-    /* Enhanced frosted glass effect on hover */
-    background: rgba(25, 25, 25, 0.4);
-    border-color: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(25px);
-    /* Explicitly prevent any transforms */
-    transform: none;
-  }
 }
 
 @layer utilities {
@@ -275,8 +255,5 @@
     cursor: text !important;
   }
 
-  /* Special cursors for specific actions */
-  .snake-game-container {
-    cursor: crosshair !important;
-  }
+
 }
