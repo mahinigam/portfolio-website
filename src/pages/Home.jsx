@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
-import { useTheme } from '../hooks/useTheme'
+
 
 const Home = () => {
-  const { theme } = useTheme()
-  const isRetro = theme === 'retro'
+  const isRetro = false
   const [currentText, setCurrentText] = useState('')
   const [currentIndex, setCurrentIndex] = useState(0)
   const [showCursor, setShowCursor] = useState(true)
-  
+
   const text = "Hi, I'm Mahi Nigam"
   const tagline = "Turning Data into Impact"
 
@@ -47,15 +46,13 @@ const Home = () => {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <h1 className={`text-2xl md:text-4xl lg:text-5xl mb-4 ${
-            isRetro 
-              ? 'font-pixel text-retro-green-dim text-glow-soft' 
+          <h1 className={`text-2xl md:text-4xl lg:text-5xl mb-4 ${isRetro
+              ? 'font-pixel text-retro-green-dim text-glow-soft'
               : 'font-light text-glass-text tracking-wide'
-          }`}>
-            {currentText}
-            <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100 ${
-              isRetro ? 'text-retro-yellow' : 'text-glass-accent'
             }`}>
+            {currentText}
+            <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100 ${isRetro ? 'text-retro-yellow' : 'text-glass-accent'
+              }`}>
               _
             </span>
           </h1>
@@ -68,11 +65,10 @@ const Home = () => {
           transition={{ delay: text.length * 0.1 + 0.5, duration: 0.8 }}
           className="mb-12"
         >
-          <p className={`text-sm md:text-base lg:text-lg mb-2 ${
-            isRetro 
-              ? 'font-pixel text-retro-blue text-glow-blue' 
+          <p className={`text-sm md:text-base lg:text-lg mb-2 ${isRetro
+              ? 'font-pixel text-retro-blue text-glow-blue'
               : 'font-light text-glass-text-secondary tracking-wide'
-          }`}>
+            }`}>
             {tagline}
           </p>
         </motion.div>
@@ -92,7 +88,7 @@ const Home = () => {
           >
             {isRetro ? 'EXPLORE PORTFOLIO' : 'Explore Portfolio'}
           </motion.button>
-          
+
           <motion.a
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
@@ -114,11 +110,10 @@ const Home = () => {
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
             onClick={scrollToAbout}
-            className={`transition-colors duration-200 ${
-              isRetro 
-                ? 'text-retro-green-dim text-glow-soft font-pixel hover:text-retro-pink sprite' 
+            className={`transition-colors duration-200 ${isRetro
+                ? 'text-retro-green-dim text-glow-soft font-pixel hover:text-retro-pink sprite'
                 : 'text-glass-text hover:text-glass-accent'
-            }`}
+              }`}
           >
             <ChevronDown size={24} />
           </motion.button>
@@ -129,9 +124,8 @@ const Home = () => {
       {[...Array(5)].map((_, i) => (
         <motion.div
           key={i}
-          className={`absolute w-1 h-1 rounded-full ${
-            isRetro ? 'bg-retro-blue' : 'bg-glass-accent'
-          }`}
+          className={`absolute w-1 h-1 rounded-full ${isRetro ? 'bg-retro-blue' : 'bg-glass-accent'
+            }`}
           style={{
             left: `${20 + i * 15}%`,
             top: `${30 + i * 10}%`,

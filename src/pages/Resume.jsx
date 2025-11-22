@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Download, FileText, Eye, ExternalLink } from 'lucide-react'
-import { useTheme } from '../hooks/useTheme'
+
 
 const Resume = () => {
-  const { theme } = useTheme()
-  const isRetro = theme === 'retro'
+  const isRetro = false
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -65,23 +64,20 @@ const Resume = () => {
         >
           {/* Section Title */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className={`text-2xl md:text-3xl mb-4 ${
-              isRetro 
-                ? 'font-pixel text-retro-green-dim text-glow-soft' 
+            <h2 className={`text-2xl md:text-3xl mb-4 ${isRetro
+                ? 'font-pixel text-retro-green-dim text-glow-soft'
                 : 'font-light text-glass-text tracking-wide'
-            }`}>
+              }`}>
               {isRetro ? '> RESUME.PDF' : 'Resume'}
             </h2>
-            <p className={`text-sm mb-6 ${
-              isRetro 
-                ? 'font-pixel text-retro-cyan' 
+            <p className={`text-sm mb-6 ${isRetro
+                ? 'font-pixel text-retro-cyan'
                 : 'font-light text-glass-text-secondary tracking-wide'
-            }`}>
+              }`}>
               Download or preview my resume
             </p>
-            <div className={`w-32 h-0.5 mx-auto ${
-              isRetro ? 'bg-retro-green' : 'bg-glass-accent'
-            }`}></div>
+            <div className={`w-32 h-0.5 mx-auto ${isRetro ? 'bg-retro-green' : 'bg-glass-accent'
+              }`}></div>
           </motion.div>
 
           {/* Resume Preview Card */}
@@ -91,25 +87,24 @@ const Resume = () => {
               <div>
                 <div className="flex items-center gap-3 mb-6">
                   <FileText className={isRetro ? "text-retro-cyan" : "text-glass-accent"} size={24} />
-                  <h3 className={`text-lg ${
-                    isRetro 
-                      ? 'font-pixel text-retro-green-dim text-glow-soft' 
+                  <h3 className={`text-lg ${isRetro
+                      ? 'font-pixel text-retro-green-dim text-glow-soft'
                       : 'font-normal text-glass-text tracking-wide'
-                  }`}>
+                    }`}>
                     {isRetro ? 'MY RESUME' : 'My Resume'}
                   </h3>
                 </div>
 
-                  <div className="space-y-4 text-xs">
-                    <div className="flex justify-between">
-                      <span className={isRetro ? "text-retro-cyan" : "text-glass-text-secondary font-light"}>Format:</span>
-                      <span className={isRetro ? "text-retro-green-dim" : "text-glass-text font-light"}>{fileInfo.format || '...'}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className={isRetro ? "text-retro-cyan" : "text-glass-text-secondary font-light"}>File Size:</span>
-                      <span className={isRetro ? "text-retro-green-dim" : "text-glass-text font-light"}>{fileInfo.size ? `${fileInfo.size} KB` : '...'}</span>
-                    </div>
+                <div className="space-y-4 text-xs">
+                  <div className="flex justify-between">
+                    <span className={isRetro ? "text-retro-cyan" : "text-glass-text-secondary font-light"}>Format:</span>
+                    <span className={isRetro ? "text-retro-green-dim" : "text-glass-text font-light"}>{fileInfo.format || '...'}</span>
                   </div>
+                  <div className="flex justify-between">
+                    <span className={isRetro ? "text-retro-cyan" : "text-glass-text-secondary font-light"}>File Size:</span>
+                    <span className={isRetro ? "text-retro-green-dim" : "text-glass-text font-light"}>{fileInfo.size ? `${fileInfo.size} KB` : '...'}</span>
+                  </div>
+                </div>
 
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 mt-8">
@@ -122,12 +117,12 @@ const Resume = () => {
                     <Download size={16} />
                     {isRetro ? 'DOWNLOAD PDF' : 'Download PDF'}
                   </motion.button>
-                  
+
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={handlePreview}
-                    className={isRetro 
+                    className={isRetro
                       ? "retro-button pixel-corners bg-retro-bg border-retro-cyan text-retro-cyan hover:bg-retro-cyan hover:text-retro-black flex items-center justify-center gap-2"
                       : "glass-button-sm flex items-center justify-center gap-2 border-glass-accent-light text-glass-accent-light hover:bg-glass-accent-light/20"
                     }
@@ -142,11 +137,10 @@ const Resume = () => {
               <div className="relative">
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  className={`aspect-[3/4] relative overflow-hidden flex items-center justify-center ${
-                    isRetro 
-                      ? 'bg-retro-card border-2 border-retro-green p-0 pixel-corners' 
+                  className={`aspect-[3/4] relative overflow-hidden flex items-center justify-center ${isRetro
+                      ? 'bg-retro-card border-2 border-retro-green p-0 pixel-corners'
                       : 'glass-card p-0 rounded-lg border border-glass-accent/30'
-                  }`}
+                    }`}
                 >
                   {/* PDF Thumbnail Preview */}
                   <iframe

@@ -1,15 +1,14 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Code, Database, BarChart3, Globe, GitBranch, Briefcase } from 'lucide-react'
-import { useTheme } from '../hooks/useTheme'
+
 
 const Skills = () => {
-  const { theme } = useTheme()
-  const isRetro = theme === 'retro'
+  const isRetro = false
   const skillCategories = [
     {
       title: 'DATA SCIENCE & ML',
-      icon: <BarChart3 className={isRetro ? "text-retro-blue" : "text-glass-accent"} size={24} />,
+      icon: <BarChart3 className={"text-glass-accent"} size={24} />,
       skills: ['Python', 'Scikit-learn', 'TensorFlow', 'PyTorch']
     },
     {
@@ -70,23 +69,20 @@ const Skills = () => {
         >
           {/* Section Title */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className={`text-2xl md:text-3xl mb-4 ${
-              isRetro 
-                ? 'font-pixel text-retro-green-dim text-glow-soft sprite' 
+            <h2 className={`text-2xl md:text-3xl mb-4 ${isRetro
+                ? 'font-pixel text-retro-green-dim text-glow-soft sprite'
                 : 'font-light text-glass-text tracking-wide'
-            }`}>
+              }`}>
               {isRetro ? '> POWER_UPS.EXE' : 'Skills'}
             </h2>
-            <p className={`text-sm mb-6 ${
-              isRetro 
-                ? 'font-pixel text-retro-blue sprite' 
+            <p className={`text-sm mb-6 ${isRetro
+                ? 'font-pixel text-retro-blue sprite'
                 : 'font-light text-glass-text-secondary tracking-wide'
-            }`}>
+              }`}>
               {isRetro ? 'My Technical Arsenal' : 'My Technical Arsenal'}
             </p>
-            <div className={`w-32 h-0.5 mx-auto ${
-              isRetro ? 'bg-retro-green' : 'bg-glass-accent'
-            }`}></div>
+            <div className={`w-32 h-0.5 mx-auto ${isRetro ? 'bg-retro-green' : 'bg-glass-accent'
+              }`}></div>
           </motion.div>
 
           {/* Skills Grid */}
@@ -101,11 +97,10 @@ const Skills = () => {
                 {/* Category Header */}
                 <div className="flex items-center gap-3 mb-6">
                   {category.icon}
-                  <h3 className={`text-sm ${
-                    isRetro 
-                      ? 'font-pixel text-retro-green-soft text-glow-subtle' 
+                  <h3 className={`text-sm ${isRetro
+                      ? 'font-pixel text-retro-green-soft text-glow-subtle'
                       : 'font-normal text-glass-text tracking-wide'
-                  }`}>
+                    }`}>
                     {category.title}
                   </h3>
                 </div>
@@ -116,18 +111,17 @@ const Skills = () => {
                     <motion.div
                       key={skill}
                       variants={skillVariants}
-                      whileHover={{ 
+                      whileHover={{
                         scale: 1.05,
-                        boxShadow: isRetro 
-                          ? '0 0 20px rgba(57, 255, 20, 0.3)' 
+                        boxShadow: isRetro
+                          ? '0 0 20px rgba(57, 255, 20, 0.3)'
                           : '0 0 20px rgba(255, 255, 255, 0.2)'
                       }}
                       whileTap={{ scale: 0.95 }}
-                      className={`text-center ${
-                        isRetro 
-                          ? 'skill-badge pixel-corners sprite' 
+                      className={`text-center ${isRetro
+                          ? 'skill-badge pixel-corners sprite'
                           : 'glass-button-sm font-light tracking-wide'
-                      }`}
+                        }`}
                       style={{
                         animationDelay: `${skillIndex * 0.1}s`
                       }}

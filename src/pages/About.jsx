@@ -1,11 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { User, MapPin, Calendar, Heart } from 'lucide-react'
-import { useTheme } from '../hooks/useTheme'
+
 
 const About = () => {
-  const { theme } = useTheme()
-  const isRetro = theme === 'retro'
+  const isRetro = false
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -33,16 +32,14 @@ const About = () => {
         >
           {/* Section Title */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className={`text-2xl md:text-3xl mb-4 ${
-              isRetro 
-                ? 'font-pixel text-retro-green-dim text-glow-soft sprite' 
+            <h2 className={`text-2xl md:text-3xl mb-4 ${isRetro
+                ? 'font-pixel text-retro-green-dim text-glow-soft sprite'
                 : 'font-light text-glass-text tracking-wide'
-            }`}>
+              }`}>
               {isRetro ? '> ABOUT_ME.EXE' : 'About Me'}
             </h2>
-            <div className={`w-32 h-0.5 mx-auto ${
-              isRetro ? 'bg-retro-green' : 'bg-glass-accent'
-            }`}></div>
+            <div className={`w-32 h-0.5 mx-auto ${isRetro ? 'bg-retro-green' : 'bg-glass-accent'
+              }`}></div>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -72,7 +69,7 @@ const About = () => {
                         university: galgotias_university<br />
                         focus: data_science & machine_learning
                       </div>
-                      
+
                       <div className="mb-2 text-retro-green-dim text-glow-soft">
                         $ cat expertise.txt
                       </div>
@@ -83,7 +80,7 @@ const About = () => {
                         • Data Visualization & BI<br />
                         • Statistical Analysis & Modeling
                       </div>
-                      
+
                       <div className="mb-2 text-retro-green-dim text-glow-soft">
                         $ echo $MISSION
                       </div>
@@ -115,7 +112,7 @@ const About = () => {
                         <p className="text-xs text-glass-text-secondary font-light">Current Location</p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center gap-3 p-3 rounded-lg bg-glass-accent/5 border border-glass-accent/10">
                       <Calendar className="w-4 h-4 text-glass-accent flex-shrink-0" />
                       <div>
@@ -123,7 +120,7 @@ const About = () => {
                         <p className="text-xs text-glass-text-secondary font-light">Academic Institution</p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center gap-3 p-3 rounded-lg bg-glass-accent/5 border border-glass-accent/10">
                       <Heart className="w-4 h-4 text-glass-accent flex-shrink-0" />
                       <div>
@@ -139,7 +136,7 @@ const About = () => {
                     <div className="space-y-2">
                       {[
                         'Data Science & Machine Learning',
-                        'Big Data Processing & Analytics', 
+                        'Big Data Processing & Analytics',
                         'Cloud Computing & AWS',
                         'Data Visualization & BI',
                         'Statistical Analysis & Modeling'
@@ -173,19 +170,17 @@ const About = () => {
               <div className={isRetro ? 'retro-card pixel-corners sprite' : 'glass-card p-6'}>
                 <div className="flex items-center gap-3 mb-3">
                   <User className={isRetro ? 'text-retro-blue' : 'text-glass-accent'} size={20} />
-                  <h3 className={`text-sm ${
-                    isRetro 
-                      ? 'font-pixel text-retro-green-soft text-glow-subtle' 
+                  <h3 className={`text-sm ${isRetro
+                      ? 'font-pixel text-retro-green-soft text-glow-subtle'
                       : 'font-normal text-glass-text tracking-wide'
-                  }`}>
+                    }`}>
                     PROFILE
                   </h3>
                 </div>
-                <p className={`text-xs leading-relaxed ${
-                  isRetro ? 'text-retro-blue' : 'text-glass-text-secondary font-light'
-                }`}>
-                  I'm a student at Galgotias University with expertise in machine learning 
-                  and big data processing. A charming blend of technical skills and philosophical curiosity, 
+                <p className={`text-xs leading-relaxed ${isRetro ? 'text-retro-blue' : 'text-glass-text-secondary font-light'
+                  }`}>
+                  I'm a student at Galgotias University with expertise in machine learning
+                  and big data processing. A charming blend of technical skills and philosophical curiosity,
                   I enjoy good coffee, cracking jokes, and deep conversations about life.
                 </p>
               </div>
@@ -193,17 +188,15 @@ const About = () => {
               <div className={isRetro ? 'retro-card pixel-corners sprite' : 'glass-card p-6'}>
                 <div className="flex items-center gap-3 mb-3">
                   <MapPin className={isRetro ? 'text-retro-pink' : 'text-glass-accent-light'} size={20} />
-                  <h3 className={`text-sm ${
-                    isRetro 
-                      ? 'font-pixel text-retro-green-soft text-glow-subtle' 
+                  <h3 className={`text-sm ${isRetro
+                      ? 'font-pixel text-retro-green-soft text-glow-subtle'
                       : 'font-normal text-glass-text tracking-wide'
-                  }`}>
+                    }`}>
                     LOCATION
                   </h3>
                 </div>
-                <p className={`text-xs ${
-                  isRetro ? 'text-retro-blue' : 'text-glass-text-secondary font-light'
-                }`}>
+                <p className={`text-xs ${isRetro ? 'text-retro-blue' : 'text-glass-text-secondary font-light'
+                  }`}>
                   Based in India, open to remote opportunities worldwide
                 </p>
               </div>
@@ -211,18 +204,16 @@ const About = () => {
               <div className={isRetro ? 'retro-card pixel-corners sprite' : 'glass-card p-6'}>
                 <div className="flex items-center gap-3 mb-3">
                   <Calendar className={isRetro ? 'text-retro-yellow' : 'text-glass-accent-dark'} size={20} />
-                  <h3 className={`text-sm ${
-                    isRetro 
-                      ? 'font-pixel text-retro-green-soft text-glow-subtle' 
+                  <h3 className={`text-sm ${isRetro
+                      ? 'font-pixel text-retro-green-soft text-glow-subtle'
                       : 'font-normal text-glass-text tracking-wide'
-                  }`}>
+                    }`}>
                     CURRENTLY
                   </h3>
                 </div>
-                <p className={`text-xs ${
-                  isRetro ? 'text-retro-blue' : 'text-glass-text-secondary font-light'
-                }`}>
-                  Currently developing advanced ML models, data pipelines, and analytics solutions 
+                <p className={`text-xs ${isRetro ? 'text-retro-blue' : 'text-glass-text-secondary font-light'
+                  }`}>
+                  Currently developing advanced ML models, data pipelines, and analytics solutions
                   using Python, AWS, and modern big data technologies like Spark and Hadoop.
                 </p>
               </div>
@@ -230,19 +221,17 @@ const About = () => {
               <div className={isRetro ? 'retro-card pixel-corners sprite' : 'glass-card p-6'}>
                 <div className="flex items-center gap-3 mb-3">
                   <Heart className={isRetro ? 'text-retro-pink' : 'text-glass-accent-light'} size={20} />
-                  <h3 className={`text-sm ${
-                    isRetro 
-                      ? 'font-pixel text-retro-green-soft text-glow-subtle' 
+                  <h3 className={`text-sm ${isRetro
+                      ? 'font-pixel text-retro-green-soft text-glow-subtle'
                       : 'font-normal text-glass-text tracking-wide'
-                  }`}>
+                    }`}>
                     WHEN NOT CODING
                   </h3>
                 </div>
-                <p className={`text-xs ${
-                  isRetro ? 'text-retro-blue' : 'text-glass-text-secondary font-light'
-                }`}>
-                  You'll find me writing philosophical reflections on my blog "Remembrance", 
-                  exploring human nature and life's complexities, or experimenting with new ML algorithms 
+                <p className={`text-xs ${isRetro ? 'text-retro-blue' : 'text-glass-text-secondary font-light'
+                  }`}>
+                  You'll find me writing philosophical reflections on my blog "Remembrance",
+                  exploring human nature and life's complexities, or experimenting with new ML algorithms
                   and contributing to open source projects.
                 </p>
               </div>

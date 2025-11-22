@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Calendar, ExternalLink, Terminal, BookOpen, Clock } from 'lucide-react'
-import { useTheme } from '../hooks/useTheme'
+
 
 const Blog = () => {
-  const { theme } = useTheme()
-  const isRetro = theme === 'retro'
+  const isRetro = false
   const [currentTime, setCurrentTime] = useState(new Date())
   const [blogPosts, setBlogPosts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -26,13 +25,13 @@ const Blog = () => {
         setIsLoading(true)
         // Using a CORS proxy to fetch RSS feed
         const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://mahinigam.blogspot.com/feeds/posts/default')
-        
+
         if (!response.ok) {
           throw new Error('Failed to fetch blog posts')
         }
-        
+
         const data = await response.json()
-        
+
         // Transform RSS data to our format
         const transformedPosts = data.items?.slice(0, 3).map(item => ({
           title: item.title,
@@ -42,7 +41,7 @@ const Blog = () => {
           tags: item.categories?.slice(0, 3) || ['Blog'],
           url: item.link
         })) || []
-        
+
         setBlogPosts(transformedPosts)
       } catch (err) {
         console.error('Error fetching blog posts:', err)
@@ -97,23 +96,20 @@ const Blog = () => {
         >
           {/* Section Title */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className={`text-2xl md:text-3xl mb-4 ${
-              isRetro 
-                ? 'font-pixel text-retro-green-dim text-glow-soft sprite' 
+            <h2 className={`text-2xl md:text-3xl mb-4 ${isRetro
+                ? 'font-pixel text-retro-green-dim text-glow-soft sprite'
                 : 'font-light text-glass-text tracking-wide'
-            }`}>
+              }`}>
               {isRetro ? '> BLOG_TERMINAL.EXE' : 'Blog'}
             </h2>
-            <p className={`text-sm mb-6 ${
-              isRetro 
-                ? 'font-pixel text-retro-cyan' 
+            <p className={`text-sm mb-6 ${isRetro
+                ? 'font-pixel text-retro-cyan'
                 : 'font-light text-glass-text-secondary tracking-wide'
-            }`}>
+              }`}>
               Thoughts and insights from my coding journey
             </p>
-            <div className={`w-32 h-0.5 mx-auto ${
-              isRetro ? 'bg-retro-green' : 'bg-glass-accent'
-            }`}></div>
+            <div className={`w-32 h-0.5 mx-auto ${isRetro ? 'bg-retro-green' : 'bg-glass-accent'
+              }`}></div>
           </motion.div>
 
           <div className="grid lg:grid-cols-3 gap-8">
@@ -144,7 +140,7 @@ const Blog = () => {
                       <motion.div variants={lineVariants} className="text-retro-cyan">
                         mahi@portfolio:~$ blogger & writer
                       </motion.div>
-                      
+
                       <motion.div variants={lineVariants} className="text-retro-green-dim">
                         $ cat blog_stats.txt
                       </motion.div>
@@ -169,21 +165,21 @@ const Blog = () => {
                           </motion.div>
                         </>
                       )}
-                      
+
                       <motion.div variants={lineVariants} className="text-retro-green-dim">
                         $ date
                       </motion.div>
                       <motion.div variants={lineVariants} className="text-retro-cyan">
                         {currentTime.toLocaleString()}
                       </motion.div>
-                      
+
                       <motion.div variants={lineVariants} className="text-retro-green-dim">
                         $ echo "Status"
                       </motion.div>
                       <motion.div variants={lineVariants} className="text-retro-pink">
                         Ready to share knowledge...
                       </motion.div>
-                      
+
                       <motion.div variants={lineVariants} className="text-retro-green-dim">
                         $ █
                       </motion.div>
@@ -264,10 +260,10 @@ const Blog = () => {
                         <Calendar className="w-4 h-4 text-glass-accent" />
                         <div>
                           <p className="text-sm font-normal text-glass-text">
-                            {currentTime.toLocaleDateString('en-US', { 
-                              month: 'short', 
-                              day: 'numeric', 
-                              year: 'numeric' 
+                            {currentTime.toLocaleDateString('en-US', {
+                              month: 'short',
+                              day: 'numeric',
+                              year: 'numeric'
                             })}
                           </p>
                           <p className="text-xs text-glass-text-secondary font-light">Last Updated</p>
@@ -311,36 +307,32 @@ const Blog = () => {
               <motion.div variants={containerVariants} className="space-y-6">
                 {isLoading ? (
                   <div className={isRetro ? "retro-card pixel-corners text-center" : "glass-card p-6 text-center"}>
-                    <div className={`text-sm mb-4 ${
-                      isRetro 
-                        ? 'text-retro-yellow font-pixel' 
+                    <div className={`text-sm mb-4 ${isRetro
+                        ? 'text-retro-yellow font-pixel'
                         : 'text-glass-accent font-light tracking-wide'
-                    }`}>
+                      }`}>
                       {isRetro ? '> LOADING_BLOG_POSTS.EXE' : 'Loading Blog Posts...'}
                     </div>
-                    <div className={`text-xs ${
-                      isRetro ? 'text-retro-cyan' : 'text-glass-text-secondary font-light'
-                    }`}>
+                    <div className={`text-xs ${isRetro ? 'text-retro-cyan' : 'text-glass-text-secondary font-light'
+                      }`}>
                       Fetching latest articles from the blogosphere...
                     </div>
                   </div>
                 ) : error ? (
                   <div className={isRetro ? "retro-card pixel-corners text-center" : "glass-card p-6 text-center"}>
-                    <div className={`text-sm mb-4 ${
-                      isRetro 
-                        ? 'text-retro-pink font-pixel' 
+                    <div className={`text-sm mb-4 ${isRetro
+                        ? 'text-retro-pink font-pixel'
                         : 'text-gray-400 font-light tracking-wide'
-                    }`}>
+                      }`}>
                       {isRetro ? '> CONNECTION_ERROR.LOG' : 'Connection Error'}
                     </div>
-                    <div className={`text-xs mb-4 ${
-                      isRetro ? 'text-retro-cyan' : 'text-glass-text-secondary font-light'
-                    }`}>
+                    <div className={`text-xs mb-4 ${isRetro ? 'text-retro-cyan' : 'text-glass-text-secondary font-light'
+                      }`}>
                       {error}. Showing cached blog posts instead.
                     </div>
                   </div>
                 ) : null}
-                
+
                 {blogPosts.map((post) => (
                   <motion.article
                     key={post.title}
@@ -350,17 +342,15 @@ const Blog = () => {
                   >
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1">
-                        <h3 className={`text-sm mb-2 transition-colors duration-200 ${
-                          isRetro 
-                            ? 'font-pixel text-retro-green-soft group-hover:text-retro-cyan' 
+                        <h3 className={`text-sm mb-2 transition-colors duration-200 ${isRetro
+                            ? 'font-pixel text-retro-green-soft group-hover:text-retro-cyan'
                             : 'font-normal text-glass-text group-hover:text-glass-accent tracking-wide'
-                        }`}>
+                          }`}>
                           {post.title}
                         </h3>
-                        
-                        <div className={`flex items-center gap-4 text-xs mb-3 ${
-                          isRetro ? 'text-retro-pink' : 'text-glass-text-secondary font-light'
-                        }`}>
+
+                        <div className={`flex items-center gap-4 text-xs mb-3 ${isRetro ? 'text-retro-pink' : 'text-glass-text-secondary font-light'
+                          }`}>
                           <span className="flex items-center gap-1">
                             <Calendar size={12} />
                             {new Date(post.date).toLocaleDateString()}
@@ -373,9 +363,8 @@ const Blog = () => {
                       </div>
                     </div>
 
-                    <p className={`text-xs mb-4 leading-relaxed ${
-                      isRetro ? 'text-retro-cyan' : 'text-glass-text-secondary font-light'
-                    }`}>
+                    <p className={`text-xs mb-4 leading-relaxed ${isRetro ? 'text-retro-cyan' : 'text-glass-text-secondary font-light'
+                      }`}>
                       {post.excerpt}
                     </p>
 
@@ -384,11 +373,10 @@ const Blog = () => {
                       {post.tags.map((tag) => (
                         <span
                           key={tag}
-                          className={`text-xs px-2 py-1 border ${
-                            isRetro 
-                              ? 'font-pixel bg-retro-bg border-retro-purple text-retro-purple' 
+                          className={`text-xs px-2 py-1 border ${isRetro
+                              ? 'font-pixel bg-retro-bg border-retro-purple text-retro-purple'
                               : 'font-light tracking-wide bg-glass-accent/10 border-glass-accent text-glass-accent'
-                          }`}
+                            }`}
                         >
                           #{tag}
                         </span>
@@ -402,11 +390,10 @@ const Blog = () => {
                       href={post.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`inline-flex items-center gap-2 transition-colors duration-200 text-xs ${
-                        isRetro 
-                          ? 'text-retro-green-dim hover:text-retro-cyan font-pixel' 
+                      className={`inline-flex items-center gap-2 transition-colors duration-200 text-xs ${isRetro
+                          ? 'text-retro-green-dim hover:text-retro-cyan font-pixel'
                           : 'text-glass-text hover:text-glass-accent font-light tracking-wide'
-                      }`}
+                        }`}
                     >
                       {isRetro ? 'READ_MORE.TXT' : 'Read More'}
                       <ExternalLink size={12} />
@@ -418,17 +405,15 @@ const Blog = () => {
               {/* View All Posts CTA */}
               <motion.div variants={itemVariants} className="mt-12 text-center">
                 <div className={isRetro ? "retro-card pixel-corners" : "glass-card p-6"}>
-                  <h3 className={`text-sm mb-4 ${
-                    isRetro 
-                      ? 'font-pixel text-retro-green-soft' 
+                  <h3 className={`text-sm mb-4 ${isRetro
+                      ? 'font-pixel text-retro-green-soft'
                       : 'font-normal text-glass-text tracking-wide'
-                  }`}>
+                    }`}>
                     {isRetro ? '> EXPLORE_MORE.DIR' : 'Explore More'}
                   </h3>
-                  <p className={`text-xs mb-6 ${
-                    isRetro ? 'text-retro-cyan' : 'text-glass-text-secondary font-light'
-                  }`}>
-                    These are just a few of my latest posts. Visit my blog to explore 
+                  <p className={`text-xs mb-6 ${isRetro ? 'text-retro-cyan' : 'text-glass-text-secondary font-light'
+                    }`}>
+                    These are just a few of my latest posts. Visit my blog to explore
                     more articles, tutorials, and insights from my learning journey.
                   </p>
                   <motion.a

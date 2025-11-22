@@ -1,16 +1,15 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Play, RotateCcw } from 'lucide-react'
-import { useTheme } from '../hooks/useTheme'
+
 
 const SnakeGame = ({ isOpen, onClose }) => {
-  const { theme } = useTheme()
-  const isRetro = theme === 'retro'
+  const isRetro = false
   const canvasRef = useRef(null)
   const gameLoopRef = useRef(null)
   const [gameState, setGameState] = useState('menu') // 'menu', 'playing', 'gameOver'
   const [score, setScore] = useState(0)
-  const [highScore, setHighScore] = useState(() => 
+  const [highScore, setHighScore] = useState(() =>
     parseInt(localStorage.getItem('snake-high-score') || '0')
   )
 
@@ -31,7 +30,7 @@ const SnakeGame = ({ isOpen, onClose }) => {
   const generateFood = useCallback(() => {
     let newFood;
     let attempts = 0;
-    
+
     // Try to find a position not on the snake (with fallback to prevent infinite loop)
     do {
       newFood = {
@@ -40,10 +39,10 @@ const SnakeGame = ({ isOpen, onClose }) => {
       };
       attempts++;
     } while (
-      attempts < 50 && 
+      attempts < 50 &&
       snake.some(segment => segment.x === newFood.x && segment.y === newFood.y)
     );
-    
+
     return newFood;
   }, [GRID_COUNT, snake])
 
@@ -51,11 +50,11 @@ const SnakeGame = ({ isOpen, onClose }) => {
   const generateSpecialFood = useCallback((foodCount) => {
     // Generate special food every 3-5 regular foods eaten, or 20% random chance
     const shouldGenerate = (foodCount > 0 && foodCount % 4 === 0) || Math.random() < 0.2;
-    
+
     if (shouldGenerate) {
       let position;
       let attempts = 0;
-      
+
       // Ensure special food doesn't spawn on snake or regular food
       do {
         position = {
@@ -171,7 +170,7 @@ const SnakeGame = ({ isOpen, onClose }) => {
         setScore(prev => prev + 10)
         setFoodEaten(prev => prev + 1)
         setFood(generateFood())
-        
+
         // Generate special food with improved logic
         if (!specialFood) {
           setSpecialFood(generateSpecialFood(foodEaten + 1))
@@ -245,7 +244,7 @@ const SnakeGame = ({ isOpen, onClose }) => {
       ctx.moveTo(i * GRID_SIZE, 0)
       ctx.lineTo(i * GRID_SIZE, CANVAS_SIZE)
       ctx.stroke()
-      
+
       ctx.beginPath()
       ctx.moveTo(0, i * GRID_SIZE)
       ctx.lineTo(CANVAS_SIZE, i * GRID_SIZE)
@@ -310,9 +309,8 @@ const SnakeGame = ({ isOpen, onClose }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className={`${
-          isRetro ? 'bg-black/90' : 'bg-black/50'
-        }`}
+        className={`${isRetro ? 'bg-black/90' : 'bg-black/50'
+          }`}
         style={{
           position: 'fixed',
           top: 0,
@@ -335,11 +333,10 @@ const SnakeGame = ({ isOpen, onClose }) => {
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.8, opacity: 0 }}
-          className={`p-6 md:p-8 relative max-w-lg w-full max-h-[90vh] overflow-y-auto flex flex-col items-center ${
-            isRetro 
-              ? 'bg-retro-card border-2 border-retro-green pixel-corners' 
+          className={`p-6 md:p-8 relative max-w-lg w-full max-h-[90vh] overflow-y-auto flex flex-col items-center ${isRetro
+              ? 'bg-retro-card border-2 border-retro-green pixel-corners'
               : 'bg-retro-card border-2 border-retro-green pixel-corners'
-          }`}
+            }`}
           style={{
             ...(isRetro ? {
               boxShadow: '0 0 30px rgba(57, 255, 20, 0.5)',
@@ -361,44 +358,38 @@ const SnakeGame = ({ isOpen, onClose }) => {
           {/* Close button */}
           <button
             onClick={onClose}
-            className={`absolute top-4 right-4 transition-colors duration-200 ${
-              isRetro 
-                ? 'text-retro-pink hover:text-retro-yellow sprite' 
+            className={`absolute top-4 right-4 transition-colors duration-200 ${isRetro
+                ? 'text-retro-pink hover:text-retro-yellow sprite'
                 : 'text-white hover:text-glass-accent-light'
-            }`}
+              }`}
           >
             <X size={20} />
           </button>
 
           {/* Game title */}
           <div className="text-center mb-6">
-            <h2 className={`text-lg mb-2 ${
-              isRetro 
-                ? 'text-retro-green-dim font-pixel text-glow-soft sprite' 
+            <h2 className={`text-lg mb-2 ${isRetro
+                ? 'text-retro-green-dim font-pixel text-glow-soft sprite'
                 : 'text-white font-light tracking-wide text-shadow-glow'
-            }`}>
+              }`}>
               {isRetro ? '> SNAKE.EXE' : 'Snake Game'}
             </h2>
-            <div className={`flex justify-between items-center text-xs ${
-              isRetro ? 'font-pixel' : 'font-light tracking-wide'
-            }`}>
+            <div className={`flex justify-between items-center text-xs ${isRetro ? 'font-pixel' : 'font-light tracking-wide'
+              }`}>
               <div className={isRetro ? 'text-retro-blue sprite' : 'text-glass-accent-light'}>
-                SCORE: <span className={`${
-                  isRetro ? 'text-retro-yellow text-glow' : 'text-white font-normal'
-                }`}>{score}</span>
+                SCORE: <span className={`${isRetro ? 'text-retro-yellow text-glow' : 'text-white font-normal'
+                  }`}>{score}</span>
               </div>
               <div className={isRetro ? 'text-retro-blue sprite' : 'text-glass-accent-light'}>
-                HIGH: <span className={`${
-                  isRetro ? 'text-retro-pink text-glow' : 'text-white font-normal'
-                }`}>{highScore}</span>
+                HIGH: <span className={`${isRetro ? 'text-retro-pink text-glow' : 'text-white font-normal'
+                  }`}>{highScore}</span>
               </div>
             </div>
           </div>
 
           {/* Game canvas */}
-          <div className={`relative mb-6 flex justify-center ${
-            isRetro ? 'border-2 border-retro-green' : 'border border-glass-border rounded-lg overflow-hidden'
-          }`} style={{ width: 'min(400px, 90vw)', height: 'min(400px, 90vw)' }}>
+          <div className={`relative mb-6 flex justify-center ${isRetro ? 'border-2 border-retro-green' : 'border border-glass-border rounded-lg overflow-hidden'
+            }`} style={{ width: 'min(400px, 90vw)', height: 'min(400px, 90vw)' }}>
             <canvas
               ref={canvasRef}
               width={CANVAS_SIZE}
@@ -409,37 +400,32 @@ const SnakeGame = ({ isOpen, onClose }) => {
 
             {/* Game state overlays */}
             {gameState === 'menu' && (
-              <div className={`absolute inset-0 flex flex-col items-center justify-center ${
-                isRetro ? 'bg-retro-card/90' : 'bg-black/80 backdrop-blur-sm'
-              }`}>
-                <div className={`text-sm mb-4 text-center ${
-                  isRetro 
-                    ? 'text-retro-green-dim font-pixel text-glow-soft sprite' 
-                    : 'text-white font-light tracking-wide'
+              <div className={`absolute inset-0 flex flex-col items-center justify-center ${isRetro ? 'bg-retro-card/90' : 'bg-black/80 backdrop-blur-sm'
                 }`}>
+                <div className={`text-sm mb-4 text-center ${isRetro
+                    ? 'text-retro-green-dim font-pixel text-glow-soft sprite'
+                    : 'text-white font-light tracking-wide'
+                  }`}>
                   {isRetro ? 'RETRO SNAKE' : 'Snake Game'}
                 </div>
-                <div className={`text-xs mb-4 text-center ${
-                  isRetro 
-                    ? 'text-retro-blue font-pixel sprite' 
+                <div className={`text-xs mb-4 text-center ${isRetro
+                    ? 'text-retro-blue font-pixel sprite'
                     : 'text-glass-accent-light font-light tracking-wide'
-                }`}>
+                  }`}>
                   USE ARROW KEYS OR WASD
                 </div>
-                <div className={`text-xs mb-6 text-center ${
-                  isRetro 
-                    ? 'text-retro-cyan font-pixel sprite' 
+                <div className={`text-xs mb-6 text-center ${isRetro
+                    ? 'text-retro-cyan font-pixel sprite'
                     : 'text-glass-accent-light font-light tracking-wide'
-                }`}>
+                  }`}>
                   PRESS SPACE TO START
                 </div>
                 <button
                   onClick={startGame}
-                  className={`flex items-center gap-2 ${
-                    isRetro 
-                      ? 'retro-button pixel-corners bg-retro-card border-retro-green text-retro-green-dim hover:bg-retro-green hover:text-retro-bg sprite' 
+                  className={`flex items-center gap-2 ${isRetro
+                      ? 'retro-button pixel-corners bg-retro-card border-retro-green text-retro-green-dim hover:bg-retro-green hover:text-retro-bg sprite'
                       : 'glass-button font-light tracking-wide'
-                  }`}
+                    }`}
                 >
                   <Play size={16} /> START GAME
                 </button>
@@ -447,67 +433,58 @@ const SnakeGame = ({ isOpen, onClose }) => {
             )}
 
             {gameState === 'playing' && direction.x === 0 && direction.y === 0 && (
-              <div className={`absolute inset-0 flex flex-col items-center justify-center ${
-                isRetro ? 'bg-retro-card/60' : 'bg-black/60 backdrop-blur-sm'
-              }`}>
-                <div className={`text-xs mb-2 text-center ${
-                  isRetro 
-                    ? 'text-retro-yellow font-pixel text-glow sprite animate-bounce-retro' 
-                    : 'text-white font-light tracking-wide animate-pulse'
+              <div className={`absolute inset-0 flex flex-col items-center justify-center ${isRetro ? 'bg-retro-card/60' : 'bg-black/60 backdrop-blur-sm'
                 }`}>
+                <div className={`text-xs mb-2 text-center ${isRetro
+                    ? 'text-retro-yellow font-pixel text-glow sprite animate-bounce-retro'
+                    : 'text-white font-light tracking-wide animate-pulse'
+                  }`}>
                   PRESS ANY ARROW KEY TO START
                 </div>
-                <div className={`text-xs text-center ${
-                  isRetro 
-                    ? 'text-retro-blue font-pixel sprite' 
+                <div className={`text-xs text-center ${isRetro
+                    ? 'text-retro-blue font-pixel sprite'
                     : 'text-glass-accent-light font-light tracking-wide'
-                }`}>
+                  }`}>
                   ↑ ↓ ← → OR W A S D
                 </div>
               </div>
             )}
 
             {gameState === 'gameOver' && (
-              <div className={`absolute inset-0 flex flex-col items-center justify-center ${
-                isRetro ? 'bg-retro-card/90' : 'bg-black/80 backdrop-blur-sm'
-              }`}>
-                <div className={`text-sm mb-2 ${
-                  isRetro 
-                    ? 'text-retro-pink font-pixel text-glow sprite' 
-                    : 'text-gray-400 font-light tracking-wide'
+              <div className={`absolute inset-0 flex flex-col items-center justify-center ${isRetro ? 'bg-retro-card/90' : 'bg-black/80 backdrop-blur-sm'
                 }`}>
+                <div className={`text-sm mb-2 ${isRetro
+                    ? 'text-retro-pink font-pixel text-glow sprite'
+                    : 'text-gray-400 font-light tracking-wide'
+                  }`}>
                   GAME OVER
                 </div>
-                <div className={`text-xs mb-4 ${
-                  isRetro 
-                    ? 'text-retro-yellow font-pixel sprite' 
+                <div className={`text-xs mb-4 ${isRetro
+                    ? 'text-retro-yellow font-pixel sprite'
                     : 'text-white font-light tracking-wide'
-                }`}>
+                  }`}>
                   SCORE: {score}
                 </div>
                 {score === highScore && score > 0 && (
-                  <div className={`text-xs mb-4 text-center ${
-                    isRetro 
-                      ? 'text-retro-green-dim font-pixel text-glow-soft sprite animate-bounce-retro' 
+                  <div className={`text-xs mb-4 text-center ${isRetro
+                      ? 'text-retro-green-dim font-pixel text-glow-soft sprite animate-bounce-retro'
                       : 'text-white font-light tracking-wide animate-pulse'
-                  }`}>
+                    }`}>
                     NEW HIGH SCORE!
                   </div>
                 )}
-                <div className={`text-xs mb-4 text-center ${
-                  isRetro 
-                    ? 'text-retro-cyan font-pixel sprite' 
+                <div className={`text-xs mb-4 text-center ${isRetro
+                    ? 'text-retro-cyan font-pixel sprite'
                     : 'text-glass-accent-light font-light tracking-wide'
-                }`}>
+                  }`}>
                   PRESS SPACE TO PLAY AGAIN
                 </div>
                 <button
                   onClick={startGame}
-                  className={`flex items-center gap-2 ${
-                    isRetro 
-                      ? 'retro-button pixel-corners bg-retro-card border-retro-pink text-retro-pink hover:bg-retro-pink hover:text-retro-bg sprite' 
+                  className={`flex items-center gap-2 ${isRetro
+                      ? 'retro-button pixel-corners bg-retro-card border-retro-pink text-retro-pink hover:bg-retro-pink hover:text-retro-bg sprite'
                       : 'glass-button font-light tracking-wide'
-                  }`}
+                    }`}
                 >
                   <RotateCcw size={16} /> PLAY AGAIN
                 </button>
@@ -516,25 +493,22 @@ const SnakeGame = ({ isOpen, onClose }) => {
           </div>
 
           {/* Instructions */}
-          <div className={`text-center text-xs ${
-            isRetro 
-              ? 'font-pixel text-retro-blue sprite' 
+          <div className={`text-center text-xs ${isRetro
+              ? 'font-pixel text-retro-blue sprite'
               : 'font-light tracking-wide text-glass-accent-light'
-          }`}>
+            }`}>
             <div className="mb-1 flex items-center justify-center gap-2">
-              <div className={`w-3 h-3 border ${
-                isRetro 
-                  ? 'bg-retro-pink border-retro-pink' 
+              <div className={`w-3 h-3 border ${isRetro
+                  ? 'bg-retro-pink border-retro-pink'
                   : 'bg-pink-500 border-pink-500'
-              }`} style={isRetro ? {boxShadow: '0 0 5px #FF00FF'} : {boxShadow: '0 0 5px rgba(236, 72, 153, 0.5)'}}></div>
+                }`} style={isRetro ? { boxShadow: '0 0 5px #FF00FF' } : { boxShadow: '0 0 5px rgba(236, 72, 153, 0.5)' }}></div>
               <span>FOOD = 10 PTS</span>
             </div>
             <div className="mb-1 flex items-center justify-center gap-2">
-              <div className={`w-3 h-3 border ${
-                isRetro 
-                  ? 'bg-retro-yellow border-retro-yellow' 
+              <div className={`w-3 h-3 border ${isRetro
+                  ? 'bg-retro-yellow border-retro-yellow'
                   : 'bg-white border-white'
-              }`} style={isRetro ? {boxShadow: '0 0 8px #FFFF00'} : {boxShadow: '0 0 8px rgba(234, 179, 8, 0.5)'}}></div>
+                }`} style={isRetro ? { boxShadow: '0 0 8px #FFFF00' } : { boxShadow: '0 0 8px rgba(234, 179, 8, 0.5)' }}></div>
               <span>SPECIAL = 50 PTS</span>
             </div>
             <div className="mb-1">SPACE = START</div>

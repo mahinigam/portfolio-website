@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Github, Linkedin, MessageSquare, Send, MapPin, Phone } from 'lucide-react'
-import { useTheme } from '../hooks/useTheme'
+
 import emailjs from '@emailjs/browser'
 
 const Contact = () => {
-  const { theme } = useTheme()
-  const isRetro = theme === 'retro'
+  const isRetro = false
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -24,14 +23,14 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
+
     // EmailJS configuration from environment variables
     const emailConfig = {
       serviceID: import.meta.env.VITE_EMAILJS_SERVICE_ID,
       templateID: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
       publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY
     }
-    
+
     // Template parameters for EmailJS
     const templateParams = {
       from_name: formData.name,
@@ -39,7 +38,7 @@ const Contact = () => {
       message: formData.message,
       to_name: 'Mahi', // Your name
     }
-    
+
     try {
       await emailjs.send(
         emailConfig.serviceID,
@@ -47,7 +46,7 @@ const Contact = () => {
         templateParams,
         emailConfig.publicKey
       )
-      
+
       // Success
       setFormData({ name: '', email: '', message: '' })
       alert('Message sent successfully! Thanks for reaching out.')
@@ -313,12 +312,12 @@ const Contact = () => {
                   <h3 className="font-pixel text-lg text-retro-green-dim mb-6">
                     SOCIAL_NETWORKS.DIR
                   </h3>
-                  
+
                   <p className="text-sm text-retro-cyan mb-6">
-                    Whether you have a project in mind, want to collaborate, or just want to chat 
+                    Whether you have a project in mind, want to collaborate, or just want to chat
                     about data science and technology, I'd love to hear from you!
                   </p>
-                  
+
                   <div className="space-y-4">
                     {socialLinks.map((link) => (
                       <motion.a
@@ -350,12 +349,12 @@ const Contact = () => {
                   <h3 className="text-xl font-light tracking-wide text-glass-text mb-6">
                     Connect With Me
                   </h3>
-                  
+
                   <p className="text-glass-text-secondary mb-6 leading-relaxed font-light">
-                    Whether you have a project in mind, want to collaborate, or just want to chat 
+                    Whether you have a project in mind, want to collaborate, or just want to chat
                     about data science and technology, I'd love to hear from you!
                   </p>
-                  
+
                   <div className="space-y-4">
                     {socialLinks.map((link) => (
                       <motion.a

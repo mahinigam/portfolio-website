@@ -1,11 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Github, ExternalLink, Code, Database, BarChart3 } from 'lucide-react'
-import { useTheme } from '../hooks/useTheme'
+
 
 const Projects = () => {
-  const { theme } = useTheme()
-  const isRetro = theme === 'retro'
+  const isRetro = false
   const projects = [
     {
       title: 'Customer Purchase Analysis',
@@ -62,23 +61,20 @@ const Projects = () => {
         >
           {/* Section Title */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className={`text-2xl md:text-3xl mb-4 ${
-              isRetro 
-                ? 'font-pixel text-retro-green-dim text-glow-soft sprite' 
+            <h2 className={`text-2xl md:text-3xl mb-4 ${isRetro
+                ? 'font-pixel text-retro-green-dim text-glow-soft sprite'
                 : 'font-light text-glass-text tracking-wide'
-            }`}>
+              }`}>
               {isRetro ? '> PROJECTS.DIR' : 'Projects'}
             </h2>
-            <p className={`text-sm mb-6 ${
-              isRetro 
-                ? 'font-pixel text-retro-blue sprite' 
+            <p className={`text-sm mb-6 ${isRetro
+                ? 'font-pixel text-retro-blue sprite'
                 : 'font-light text-glass-text-secondary tracking-wide'
-            }`}>
+              }`}>
               {isRetro ? 'A collection of my work and experiments' : 'A collection of my work and experiments'}
             </p>
-            <div className={`w-32 h-0.5 mx-auto ${
-              isRetro ? 'bg-retro-green' : 'bg-glass-accent'
-            }`}></div>
+            <div className={`w-32 h-0.5 mx-auto ${isRetro ? 'bg-retro-green' : 'bg-glass-accent'
+              }`}></div>
           </motion.div>
 
           {/* Projects Grid */}
@@ -91,36 +87,33 @@ const Projects = () => {
                 className={isRetro ? "retro-card pixel-corners group relative overflow-hidden" : "glass-card p-6 group relative overflow-hidden"}
               >
                 {/* Status Badge */}
-                <div className={`absolute top-4 right-4 px-2 py-1 text-xs border ${
-                  isRetro 
-                    ? `font-pixel ${project.status === 'COMPLETED' 
-                        ? 'border-retro-green text-retro-green' 
-                        : 'border-retro-yellow text-retro-yellow'}`
+                <div className={`absolute top-4 right-4 px-2 py-1 text-xs border ${isRetro
+                    ? `font-pixel ${project.status === 'COMPLETED'
+                      ? 'border-retro-green text-retro-green'
+                      : 'border-retro-yellow text-retro-yellow'}`
                     : `font-light tracking-wide ${project.status === 'COMPLETED'
-                        ? 'border-glass-accent text-glass-accent'
-                        : 'border-glass-accent-light text-glass-accent-light'}`
-                }`}>
+                      ? 'border-glass-accent text-glass-accent'
+                      : 'border-glass-accent-light text-glass-accent-light'}`
+                  }`}>
                   {project.status}
                 </div>
 
                 {/* Project Icon */}
                 <div className="flex items-center gap-3 mb-4">
                   {project.icon}
-                  <h3 className={`text-sm ${
-                    isRetro 
-                      ? 'font-pixel text-retro-green-soft text-glow-subtle' 
+                  <h3 className={`text-sm ${isRetro
+                      ? 'font-pixel text-retro-green-soft text-glow-subtle'
                       : 'font-normal text-glass-text tracking-wide'
-                  }`}>
+                    }`}>
                     {project.title}
                   </h3>
                 </div>
 
                 {/* Description */}
-                <p className={`text-xs mb-6 leading-relaxed ${
-                  isRetro 
-                    ? 'text-retro-cyan' 
+                <p className={`text-xs mb-6 leading-relaxed ${isRetro
+                    ? 'text-retro-cyan'
                     : 'text-glass-text-secondary font-light'
-                }`}>
+                  }`}>
                   {project.description}
                 </p>
 
@@ -129,11 +122,10 @@ const Projects = () => {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className={`text-xs px-2 py-1 border ${
-                        isRetro 
-                          ? 'font-pixel bg-retro-bg border-retro-pink text-retro-pink' 
+                      className={`text-xs px-2 py-1 border ${isRetro
+                          ? 'font-pixel bg-retro-bg border-retro-pink text-retro-pink'
                           : 'font-light tracking-wide bg-glass-accent/10 border-glass-accent text-glass-accent'
-                      }`}
+                        }`}
                     >
                       {tag}
                     </span>
@@ -148,20 +140,18 @@ const Projects = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center gap-2 transition-colors duration-200 ${
-                      isRetro 
-                        ? 'text-retro-green-dim hover:text-retro-cyan' 
+                    className={`flex items-center gap-2 transition-colors duration-200 ${isRetro
+                        ? 'text-retro-green-dim hover:text-retro-cyan'
                         : 'text-glass-text hover:text-glass-accent'
-                    }`}
+                      }`}
                   >
                     <Github size={16} />
-                    <span className={`text-xs ${
-                      isRetro ? 'font-pixel' : 'font-light tracking-wide'
-                    }`}>
+                    <span className={`text-xs ${isRetro ? 'font-pixel' : 'font-light tracking-wide'
+                      }`}>
                       {isRetro ? 'CODE' : 'Code'}
                     </span>
                   </motion.a>
-                  
+
                   {project.demo !== '#' && (
                     <motion.a
                       whileHover={{ scale: 1.1 }}
@@ -169,16 +159,14 @@ const Projects = () => {
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`flex items-center gap-2 transition-colors duration-200 ${
-                        isRetro 
-                          ? 'text-retro-pink hover:text-retro-cyan' 
+                      className={`flex items-center gap-2 transition-colors duration-200 ${isRetro
+                          ? 'text-retro-pink hover:text-retro-cyan'
                           : 'text-glass-text-secondary hover:text-glass-accent'
-                      }`}
+                        }`}
                     >
                       <ExternalLink size={16} />
-                      <span className={`text-xs ${
-                        isRetro ? 'font-pixel' : 'font-light tracking-wide'
-                      }`}>
+                      <span className={`text-xs ${isRetro ? 'font-pixel' : 'font-light tracking-wide'
+                        }`}>
                         {isRetro ? 'DEMO' : 'Demo'}
                       </span>
                     </motion.a>
@@ -186,11 +174,10 @@ const Projects = () => {
                 </div>
 
                 {/* Hover effect overlay */}
-                <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none ${
-                  isRetro 
+                <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none ${isRetro
                     ? 'bg-gradient-to-r from-retro-green/5 to-retro-cyan/5'
                     : 'bg-gradient-to-r from-white/5 to-gray-400/5'
-                }`} />
+                  }`} />
               </motion.div>
             ))}
           </div>

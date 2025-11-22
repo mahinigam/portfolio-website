@@ -2,18 +2,15 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Heart, Code, Coffee, Gamepad2 } from 'lucide-react'
 import SnakeGame from './SnakeGame'
-import { useTheme } from '../hooks/useTheme'
+
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
   const [showSnakeGame, setShowSnakeGame] = useState(false)
-  const { theme } = useTheme()
-  const isRetro = theme === 'retro'
+  const isRetro = false
 
   return (
-    <footer className={`py-12 px-4 ${
-      isRetro ? 'bg-retro-bg border-t border-retro-green' : 'glass-nav border-t border-glass-border'
-    }`}>
+    <footer className="py-12 px-4 glass-nav border-t border-glass-border">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -26,7 +23,7 @@ const Footer = () => {
           {isRetro && (
             <div className="font-pixel text-retro-green-dim text-xs mb-8 opacity-60 text-glow-soft sprite">
               <pre className="whitespace-pre-wrap">
-{`    ╔═══════════════════════════════════╗
+                {`    ╔═══════════════════════════════════╗
     ║        THANK YOU FOR VISITING     ║
     ║              MAHI.EXE             ║
     ╚═══════════════════════════════════╝`}
@@ -40,9 +37,8 @@ const Footer = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className={`flex items-center justify-center gap-2 text-xs mb-6 ${
-              isRetro ? 'font-pixel text-retro-blue sprite' : 'font-light text-glass-text tracking-wide'
-            }`}
+            className={`flex items-center justify-center gap-2 text-xs mb-6 ${isRetro ? 'font-pixel text-retro-blue sprite' : 'font-light text-glass-text tracking-wide'
+              }`}
           >
             <span>{isRetro ? 'CRAFTED WITH' : 'Crafted with'}</span>
             <motion.div
@@ -73,26 +69,24 @@ const Footer = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className={`pt-6 ${
-              isRetro ? 'border-t border-retro-green' : 'border-t border-glass-border'
-            }`}
+            className={`pt-6 ${isRetro ? 'border-t border-retro-green' : 'border-t border-glass-border'
+              }`}
           >
-            <div className={`flex flex-col md:flex-row justify-between items-center gap-4 text-xs ${
-              isRetro ? 'font-pixel' : 'font-light tracking-wide'
-            }`}>
-              <div className={isRetro 
-                ? 'text-retro-green-dim text-glow-soft font-pixel sprite' 
+            <div className={`flex flex-col md:flex-row justify-between items-center gap-4 text-xs ${isRetro ? 'font-pixel' : 'font-light tracking-wide'
+              }`}>
+              <div className={isRetro
+                ? 'text-retro-green-dim text-glow-soft font-pixel sprite'
                 : 'text-glass-text-secondary font-light'
               }>
                 © {currentYear} MAHI NIGAM. ALL RIGHTS RESERVED.
               </div>
-              
+
               <div className="flex gap-6">
                 <motion.a
                   whileHover={{ scale: 1.1 }}
                   href="#home"
-                  className={isRetro 
-                    ? 'text-retro-blue hover:text-retro-yellow transition-colors duration-200 sprite' 
+                  className={isRetro
+                    ? 'text-retro-blue hover:text-retro-yellow transition-colors duration-200 sprite'
                     : 'text-glass-text hover:text-glass-accent transition-colors duration-200 font-light tracking-wide'
                   }
                 >
@@ -103,8 +97,8 @@ const Footer = () => {
                   href="https://github.com/mahinigam"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={isRetro 
-                    ? 'text-retro-blue hover:text-retro-yellow transition-colors duration-200 sprite' 
+                  className={isRetro
+                    ? 'text-retro-blue hover:text-retro-yellow transition-colors duration-200 sprite'
                     : 'text-glass-text hover:text-glass-accent transition-colors duration-200 font-light tracking-wide'
                   }
                 >
@@ -115,8 +109,8 @@ const Footer = () => {
                   href="https://mahinigam.blogspot.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={isRetro 
-                    ? 'text-retro-blue hover:text-retro-yellow transition-colors duration-200 sprite' 
+                  className={isRetro
+                    ? 'text-retro-blue hover:text-retro-yellow transition-colors duration-200 sprite'
                     : 'text-glass-text hover:text-glass-accent transition-colors duration-200 font-light tracking-wide'
                   }
                 >
@@ -134,14 +128,12 @@ const Footer = () => {
             transition={{ delay: 0.9, duration: 0.6 }}
             className="mt-8 text-center"
           >
-            <div className={`inline-block px-6 py-4 transition-colors duration-200 ${
-              isRetro 
-                ? 'retro-card border-2 border-retro-green hover:border-retro-pink sprite' 
+            <div className={`inline-block px-6 py-4 transition-colors duration-200 ${isRetro
+                ? 'retro-card border-2 border-retro-green hover:border-retro-pink sprite'
                 : 'glass-card hover:glass-card-hover'
-            }`}>
-              <div className={`text-xs text-center leading-relaxed ${
-                isRetro ? 'font-pixel text-retro-blue' : 'font-light text-glass-text-secondary tracking-wide'
               }`}>
+              <div className={`text-xs text-center leading-relaxed ${isRetro ? 'font-pixel text-retro-blue' : 'font-light text-glass-text-secondary tracking-wide'
+                }`}>
                 {isRetro && (
                   <>
                     <div className="text-retro-green-dim mb-2 text-glow-soft">$ echo "Thanks for visiting!"</div>
@@ -190,21 +182,19 @@ const Footer = () => {
                 onClick={() => setShowSnakeGame(true)}
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}
-                className={`group relative p-2 transition-all duration-200 ${
-                  isRetro 
-                    ? 'bg-retro-card border border-retro-green text-retro-green-dim hover:border-retro-pink hover:text-retro-pink pixel-corners sprite' 
+                className={`group relative p-2 transition-all duration-200 ${isRetro
+                    ? 'bg-retro-card border border-retro-green text-retro-green-dim hover:border-retro-pink hover:text-retro-pink pixel-corners sprite'
                     : 'glass-button'
-                }`}
+                  }`}
                 title="Play Snake Game"
               >
                 <Gamepad2 size={16} />
-                
+
                 {/* Hover tooltip */}
-                <div className={`absolute bottom-full right-0 mb-2 px-2 py-1 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap ${
-                  isRetro 
-                    ? 'bg-retro-card border border-retro-green text-retro-green-dim font-pixel sprite' 
+                <div className={`absolute bottom-full right-0 mb-2 px-2 py-1 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap ${isRetro
+                    ? 'bg-retro-card border border-retro-green text-retro-green-dim font-pixel sprite'
                     : 'glass-card text-glass-text font-medium'
-                }`}>
+                  }`}>
                   Play Snake Game
                   {isRetro && (
                     <div className="absolute top-full right-2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-retro-green"></div>
@@ -222,9 +212,9 @@ const Footer = () => {
       </div>
 
       {/* Snake Game Modal */}
-      <SnakeGame 
-        isOpen={showSnakeGame} 
-        onClose={() => setShowSnakeGame(false)} 
+      <SnakeGame
+        isOpen={showSnakeGame}
+        onClose={() => setShowSnakeGame(false)}
       />
     </footer>
   )
