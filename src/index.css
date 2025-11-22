@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
@@ -8,12 +7,12 @@
   * {
     box-sizing: border-box;
   }
-  
+
   body {
     margin: 0;
-    font-family: 'Press Start 2P', monospace;
+    font-family: 'Inter', 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background-color: #000000;
-    color: #39FF14;
+    color: #ffffff;
     overflow-x: hidden;
     line-height: 1.6;
     font-size: 14px;
@@ -25,533 +24,259 @@
 }
 
 @layer components {
-    .retro-button {
-    @apply bg-retro-pink border-2 border-retro-blue text-retro-black px-4 py-2 text-xs font-pixel
-           hover:bg-retro-green hover:text-retro-black transition-all duration-200 
-           focus:outline-none focus:ring-2 focus:ring-retro-yellow cursor-pointer;
+
+  /* Glass Theme Styles */
+  .glass-theme {
+    background: #000000;
+    font-family: 'Inter', 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    transition: all 0.3s ease;
   }
 
-  /* Remove any unwanted pseudo-elements or browser defaults */
-  .retro-button::before,
-  .retro-button::after,
-  button::before,
-  button::after {
-    content: none !important;
-    display: none !important;
+  .glass-card {
+    background: rgba(20, 20, 20, 0.2);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    box-shadow:
+      inset 0 0 20px rgba(255, 255, 255, 0.02),
+      0 8px 32px rgba(0, 0, 0, 0.4);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Override any browser button defaults and list styles */
-  button {
-    background-image: none !important;
-    background-color: transparent;
-    border: none;
+  .glass-card:hover {
+    background: rgba(30, 30, 30, 0.3);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-4px) scale(1.01);
+    box-shadow:
+      inset 0 0 30px rgba(255, 255, 255, 0.05),
+      0 12px 40px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(25px);
+  }
+
+  .glass-card-hover {
+    background: rgba(35, 35, 35, 0.5);
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+
+  .glass-button {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.025em;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .glass-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+    backdrop-filter: blur(15px);
+  }
+
+  .glass-button-sm {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.025em;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 0.875rem;
+  }
+
+  .glass-button-sm:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+    backdrop-filter: blur(12px);
+  }
+
+  .glass-nav {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-nav-link {
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.025em;
+  }
+
+  .glass-nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    backdrop-filter: blur(15px);
+  }
+
+  .glass-input {
+    background: rgba(20, 20, 20, 0.4);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    padding: 12px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .glass-input:focus {
+    border-color: rgba(255, 255, 255, 0.3);
     outline: none;
-    list-style: none !important;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
   }
 
-  button:hover {
-    background-image: none !important;
+  .glass-text-glow {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.025em;
   }
 
-  /* Remove any list-style bullets that might appear */
-  * {
-    list-style: none !important;
+  .glass-backdrop {
+    background:
+      radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 0% 0%, rgba(57, 255, 20, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 100% 100%, rgba(0, 255, 255, 0.05) 0%, transparent 50%);
+    background-size: 200% 200%;
+    animation: liquid 20s ease infinite;
   }
 
-  /* Remove any default focus styles that might show as dots */
-  *:focus {
-    outline: none !important;
+  .theme-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 8px 12px;
+    color: #ffffff;
+    font-size: 12px;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.025em;
+    cursor: pointer;
+    transition: all 0.3s ease;
   }
 
-  /* Ensure retro-card hover doesn't create unwanted elements */
-  .retro-card:hover::after {
-    content: none !important;
-    display: none !important;
+  .theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+    backdrop-filter: blur(15px);
   }
 
-  .retro-card {
-    @apply bg-retro-card border-2 border-retro-green p-6 relative overflow-hidden;
+  /* Professional Glass Theme Typography */
+  .glass-text-primary {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.015em;
+    line-height: 1.5;
   }
 
-  .retro-card:hover {
-    @apply animate-bounce-retro;
+  .glass-text-heading {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.025em;
+    line-height: 1.2;
   }
 
-  .retro-card::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-transparent via-retro-green to-transparent 
-           opacity-0 -translate-x-full transition-all duration-500;
+  .glass-text-body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    line-height: 1.6;
   }
 
-  .retro-card:hover::before {
-    @apply opacity-10 translate-x-full;
+  .glass-text-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-transform: none;
   }
 
-  .skill-badge {
-    @apply bg-retro-bg border border-retro-blue text-retro-blue px-3 py-1 text-xs 
-           hover:bg-retro-blue hover:text-retro-black transition-all duration-200 cursor-default;
+  .glass-input {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    transition: all 0.3s ease;
   }
 
-  .skill-badge:hover {
-    @apply animate-bounce-retro;
+  .glass-input:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
   }
 
-  .nav-link {
-    @apply text-retro-green-dim hover:text-retro-pink transition-colors duration-200 text-xs font-pixel;
+  .glass-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 300;
   }
 
-  .nav-link:hover {
-    @apply animate-bounce-retro;
+  /* Snake Game Modal - No hover transforms */
+  .snake-game-modal {
+    background: rgba(20, 20, 20, 0.3);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    transition: opacity 0.3s ease;
+    /* Ensure no positioning interference */
+    position: static;
+    transform: none;
+    margin: 0;
   }
 
-  .retro-input {
-    @apply bg-retro-bg border border-retro-green text-retro-green-dim p-2 text-xs 
-           focus:border-retro-blue focus:outline-none focus:text-retro-blue;
-  }
-
-  .loading-screen {
-    @apply font-pixel text-retro-green-dim bg-retro-bg text-center p-12 animate-loading;
+  .snake-game-modal:hover {
+    /* Enhanced frosted glass effect on hover */
+    background: rgba(25, 25, 25, 0.4);
+    border-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(25px);
+    /* Explicitly prevent any transforms */
+    transform: none;
   }
 }
 
 @layer utilities {
-  .text-glow {
-    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
-  }
 
-  .text-glow-soft {
-    text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
-  }
-
-  .text-glow-subtle {
-    text-shadow: 0 0 3px currentColor, 0 0 6px currentColor;
-  }
-
-  .text-glow-blue {
-    text-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF, 0 0 30px #00FFFF;
-  }
-
-  .text-glow-pink {
-    text-shadow: 0 0 10px #FF00FF, 0 0 20px #FF00FF, 0 0 30px #FF00FF;
-  }
-
-  .text-glow-yellow {
-    text-shadow: 0 0 10px #FFFF00, 0 0 20px #FFFF00, 0 0 30px #FFFF00;
-  }
-
-  .scanlines {
-    position: relative;
-  }
-
-  .scanlines::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: linear-gradient(transparent 50%, rgba(57, 255, 20, 0.03) 50%);
-    background-size: 100% 4px;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .pixel-corners {
-    clip-path: polygon(0 8px, 8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px));
-  }
-
-  .pixel-corners-safe {
-    clip-path: polygon(0 6px, 6px 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 6px 100%, 0 calc(100% - 6px));
-  }
-
-  .sprite:hover {
-    @apply animate-bounce-retro;
-  }
-
-  .crt-effect {
-    position: relative;
-  }
-
-  .crt-effect::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(57, 255, 20, 0.05) 2px,
-        rgba(57, 255, 20, 0.05) 4px
-      );
-    pointer-events: none;
-    z-index: 1000;
-  }
-
-  /* Snake Game CSS */
-  .crt-monitor {
-    position: relative;
-    background: radial-gradient(ellipse at center, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.95) 100%);
-    box-shadow: 
-        inset 0 0 100px rgba(57, 255, 20, 0.1),
-        0 0 50px rgba(0, 0, 0, 0.8);
-  }
-
-  .crt-monitor::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        linear-gradient(transparent 50%, rgba(57, 255, 20, 0.03) 50%),
-        linear-gradient(90deg, transparent 50%, rgba(57, 255, 20, 0.03) 50%);
-    background-size: 2px 2px;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .snake-pixel {
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
-  }
-
-  .game-glow {
-    text-shadow: 
-        0 0 5px currentColor,
-        0 0 10px currentColor,
-        0 0 15px currentColor,
-        0 0 20px currentColor;
-  }
-
-  .arcade-button {
-    position: relative;
-    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
-    border: 2px solid;
-    transition: all 0.2s ease;
-  }
-
-  .arcade-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(57, 255, 20, 0.3);
-  }
-
-  .arcade-button:active {
-    transform: translateY(0);
-  }
-
-  .arcade-button::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, transparent, rgba(57, 255, 20, 0.1), transparent);
-    z-index: -1;
-    border-radius: inherit;
-  }
-}
-
-/* Simple system cursors - clean and reliable */
-button,
-a,
-[role="button"],
-input[type="submit"],
-input[type="button"],
-.cursor-pointer,
-.retro-button,
-.arcade-button {
-  cursor: pointer;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-textarea {
-  cursor: text;
-}
-
-.snake-game-container {
-  cursor: crosshair;
-}
-
-/* Scanline animation */
-@keyframes moveDown {
-  from {
-    transform: translateY(-100vh);
-  }
-  to {
-    transform: translateY(100vh);
-  }
-}
-
-/* Background patterns */
-.bg-retro-grid {
-  background-image: 
-    linear-gradient(rgba(57, 255, 20, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(57, 255, 20, 0.1) 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-
-.bg-retro-stars {
-  background-image: 
-    radial-gradient(1px 1px at 20px 30px, rgba(0, 255, 255, 0.3), transparent),
-    radial-gradient(1px 1px at 40px 70px, rgba(255, 0, 255, 0.3), transparent),
-    radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 0, 0.3), transparent);
-  background-size: 100px 100px;
-}
-
-/* Normal system cursors - keeping it simple and standard */
-/* 
-  Commented out pixel cursors to use normal system cursors instead
-  
+  /* Normal system cursors - keeping it simple and standard */
   button,
   a,
   [role="button"],
   input[type="submit"],
   input[type="button"],
-  .cursor-pointer,
-  .retro-button,
-  .arcade-button {
-    cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAACXBIWXMAAAsTAAALEwEAmpwYAAABKklEQVQ4T52UsQ3CQAxF30KkASpgAzoBE8AETABMwARswARMwAZswARMwARMwAZswAZMwAZswAZtTU4nE5/vf8kucrLtf3/+2TGGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYRiGYf4BDrMbfKKDN8YAAAAASUVORK5CYII='), pointer !important;
+  .cursor-pointer {
+    cursor: pointer;
   }
-*/
 
-/* Text cursor for inputs */
-input[type="text"],
-input[type="email"],
-input[type="password"],
-textarea {
-  cursor: text !important;
-}
+  /* Text cursor for inputs */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  textarea {
+    cursor: text !important;
+  }
 
-/* Special cursors for specific actions */
-.snake-game-container {
-  cursor: crosshair !important;
-}
-
-/* Glass Theme Styles */
-.glass-theme {
-  background: #000000;
-  font-family: 'Inter', 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  transition: all 0.3s ease;
-}
-
-.glass-card {
-  background: rgba(20, 20, 20, 0.3);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  transition: all 0.3s ease;
-}
-
-.glass-card:hover {
-  background: rgba(30, 30, 30, 0.4);
-  border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(25px);
-}
-
-.glass-card-hover {
-  background: rgba(35, 35, 35, 0.5);
-  border-color: rgba(255, 255, 255, 0.25);
-}
-
-.glass-button {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-  padding: 12px 24px;
-  border-radius: 12px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  letter-spacing: 0.025em;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.glass-button:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
-  transform: translateY(-1px);
-  backdrop-filter: blur(15px);
-}
-
-.glass-button-sm {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  letter-spacing: 0.025em;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  font-size: 0.875rem;
-}
-
-.glass-button-sm:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-1px);
-  backdrop-filter: blur(12px);
-}
-
-.glass-nav {
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.glass-nav-link {
-  color: #ffffff;
-  padding: 8px 16px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  font-weight: 300;
-  letter-spacing: 0.025em;
-}
-
-.glass-nav-link:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  backdrop-filter: blur(15px);
-}
-
-.glass-input {
-  background: rgba(20, 20, 20, 0.4);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  padding: 12px 16px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.glass-input:focus {
-  border-color: rgba(255, 255, 255, 0.3);
-  outline: none;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-}
-
-.glass-text-glow {
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  font-weight: 300;
-  letter-spacing: 0.025em;
-}
-
-.glass-backdrop {
-  background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.05) 0%, transparent 70%),
-              radial-gradient(ellipse at bottom, rgba(128, 128, 128, 0.05) 0%, transparent 70%);
-}
-
-.theme-toggle {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  padding: 8px 12px;
-  color: #ffffff;
-  font-size: 12px;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  font-weight: 300;
-  letter-spacing: 0.025em;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.theme-toggle:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: scale(1.05);
-  backdrop-filter: blur(15px);
-}
-
-/* Professional Glass Theme Typography */
-.glass-text-primary {
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  letter-spacing: 0.015em;
-  line-height: 1.5;
-}
-
-.glass-text-heading {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 300;
-  letter-spacing: 0.025em;
-  line-height: 1.2;
-}
-
-.glass-text-body {
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  letter-spacing: 0.01em;
-  line-height: 1.6;
-}
-
-.glass-text-label {
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  text-transform: none;
-}
-
-.glass-input {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  padding: 12px 16px;
-  border-radius: 8px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  letter-spacing: 0.01em;
-  transition: all 0.3s ease;
-}
-
-.glass-input:focus {
-  outline: none;
-  border-color: rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-}
-
-.glass-input::placeholder {
-  color: rgba(255, 255, 255, 0.4);
-  font-weight: 300;
-}
-
-/* Snake Game Modal - No hover transforms */
-.snake-game-modal {
-  background: rgba(20, 20, 20, 0.3);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  transition: opacity 0.3s ease;
-  /* Ensure no positioning interference */
-  position: static;
-  transform: none;
-  margin: 0;
-}
-
-.snake-game-modal:hover {
-  /* Enhanced frosted glass effect on hover */
-  background: rgba(25, 25, 25, 0.4);
-  border-color: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(25px);
-  /* Explicitly prevent any transforms */
-  transform: none;
+  /* Special cursors for specific actions */
+  .snake-game-container {
+    cursor: crosshair !important;
+  }
 }
