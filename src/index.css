@@ -1,243 +1,320 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* =========================================
+   CINEMATIC PORTFOLIO — BASE STYLES
+   ========================================= */
 
 @layer base {
   * {
     box-sizing: border-box;
   }
 
-  body {
-    margin: 0;
-    font-family: 'Inter', 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: #000000;
-    color: #ffffff;
-    overflow-x: hidden;
-    line-height: 1.6;
-    font-size: 14px;
-  }
-
   html {
     scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #0D0D0F;
+    color: #E4E4E7;
+    overflow-x: hidden;
+    line-height: 1.7;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+  }
+
+  /* Selection styling */
+  ::selection {
+    background: rgba(31, 40, 72, 0.5);
+    color: #E4E4E7;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0D0D0F;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1f2848;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2a3a5c;
   }
 }
 
 @layer components {
 
-  /* Glass Theme Styles */
-  .glass-theme {
-    background: #000000;
-    font-family: 'Inter', 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    transition: all 0.3s ease;
-  }
+  /* =========================================
+     CINEMATIC PANELS & CARDS
+     ========================================= */
 
-  .glass-card {
-    background: rgba(20, 20, 20, 0.2);
+  .cinema-panel {
+    background: rgba(22, 22, 24, 0.6);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 24px;
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .cinema-panel:hover {
+    border-color: rgba(255, 255, 255, 0.1);
     box-shadow:
-      inset 0 0 20px rgba(255, 255, 255, 0.02),
-      0 8px 32px rgba(0, 0, 0, 0.4);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      0 0 60px rgba(31, 40, 72, 0.15),
+      inset 0 0 60px rgba(255, 255, 255, 0.02);
   }
 
-  .glass-card:hover {
-    background: rgba(30, 30, 30, 0.3);
-    border-color: rgba(255, 255, 255, 0.15);
-    transform: translateY(-4px) scale(1.01);
-    box-shadow:
-      inset 0 0 30px rgba(255, 255, 255, 0.05),
-      0 12px 40px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(25px);
-  }
-
-  .glass-card-hover {
-    background: rgba(35, 35, 35, 0.5);
-    border-color: rgba(255, 255, 255, 0.25);
-  }
-
-  .glass-button {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #ffffff;
-    padding: 12px 24px;
-    border-radius: 12px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    letter-spacing: 0.025em;
-    transition: all 0.3s ease;
-    cursor: pointer;
-  }
-
-  .glass-button:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
-    transform: translateY(-1px);
-    backdrop-filter: blur(15px);
-  }
-
-  .glass-button-sm {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #ffffff;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.025em;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    font-size: 0.875rem;
-  }
-
-  .glass-button-sm:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.3);
-    transform: translateY(-1px);
+  .cinema-card {
+    background: rgba(30, 30, 33, 0.5);
     backdrop-filter: blur(12px);
-  }
-
-  .glass-nav {
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .glass-nav-link {
-    color: #ffffff;
-    padding: 8px 16px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.025em;
-  }
-
-  .glass-nav-link:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    backdrop-filter: blur(15px);
-  }
-
-  .glass-input {
-    background: rgba(20, 20, 20, 0.4);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    padding: 12px 16px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-  }
-
-  .glass-input:focus {
-    border-color: rgba(255, 255, 255, 0.3);
-    outline: none;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
-  }
-
-  .glass-text-glow {
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.025em;
-  }
-
-  .glass-backdrop {
-    background:
-      radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
-      radial-gradient(circle at 0% 0%, rgba(57, 255, 20, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 100% 100%, rgba(0, 255, 255, 0.05) 0%, transparent 50%);
-    background-size: 200% 200%;
-    animation: liquid 20s ease infinite;
-  }
-
-  .theme-toggle {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.04);
     border-radius: 12px;
-    padding: 8px 12px;
-    color: #ffffff;
-    font-size: 12px;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.025em;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .theme-toggle:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.05);
-    backdrop-filter: blur(15px);
+  .cinema-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(31, 40, 72, 0.4);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
   }
 
-  /* Professional Glass Theme Typography */
-  .glass-text-primary {
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.015em;
-    line-height: 1.5;
-  }
+  /* =========================================
+     BUTTONS
+     ========================================= */
 
-  .glass-text-heading {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.025em;
-    line-height: 1.2;
-  }
-
-  .glass-text-body {
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.01em;
-    line-height: 1.6;
-  }
-
-  .glass-text-label {
+  .cinema-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, rgba(31, 40, 72, 0.8) 0%, rgba(31, 40, 72, 0.6) 100%);
+    border: 1px solid rgba(31, 40, 72, 0.6);
+    border-radius: 8px;
+    color: #E4E4E7;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
+    font-size: 0.9rem;
     letter-spacing: 0.02em;
-    text-transform: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .glass-input {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    padding: 12px 16px;
+  .cinema-button:hover {
+    background: linear-gradient(135deg, rgba(31, 40, 72, 1) 0%, rgba(42, 58, 92, 0.9) 100%);
+    border-color: rgba(31, 40, 72, 0.8);
+    box-shadow: 0 0 30px rgba(31, 40, 72, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .cinema-button-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 8px;
+    color: #9CA3AF;
     font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.01em;
+    font-weight: 400;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .cinema-button-ghost:hover {
+    color: #E4E4E7;
+    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  /* =========================================
+     NAVIGATION
+     ========================================= */
+
+  .cinema-nav {
+    background: rgba(13, 13, 15, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .cinema-nav-link {
+    color: #6B7280;
+    padding: 8px 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     transition: all 0.3s ease;
   }
 
-  .glass-input:focus {
-    outline: none;
-    border-color: rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
+  .cinema-nav-link:hover {
+    color: #E4E4E7;
   }
 
-  .glass-input::placeholder {
-    color: rgba(255, 255, 255, 0.4);
+  /* =========================================
+     INPUTS
+     ========================================= */
+
+  .cinema-input {
+    width: 100%;
+    padding: 16px 20px;
+    background: rgba(22, 22, 24, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    color: #E4E4E7;
+    font-family: 'Inter', sans-serif;
     font-weight: 300;
+    font-size: 1rem;
+    transition: all 0.3s ease;
   }
 
+  .cinema-input:focus {
+    outline: none;
+    border-color: rgba(31, 40, 72, 0.6);
+    box-shadow: 0 0 0 3px rgba(31, 40, 72, 0.2);
+  }
+
+  .cinema-input::placeholder {
+    color: #6B7280;
+  }
+
+  /* =========================================
+     TYPOGRAPHY
+     ========================================= */
+
+  .cinema-heading {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: #E4E4E7;
+  }
+
+  .cinema-subheading {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    color: #9CA3AF;
+  }
+
+  .cinema-body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #9CA3AF;
+  }
+
+  .cinema-label {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6B7280;
+  }
+
+
+  /* =========================================
+     AMBIENT BACKGROUND
+     ========================================= */
+
+  .cinema-ambient {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .cinema-ambient::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(31, 40, 72, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(31, 40, 72, 0.1) 0%, transparent 50%);
+    animation: float 20s ease-in-out infinite;
+  }
+
+  .cinema-ambient::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    animation: grain 8s steps(10) infinite;
+  }
+
+  /* =========================================
+     SECTION DIVIDER
+     ========================================= */
+
+  .cinema-divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, #1f2848 0%, transparent 100%);
+  }
+
+  /* =========================================
+     ACCENT GLOW EFFECTS
+     ========================================= */
+
+  .cinema-glow {
+    box-shadow: 0 0 80px rgba(31, 40, 72, 0.3);
+  }
+
+  .cinema-text-glow {
+    text-shadow: 0 0 40px rgba(31, 40, 72, 0.5);
+  }
+
+  /* =========================================
+     SCROLL INDICATOR
+     ========================================= */
+
+  .scroll-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #6B7280;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .scroll-indicator-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(31, 40, 72, 0.6) 0%, transparent 100%);
+    animation: float 2s ease-in-out infinite;
+  }
 
 }
 
 @layer utilities {
 
-  /* Normal system cursors - keeping it simple and standard */
+  /* Cursor pointer for interactives */
   button,
   a,
   [role="button"],
@@ -255,5 +332,36 @@
     cursor: text !important;
   }
 
+  /* Animation delay utilities */
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
 
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+
+  .animation-delay-700 {
+    animation-delay: 700ms;
+  }
+
+  .animation-delay-800 {
+    animation-delay: 800ms;
+  }
 }

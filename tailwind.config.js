@@ -7,71 +7,87 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'glass': ['Inter', 'Outfit', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        'glass-heading': ['Outfit', 'Inter', 'system-ui', 'sans-serif'],
-        'glass-body': ['Inter', 'system-ui', 'sans-serif'],
+        'display': ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+        'body': ['Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
-        'glass': {
-          'bg': '#000000',
-          'bg-secondary': '#111111',
-          'dark': 'rgba(10, 10, 10, 0.9)',
-          'card': 'rgba(20, 20, 20, 0.3)',
-          'card-hover': 'rgba(30, 30, 30, 0.4)',
-          'card-light': 'rgba(40, 40, 40, 0.3)',
-          'border': 'rgba(255, 255, 255, 0.1)',
-          'border-hover': 'rgba(255, 255, 255, 0.2)',
-          'text': '#ffffff',
-          'text-secondary': '#b0b0b0',
-          'text-muted': '#808080',
-          'text-dim': '#666666',
-          'light': 'rgba(255, 255, 255, 0.9)',
-          'accent': '#ffffff',
-          'accent-light': '#e5e5e5',
-          'accent-dark': '#d4d4d4',
-          'nav': 'rgba(0, 0, 0, 0.8)',
+        'cinema': {
+          'bg': '#0D0D0F',
+          'surface': '#161618',
+          'elevated': '#1E1E21',
+          'border': 'rgba(255, 255, 255, 0.06)',
+          'border-hover': 'rgba(255, 255, 255, 0.12)',
+          'text': '#E4E4E7',
+          'text-secondary': '#9CA3AF',
+          'text-muted': '#6B7280',
+          'accent': '#1f2848',
+          'accent-light': '#2a3a5c',
+          'accent-glow': 'rgba(31, 40, 72, 0.4)',
         }
       },
       animation: {
-        'blink': 'blink 1s infinite',
-        'glow': 'glow 2s ease-in-out infinite alternate',
-        'loading': 'loading 1s infinite',
-        'liquid': 'liquid 15s ease infinite',
+        'fade-in': 'fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-in-down': 'fadeInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'slide-in-left': 'slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'slide-in-right': 'slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'reveal': 'reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'glow-pulse': 'glowPulse 4s ease-in-out infinite',
         'float': 'float 6s ease-in-out infinite',
+        'grain': 'grain 8s steps(10) infinite',
       },
       keyframes: {
-        blink: {
-          '0%, 50%': { opacity: '1' },
-          '51%, 100%': { opacity: '0' },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
         },
-        glow: {
-          '0%': {
-            'box-shadow': '0 0 5px #39FF14, 0 0 10px #39FF14, 0 0 15px #39FF14',
-          },
-          '100%': {
-            'box-shadow': '0 0 10px #39FF14, 0 0 20px #39FF14, 0 0 30px #39FF14',
-          },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(30px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        loading: {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0' },
+        fadeInDown: {
+          '0%': { opacity: '0', transform: 'translateY(-20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        liquid: {
-          '0%': { transform: 'translate(0, 0) rotate(0deg)' },
-          '25%': { transform: 'translate(2%, 2%) rotate(1deg)' },
-          '50%': { transform: 'translate(0, 4%) rotate(-1deg)' },
-          '75%': { transform: 'translate(-2%, 2%) rotate(0deg)' },
-          '100%': { transform: 'translate(0, 0) rotate(0deg)' },
+        slideInLeft: {
+          '0%': { opacity: '0', transform: 'translateX(-40px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        slideInRight: {
+          '0%': { opacity: '0', transform: 'translateX(40px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        reveal: {
+          '0%': { opacity: '0', transform: 'translateY(60px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        glowPulse: {
+          '0%, 100%': { opacity: '0.4' },
+          '50%': { opacity: '0.8' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
-        }
+        },
+        grain: {
+          '0%, 100%': { transform: 'translate(0, 0)' },
+          '10%': { transform: 'translate(-5%, -10%)' },
+          '20%': { transform: 'translate(-15%, 5%)' },
+          '30%': { transform: 'translate(7%, -25%)' },
+          '40%': { transform: 'translate(-5%, 25%)' },
+          '50%': { transform: 'translate(-15%, 10%)' },
+          '60%': { transform: 'translate(15%, 0%)' },
+          '70%': { transform: 'translate(0%, 15%)' },
+          '80%': { transform: 'translate(3%, 35%)' },
+          '90%': { transform: 'translate(-10%, 10%)' },
+        },
       },
-      backgroundImage: {
+      transitionTimingFunction: {
+        'cinema': 'cubic-bezier(0.16, 1, 0.3, 1)',
       },
-      backgroundSize: {
-      }
+      backdropBlur: {
+        'cinema': '20px',
+      },
     },
   },
   plugins: [],

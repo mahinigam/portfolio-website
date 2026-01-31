@@ -1,27 +1,30 @@
 import React from 'react'
+import CursorGlow from './components/CursorGlow'
 import Navbar from './components/Navbar'
-import Home from './pages/Home'
+import Hero from './pages/Hero'
 import About from './pages/About'
-import Skills from './pages/Skills'
-import Projects from './pages/Projects'
-import Blog from './pages/Blog'
-import Resume from './pages/Resume'
+import Work from './pages/Work'
+import Thoughts from './pages/Thoughts'
 import Contact from './pages/Contact'
 import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className="min-h-screen relative glass-theme glass-backdrop font-glass">
+    <div className="min-h-screen bg-cinema-bg text-cinema-text font-body relative">
+      {/* Cursor glow effect */}
+      <CursorGlow />
+
+      {/* Ambient background */}
+      <div className="cinema-ambient" />
+
       {/* Main content */}
-      <div className="relative z-20">
+      <div className="relative z-10">
         <Navbar />
         <main>
-          <Home />
+          <Hero />
           <About />
-          <Skills />
-          <Projects />
-          <Blog />
-          <Resume />
+          <Work />
+          <Thoughts />
           <Contact />
         </main>
         <Footer />
