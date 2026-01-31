@@ -55,21 +55,21 @@ const About = () => {
           {/* Narrative paragraphs */}
           <motion.div variants={itemVariants} className="space-y-6 mb-12">
             <p className="cinema-body text-lg">
-              I'm a data scientist and student at Galgotias University with a deep curiosity for understanding
-              how systems work—whether they're technical, social, or somewhere in between. I believe the
-              best solutions come from asking better questions.
+              Mahi Nigam is a data scientist and systems thinker with a deep curiosity for understanding how complex
+              systems behave—whether technical, social, or somewhere in between. His work is grounded in the belief
+              that meaningful solutions begin with sharper questions.
             </p>
 
             <p className="cinema-body text-lg">
-              My work spans machine learning, big data processing, and cloud computing. But beyond the
-              tools, I'm drawn to the thinking behind them: the patterns, the edge cases, the decisions
-              that shape outcomes. I approach problems with rigor but stay open to unexpected answers.
+              His work spans machine learning, big data processing, and cloud infrastructure, but his real interest
+              lies in the thinking behind the tools: patterns, edge cases, and the decisions that shape outcomes.
+              He approaches problems with analytical rigor while remaining open to unexpected answers.
             </p>
 
             <p className="cinema-body text-lg">
-              When I'm not immersed in data, you'll find me writing philosophical reflections on my blog
-              "Remembrance", exploring ideas about human nature, or contributing to open source projects
-              that push the boundaries of what's possible.
+              Outside of technical work, he writes philosophical reflections on his blog “Remembrance,” exploring
+              themes of human nature, technology, and meaning. He is drawn to ideas that exist at the boundary of
+              engineering and philosophy—where systems meet stories.
             </p>
           </motion.div>
 

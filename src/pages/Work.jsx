@@ -55,7 +55,7 @@ const Work = () => {
 
     return (
         <section id="work" className="py-32 px-6">
-            <div className="max-w-5xl mx-auto">
+            <div className="max-w-4xl mx-auto">
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
