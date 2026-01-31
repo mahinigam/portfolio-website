@@ -17,7 +17,7 @@ const Thoughts = () => {
 
                 const data = await response.json()
 
-                const transformedPosts = data.items?.slice(0, 4).map(item => ({
+                const transformedPosts = data.items?.slice(0, 3).map(item => ({
                     title: item.title,
                     excerpt: item.description.replace(/<[^>]*>/g, '').substring(0, 180) + '...',
                     date: new Date(item.pubDate).toLocaleDateString('en-US', {
