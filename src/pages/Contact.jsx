@@ -114,15 +114,7 @@ const Contact = () => {
             ))}
           </motion.div>
 
-          {/* Email display */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-12 text-center"
-          >
-            <p className="cinema-body text-sm">
-              mahi.nigam.000@gmail.com
-            </p>
-          </motion.div>
+
         </motion.div>
       </div>
     </section>
