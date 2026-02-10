@@ -15,10 +15,10 @@ const Navbar = () => {
   }, [])
 
   const navItems = [
-    { name: 'About', href: '#about' },
+    { name: 'Thinking', href: '#thinking' },
     { name: 'Work', href: '#work' },
-    { name: 'Thoughts', href: '#thoughts' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Signal', href: '#signal' },
+    { name: 'Reach', href: '#reach' },
   ]
 
   const scrollToSection = (href) => {
@@ -35,8 +35,8 @@ const Navbar = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${scrolled
-          ? 'cinema-nav py-4'
-          : 'bg-transparent py-6'
+        ? 'cinema-nav py-4'
+        : 'bg-transparent py-6'
         }`}
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">

@@ -3,8 +3,8 @@ import CursorGlow from './components/CursorGlow'
 import Navbar from './components/Navbar'
 import Hero from './pages/Hero'
 import About from './pages/About'
-import Work from './pages/Work'
-import Thoughts from './pages/Thoughts'
+import NeuralMap from './components/NeuralMap'
+import Signal from './pages/Thoughts'
 import Contact from './pages/Contact'
 import Footer from './components/Footer'
 
@@ -23,8 +23,8 @@ function App() {
         <main>
           <Hero />
           <About />
-          <Work />
-          <Thoughts />
+          <NeuralMap />
+          <Signal />
           <Contact />
         </main>
         <Footer />

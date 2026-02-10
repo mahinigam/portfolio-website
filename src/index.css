@@ -19,8 +19,8 @@
   body {
     margin: 0;
     font-family: 'Inter', system-ui, sans-serif;
-    background-color: #0D0D0F;
-    color: #E4E4E7;
+    background-color: #0A0A0C;
+    color: #E8E8EC;
     overflow-x: hidden;
     line-height: 1.7;
     font-size: 16px;
@@ -30,26 +30,26 @@
 
   /* Selection styling */
   ::selection {
-    background: rgba(31, 40, 72, 0.5);
-    color: #E4E4E7;
+    background: rgba(91, 127, 255, 0.25);
+    color: #E8E8EC;
   }
 
   /* Scrollbar styling */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #0D0D0F;
+    background: #0A0A0C;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #1f2848;
-    border-radius: 4px;
+    background: rgba(91, 127, 255, 0.2);
+    border-radius: 3px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #2a3a5c;
+    background: rgba(91, 127, 255, 0.35);
   }
 }
 
@@ -60,7 +60,7 @@
      ========================================= */
 
   .cinema-panel {
-    background: rgba(22, 22, 24, 0.6);
+    background: rgba(19, 19, 22, 0.6);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.06);
@@ -69,14 +69,14 @@
   }
 
   .cinema-panel:hover {
-    border-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(91, 127, 255, 0.15);
     box-shadow:
-      0 0 60px rgba(31, 40, 72, 0.15),
+      0 0 60px rgba(91, 127, 255, 0.08),
       inset 0 0 60px rgba(255, 255, 255, 0.02);
   }
 
   .cinema-card {
-    background: rgba(30, 30, 33, 0.5);
+    background: rgba(26, 26, 30, 0.5);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.04);
@@ -86,8 +86,46 @@
 
   .cinema-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(31, 40, 72, 0.4);
+    border-color: rgba(91, 127, 255, 0.2);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  }
+
+  /* =========================================
+     PILLAR CARD — for thematic sections
+     ========================================= */
+
+  .pillar-card {
+    background: rgba(19, 19, 22, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pillar-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(91, 127, 255, 0.3), transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .pillar-card:hover {
+    border-color: rgba(91, 127, 255, 0.12);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+  }
+
+  .pillar-card:hover::before {
+    opacity: 1;
   }
 
   /* =========================================
@@ -100,10 +138,10 @@
     justify-content: center;
     gap: 8px;
     padding: 14px 28px;
-    background: linear-gradient(135deg, rgba(31, 40, 72, 0.8) 0%, rgba(31, 40, 72, 0.6) 100%);
-    border: 1px solid rgba(31, 40, 72, 0.6);
+    background: linear-gradient(135deg, rgba(91, 127, 255, 0.15) 0%, rgba(91, 127, 255, 0.08) 100%);
+    border: 1px solid rgba(91, 127, 255, 0.25);
     border-radius: 8px;
-    color: #E4E4E7;
+    color: #E8E8EC;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 0.9rem;
@@ -113,9 +151,9 @@
   }
 
   .cinema-button:hover {
-    background: linear-gradient(135deg, rgba(31, 40, 72, 1) 0%, rgba(42, 58, 92, 0.9) 100%);
-    border-color: rgba(31, 40, 72, 0.8);
-    box-shadow: 0 0 30px rgba(31, 40, 72, 0.4);
+    background: linear-gradient(135deg, rgba(91, 127, 255, 0.25) 0%, rgba(91, 127, 255, 0.15) 100%);
+    border-color: rgba(91, 127, 255, 0.4);
+    box-shadow: 0 0 30px rgba(91, 127, 255, 0.15);
     transform: translateY(-2px);
   }
 
@@ -128,7 +166,7 @@
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 8px;
-    color: #9CA3AF;
+    color: #A0A8B8;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 0.9rem;
@@ -138,7 +176,7 @@
   }
 
   .cinema-button-ghost:hover {
-    color: #E4E4E7;
+    color: #E8E8EC;
     border-color: rgba(255, 255, 255, 0.25);
     background: rgba(255, 255, 255, 0.04);
   }
@@ -148,14 +186,14 @@
      ========================================= */
 
   .cinema-nav {
-    background: rgba(13, 13, 15, 0.8);
+    background: rgba(10, 10, 12, 0.85);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   }
 
   .cinema-nav-link {
-    color: #6B7280;
+    color: #7A8290;
     padding: 8px 16px;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
@@ -166,7 +204,7 @@
   }
 
   .cinema-nav-link:hover {
-    color: #E4E4E7;
+    color: #E8E8EC;
   }
 
   /* =========================================
@@ -176,10 +214,10 @@
   .cinema-input {
     width: 100%;
     padding: 16px 20px;
-    background: rgba(22, 22, 24, 0.8);
+    background: rgba(19, 19, 22, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 8px;
-    color: #E4E4E7;
+    color: #E8E8EC;
     font-family: 'Inter', sans-serif;
     font-weight: 300;
     font-size: 1rem;
@@ -188,12 +226,12 @@
 
   .cinema-input:focus {
     outline: none;
-    border-color: rgba(31, 40, 72, 0.6);
-    box-shadow: 0 0 0 3px rgba(31, 40, 72, 0.2);
+    border-color: rgba(91, 127, 255, 0.4);
+    box-shadow: 0 0 0 3px rgba(91, 127, 255, 0.1);
   }
 
   .cinema-input::placeholder {
-    color: #6B7280;
+    color: #7A8290;
   }
 
   /* =========================================
@@ -205,21 +243,21 @@
     font-weight: 500;
     letter-spacing: -0.02em;
     line-height: 1.1;
-    color: #E4E4E7;
+    color: #E8E8EC;
   }
 
   .cinema-subheading {
     font-family: 'Inter', system-ui, sans-serif;
     font-weight: 300;
     letter-spacing: 0.02em;
-    color: #9CA3AF;
+    color: #A0A8B8;
   }
 
   .cinema-body {
     font-family: 'Inter', system-ui, sans-serif;
     font-weight: 300;
     line-height: 1.8;
-    color: #9CA3AF;
+    color: #A0A8B8;
   }
 
   .cinema-label {
@@ -228,7 +266,7 @@
     font-size: 0.75rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #6B7280;
+    color: #7A8290;
   }
 
 
@@ -252,8 +290,8 @@
     width: 200%;
     height: 200%;
     background:
-      radial-gradient(ellipse at 20% 30%, rgba(31, 40, 72, 0.15) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 70%, rgba(31, 40, 72, 0.1) 0%, transparent 50%);
+      radial-gradient(ellipse at 20% 30%, rgba(91, 127, 255, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(196, 168, 130, 0.04) 0%, transparent 50%);
     animation: float 20s ease-in-out infinite;
   }
 
@@ -262,7 +300,7 @@
     position: absolute;
     inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    opacity: 0.03;
+    opacity: 0.025;
     animation: grain 8s steps(10) infinite;
   }
 
@@ -273,7 +311,7 @@
   .cinema-divider {
     width: 60px;
     height: 2px;
-    background: linear-gradient(90deg, #1f2848 0%, transparent 100%);
+    background: linear-gradient(90deg, rgba(91, 127, 255, 0.5) 0%, transparent 100%);
   }
 
   /* =========================================
@@ -281,11 +319,11 @@
      ========================================= */
 
   .cinema-glow {
-    box-shadow: 0 0 80px rgba(31, 40, 72, 0.3);
+    box-shadow: 0 0 80px rgba(91, 127, 255, 0.15);
   }
 
   .cinema-text-glow {
-    text-shadow: 0 0 40px rgba(31, 40, 72, 0.5);
+    text-shadow: 0 0 40px rgba(91, 127, 255, 0.3);
   }
 
   /* =========================================
@@ -297,7 +335,7 @@
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    color: #6B7280;
+    color: #7A8290;
     font-size: 0.75rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -306,10 +344,78 @@
   .scroll-indicator-line {
     width: 1px;
     height: 40px;
-    background: linear-gradient(to bottom, rgba(31, 40, 72, 0.6) 0%, transparent 100%);
+    background: linear-gradient(to bottom, rgba(91, 127, 255, 0.4) 0%, transparent 100%);
     animation: float 2s ease-in-out infinite;
   }
 
+  /* =========================================
+     DOSSIER OVERLAY — Project detail card
+     ========================================= */
+
+  .dossier-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10, 10, 12, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .dossier-card {
+    background: rgba(19, 19, 22, 0.9);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(91, 127, 255, 0.12);
+    border-radius: 20px;
+    max-width: 600px;
+    width: 90%;
+    padding: 2.5rem;
+    position: relative;
+    box-shadow:
+      0 0 80px rgba(91, 127, 255, 0.08),
+      0 24px 48px rgba(0, 0, 0, 0.5);
+  }
+
+  /* =========================================
+     NEURAL MAP — Mobile fallback cards
+     ========================================= */
+
+  .neural-mobile-card {
+    background: rgba(19, 19, 22, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(91, 127, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+  }
+
+  .neural-mobile-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 3px;
+    height: 0;
+    background: linear-gradient(180deg, rgba(91, 127, 255, 0.5), rgba(196, 168, 130, 0.3));
+    border-radius: 2px;
+    transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(-50%);
+  }
+
+  .neural-mobile-card:hover {
+    border-color: rgba(91, 127, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+  }
+
+  .neural-mobile-card:hover::before {
+    height: 60%;
+  }
 }
 
 @layer utilities {

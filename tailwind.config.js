@@ -12,17 +12,20 @@ export default {
       },
       colors: {
         'cinema': {
-          'bg': '#0D0D0F',
-          'surface': '#161618',
-          'elevated': '#1E1E21',
+          'bg': '#0A0A0C',
+          'surface': '#131316',
+          'elevated': '#1A1A1E',
           'border': 'rgba(255, 255, 255, 0.06)',
-          'border-hover': 'rgba(255, 255, 255, 0.12)',
-          'text': '#E4E4E7',
-          'text-secondary': '#9CA3AF',
-          'text-muted': '#6B7280',
-          'accent': '#1f2848',
-          'accent-light': '#2a3a5c',
-          'accent-glow': 'rgba(31, 40, 72, 0.4)',
+          'border-hover': 'rgba(255, 255, 255, 0.14)',
+          'text': '#E8E8EC',
+          'text-secondary': '#A0A8B8',
+          'text-muted': '#7A8290',
+          'accent': '#5B7FFF',
+          'accent-light': '#7B9AFF',
+          'accent-glow': 'rgba(91, 127, 255, 0.3)',
+          'accent-dim': 'rgba(91, 127, 255, 0.08)',
+          'warm': '#C4A882',
+          'warm-glow': 'rgba(196, 168, 130, 0.25)',
         }
       },
       animation: {
@@ -35,6 +38,7 @@ export default {
         'glow-pulse': 'glowPulse 4s ease-in-out infinite',
         'float': 'float 6s ease-in-out infinite',
         'grain': 'grain 8s steps(10) infinite',
+        'breathe': 'breathe 4s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -80,6 +84,10 @@ export default {
           '70%': { transform: 'translate(0%, 15%)' },
           '80%': { transform: 'translate(3%, 35%)' },
           '90%': { transform: 'translate(-10%, 10%)' },
+        },
+        breathe: {
+          '0%, 100%': { opacity: '0.7' },
+          '50%': { opacity: '1' },
         },
       },
       transitionTimingFunction: {

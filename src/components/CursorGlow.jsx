@@ -46,32 +46,32 @@ const CursorGlow = () => {
 
     return (
         <>
-            {/* Outer glow - large and soft */}
+            {/* Outer glow — soft atmospheric wash */}
             <div
-                className="pointer-events-none fixed z-50 transition-opacity duration-300"
+                className="pointer-events-none fixed z-50 transition-opacity duration-500"
                 style={{
                     left: position.x,
                     top: position.y,
                     transform: 'translate(-50%, -50%)',
-                    width: isHovering ? '400px' : '300px',
-                    height: isHovering ? '400px' : '300px',
-                    background: `radial-gradient(circle, rgba(31, 40, 72, ${isHovering ? 0.25 : 0.15}) 0%, transparent 70%)`,
+                    width: isHovering ? '350px' : '250px',
+                    height: isHovering ? '350px' : '250px',
+                    background: `radial-gradient(circle, rgba(91, 127, 255, ${isHovering ? 0.08 : 0.05}) 0%, rgba(196, 168, 130, 0.02) 40%, transparent 70%)`,
                     opacity: visible ? 1 : 0,
-                    transition: 'width 0.4s cubic-bezier(0.16, 1, 0.3, 1), height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease',
+                    transition: 'width 0.6s cubic-bezier(0.16, 1, 0.3, 1), height 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease',
                 }}
             />
-            {/* Inner glow - smaller, more intense */}
+            {/* Inner glow — subtle focus point */}
             <div
                 className="pointer-events-none fixed z-50"
                 style={{
                     left: position.x,
                     top: position.y,
                     transform: 'translate(-50%, -50%)',
-                    width: isHovering ? '100px' : '60px',
-                    height: isHovering ? '100px' : '60px',
-                    background: `radial-gradient(circle, rgba(31, 40, 72, ${isHovering ? 0.4 : 0.25}) 0%, transparent 70%)`,
+                    width: isHovering ? '80px' : '40px',
+                    height: isHovering ? '80px' : '40px',
+                    background: `radial-gradient(circle, rgba(91, 127, 255, ${isHovering ? 0.15 : 0.08}) 0%, transparent 70%)`,
                     opacity: visible ? 1 : 0,
-                    transition: 'width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease',
+                    transition: 'width 0.4s cubic-bezier(0.16, 1, 0.3, 1), height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease',
                 }}
             />
         </>
