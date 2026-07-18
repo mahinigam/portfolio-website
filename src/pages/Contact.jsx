@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-// Custom SVG icons
+// Custom SVG icons — preserved from original
 const EmailIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <rect width="20" height="16" x="2" y="4" rx="2" />
@@ -22,23 +22,6 @@ const GitHubIcon = () => (
 )
 
 const Contact = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 }
-    }
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
-    }
-  }
-
   const socialLinks = [
     {
       name: 'Email',
@@ -48,7 +31,7 @@ const Contact = () => {
     {
       name: 'LinkedIn',
       icon: LinkedInIcon,
-      href: 'https://linkedin.com/in/mahi-nigam',
+      href: 'https://linkedin.com/in/mahinigam',
     },
     {
       name: 'GitHub',
@@ -58,25 +41,34 @@ const Contact = () => {
   ]
 
   return (
-    <section id="reach" className="py-32 px-6">
-      <div className="max-w-3xl mx-auto text-center">
+    <section id="reach" className="relative pt-32 pb-24 px-6">
+      <div className="max-w-3xl mx-auto text-center relative z-10">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          variants={containerVariants}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+          }}
         >
           {/* Closing line */}
           <motion.p
-            variants={itemVariants}
-            className="text-cinema-text-secondary text-lg md:text-xl font-light mb-12"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+            }}
+            className="text-on-surface-variant text-lg md:text-xl font-light mb-12"
           >
             If something here resonated, you know where to find me.
           </motion.p>
 
           {/* Social links — floating glyphs */}
           <motion.div
-            variants={itemVariants}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+            }}
             className="flex justify-center gap-8"
           >
             {socialLinks.map((link) => (
@@ -87,7 +79,7 @@ const Contact = () => {
                 rel={link.name !== 'Email' ? 'noopener noreferrer' : undefined}
                 whileHover={{ y: -4, scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className="text-cinema-text-muted hover:text-cinema-accent transition-colors duration-400 p-3"
+                className="text-outline hover:text-primary transition-colors duration-400 p-3"
                 aria-label={link.name}
               >
                 <link.icon />

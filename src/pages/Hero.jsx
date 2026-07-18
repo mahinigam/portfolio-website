@@ -1,59 +1,45 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
 
-const Hero = () => {
-    const scrollToThinking = () => {
-        const element = document.querySelector('#thinking')
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' })
-        }
-    }
+export default function Hero() {
+  return (
+    <section id="hero" className="relative min-h-[92svh] px-5 pt-32 md:px-10 md:pt-44">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-20">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: [0.25, 1, 0.5, 1] }}
+          className="max-w-5xl"
+        >
+          <div className="mb-8 font-mono text-[11px] uppercase tracking-[0.28em] text-zinc-500">
+            COMPILE_TARGET // PERSONAL_PORTFOLIO
+          </div>
 
-    return (
-        <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-            {/* Content */}
-            <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-                {/* Name */}
-                <motion.h1
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="cinema-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-8"
-                >
-                    MAHI NIGAM
-                </motion.h1>
+          <h1 className="text-balance text-6xl font-semibold leading-[0.9] tracking-normal text-terminal-text md:text-8xl lg:text-9xl">
+            <span className="block font-xenon text-base font-medium leading-none text-zinc-500 md:text-xl">
+              [hi, i'm mahi nigam]
+            </span>
+            <span className="mt-6 block">mahi nigam</span>
+          </h1>
 
-                {/* Evocative line */}
-                <motion.p
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-cinema-text-secondary text-lg sm:text-xl md:text-2xl font-light tracking-wide animate-breathe"
-                >
-                    I study patterns until they explain themselves.
-                </motion.p>
+          <p className="mt-10 max-w-3xl text-base font-light leading-8 text-zinc-400 md:text-xl md:leading-9">
+            I build deep learning pipelines, high-throughput workflows, and codebase architectures where the interface feels like an instrument: precise, quiet, and engineered to reveal signal.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.35, duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
+          className="grid max-w-4xl grid-cols-2 gap-px border-y border-terminal-hairline bg-terminal-hairline font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500 md:grid-cols-4"
+        >
+          {['ML PIPELINES', 'GRAPH SYSTEMS', 'EVENT FLOWS', 'INTERFACE TOOLS'].map((item) => (
+            <div key={item} className="bg-terminal-bg px-4 py-5">
+              {item}
             </div>
-
-            {/* Scroll indicator */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.8, duration: 1 }}
-                className="absolute bottom-8 left-1/2 -translate-x-1/2"
-            >
-                <motion.button
-                    onClick={scrollToThinking}
-                    animate={{ y: [0, 8, 0] }}
-                    transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-                    className="scroll-indicator"
-                >
-                    <span>Scroll</span>
-                    <ChevronDown size={16} />
-                </motion.button>
-            </motion.div>
-        </section>
-    )
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  )
 }
-
-export default Hero
