@@ -11,9 +11,7 @@ export default function Hero() {
           transition={{ duration: 0.9, ease: [0.25, 1, 0.5, 1] }}
           className="max-w-5xl"
         >
-          <div className="mb-8 font-mono text-[11px] uppercase tracking-[0.28em] text-zinc-500">
-            COMPILE_TARGET // PERSONAL_PORTFOLIO
-          </div>
+
 
           <h1 className="text-balance text-6xl font-semibold leading-[0.9] tracking-normal text-terminal-text md:text-8xl lg:text-9xl">
             <span className="block font-xenon text-base font-medium leading-none text-zinc-500 md:text-xl">

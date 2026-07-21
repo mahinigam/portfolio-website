@@ -7,12 +7,9 @@ export default function SkillsMatrix() {
     <section id="architecture" className="px-5 py-28 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
         <div className="mb-14 max-w-3xl">
-          <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.28em] text-zinc-600">
-            ARCHITECTURE_MATRIX // SKILL_INDEX
+          <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-zinc-600">
+            SKILL_INDEX
           </p>
-          <h2 className="text-3xl font-medium tracking-normal text-terminal-text md:text-5xl">
-            Built as functional domains, not badge inventory.
-          </h2>
         </div>
 
         <div className="border-y border-terminal-hairline">

@@ -167,7 +167,7 @@ function DesktopDashboard() {
         <div className="flex h-full flex-col justify-between p-8 lg:p-10">
           <div>
             <p className="mb-10 font-mono text-[10px] uppercase tracking-[0.24em] text-zinc-600">
-              LEFT_INDEX // ZERO_SUM
+              LEFT_INDEX
             </p>
             <div className="space-y-2">
               {projectsData.map((project) => {
@@ -283,17 +283,9 @@ export default function ProjectsDashboard() {
   return (
     <section id="work" className="px-5 py-28 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-14 flex flex-col justify-between gap-8 md:flex-row md:items-end">
-          <div className="max-w-3xl">
-            <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.28em] text-zinc-600">
-              PROJECT_SHOWCASE // ZERO_SUM_PARTITION
-            </p>
-            <h2 className="text-3xl font-medium tracking-normal text-terminal-text md:text-5xl">
-              Drag the boundary. Watch the interface renegotiate.
-            </h2>
-          </div>
-          <p className="max-w-sm font-mono text-[10px] uppercase leading-5 tracking-[0.2em] text-zinc-600">
-            Fixed screen utility. One divider. Three equilibria.
+        <div className="mb-14">
+          <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-zinc-600">
+            PROJECT_SHOWCASE
           </p>
         </div>
 

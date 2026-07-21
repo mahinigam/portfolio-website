@@ -44,7 +44,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-20 font-mono text-[10px] uppercase tracking-[0.24em] text-zinc-700">
-          © {new Date().getFullYear()} MAHI NIGAM // LIVE SYSTEM
+          © {new Date().getFullYear()} MAHI NIGAM
         </div>
       </div>
     </footer>
