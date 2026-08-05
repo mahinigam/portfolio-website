@@ -281,9 +281,9 @@ function MobileDashboard() {
 
 export default function ProjectsDashboard() {
   return (
-    <section id="work" className="px-5 py-28 md:px-10 md:py-36">
+    <section id="work" className="px-5 py-16 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-14">
+        <div className="mb-8 md:mb-14">
           <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-zinc-600">
             PROJECT_SHOWCASE
           </p>
