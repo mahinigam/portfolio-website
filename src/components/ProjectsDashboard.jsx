@@ -11,7 +11,7 @@ function ProjectLinks({ project }) {
         href={project.repo}
         target="_blank"
         rel="noreferrer"
-        className="inline-flex items-center gap-2 text-zinc-400 terminal-transition hover:text-terminal-text"
+        className="inline-flex items-center gap-2 text-zinc-700 terminal-transition hover:text-terminal-text"
       >
         REPO <ArrowUpRight size={13} />
       </a>
@@ -20,7 +20,7 @@ function ProjectLinks({ project }) {
           href={project.demo}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-2 text-zinc-400 terminal-transition hover:text-terminal-text"
+          className="inline-flex items-center gap-2 text-zinc-700 terminal-transition hover:text-terminal-text"
         >
           DEMO <ArrowUpRight size={13} />
         </a>
@@ -35,7 +35,7 @@ function MetricsTable({ metrics }) {
       {metrics.map(([label, value]) => (
         <div key={label} className="grid grid-cols-[0.85fr_1.15fr] border-b border-terminal-hairline last:border-b-0">
           <div className="px-0 py-3 uppercase tracking-[0.18em] text-zinc-600">{label}</div>
-          <div className="py-3 text-right text-zinc-300">{value}</div>
+          <div className="py-3 text-right text-zinc-800">{value}</div>
         </div>
       ))}
     </div>
@@ -57,7 +57,7 @@ function BalancedDetail({ project }) {
         <h3 className="max-w-3xl text-4xl font-medium tracking-normal text-terminal-text md:text-6xl">
           {project.name}
         </h3>
-        <p className="mt-8 max-w-3xl text-base leading-8 text-zinc-400 md:text-lg md:leading-9">
+        <p className="mt-8 max-w-3xl text-base leading-8 text-zinc-700 md:text-lg md:leading-9">
           {project.utility}
         </p>
       </div>
@@ -65,7 +65,7 @@ function BalancedDetail({ project }) {
       <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-end">
         <div>
           <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-600">STACK_TRACE</p>
-          <p className="text-sm leading-7 text-zinc-400">{project.stack.join(' · ')}</p>
+          <p className="text-sm leading-7 text-zinc-700">{project.stack.join(' · ')}</p>
         </div>
         <div className="space-y-7">
           <MetricsTable metrics={project.metrics} />
@@ -92,7 +92,7 @@ function JsonDetail({ project }) {
       transition={{ duration: 0.22 }}
       className="flex h-full flex-col justify-center p-6 md:p-10"
     >
-      <div className="border border-terminal-hairline bg-terminal-black p-5 font-mono text-[11px] leading-6 text-zinc-400">
+      <div className="border border-terminal-hairline bg-terminal-black p-5 font-mono text-[11px] leading-6 text-zinc-700">
         <div className="mb-4 border-b border-terminal-hairline pb-3 text-[10px] uppercase tracking-[0.22em] text-zinc-600">
           markdown_terminal // compressed detail canvas
         </div>
@@ -121,7 +121,7 @@ function CanvasDetail({ project }) {
         <h3 className="max-w-5xl text-5xl font-medium tracking-normal text-terminal-text md:text-7xl">
           {project.name}
         </h3>
-        <p className="mt-10 max-w-4xl text-xl font-light leading-10 text-zinc-300">
+        <p className="mt-10 max-w-4xl text-xl font-light leading-10 text-zinc-800">
           {project.utility}
         </p>
       </div>
@@ -130,7 +130,7 @@ function CanvasDetail({ project }) {
         <MetricsTable metrics={project.metrics} />
         <div>
           <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-600">STACK_TRACE</p>
-          <p className="text-base leading-8 text-zinc-400">{project.stack.join(' · ')}</p>
+          <p className="text-base leading-8 text-zinc-700">{project.stack.join(' · ')}</p>
           <div className="mt-8">
             <ProjectLinks project={project} />
           </div>
@@ -180,7 +180,7 @@ function DesktopDashboard() {
                     onClick={() => setActiveId(project.id)}
                     className={`grid w-full items-center gap-5 border-b border-terminal-hairline py-5 text-left terminal-transition ${
                       mode === 'aggressive-canvas' ? 'grid-cols-1' : 'grid-cols-[42px_1fr]'
-                    } ${active ? 'text-terminal-text' : 'text-zinc-600 hover:text-zinc-300'}`}
+                    } ${active ? 'text-terminal-text' : 'text-zinc-600 hover:text-zinc-800'}`}
                   >
                     <span className="font-mono text-xs tracking-[0.24em]">{project.index}</span>
                     {mode !== 'aggressive-canvas' && (
@@ -260,7 +260,7 @@ function MobileDashboard() {
                     <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-600">
                       {project.type}
                     </p>
-                    <p className="text-sm leading-7 text-zinc-400">{project.utility}</p>
+                    <p className="text-sm leading-7 text-zinc-700">{project.utility}</p>
                     <div className="mt-7">
                       <MetricsTable metrics={project.metrics} />
                     </div>

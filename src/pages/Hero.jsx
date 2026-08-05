@@ -20,7 +20,7 @@ export default function Hero() {
             <span className="mt-6 block">mahi nigam</span>
           </h1>
 
-          <p className="mt-8 max-w-3xl text-base font-light leading-8 text-zinc-400 md:mt-10 md:text-xl md:leading-9">
+          <p className="mt-8 max-w-3xl text-base font-light leading-8 text-zinc-700 md:mt-10 md:text-xl md:leading-9">
             I build deep learning pipelines, high-throughput workflows, and codebase architectures where the interface feels like an instrument: precise, quiet, and engineered to reveal signal.
           </p>
         </motion.div>

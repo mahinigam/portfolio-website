@@ -81,7 +81,7 @@ export default function Navbar() {
                   key={item.name}
                   type="button"
                   onClick={() => scrollToSection(item.href)}
-                  className="border-t border-terminal-hairline py-4 text-left font-mono text-[11px] tracking-[0.24em] text-zinc-400"
+                  className="border-t border-terminal-hairline py-4 text-left font-mono text-[11px] tracking-[0.24em] text-zinc-700"
                 >
                   {item.name}
                 </button>

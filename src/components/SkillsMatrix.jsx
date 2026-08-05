@@ -26,7 +26,7 @@ export default function SkillsMatrix() {
               <div className="font-mono text-[12px] font-semibold tracking-[0.22em] text-terminal-text">
                 / {row.domain}
               </div>
-              <div className="text-lg leading-8 text-zinc-400">
+              <div className="text-lg leading-8 text-zinc-700">
                 {row.items.join(' · ')}
               </div>
             </motion.div>
