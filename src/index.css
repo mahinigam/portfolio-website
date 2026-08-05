@@ -24,8 +24,8 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
-  background: #0b0f19;
+  color-scheme: light;
+  background: #F7F5F0;
   font-synthesis: none;
   text-rendering: geometricPrecision;
   -webkit-font-smoothing: antialiased;
@@ -38,7 +38,7 @@
 
 html {
   scroll-behavior: smooth;
-  background: #0b0f19;
+  background: #F7F5F0;
   scrollbar-width: none;
 }
 
@@ -52,9 +52,9 @@ body {
   margin: 0;
   overflow-x: hidden;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent 38rem),
-    #0b0f19;
-  color: #f3f4f6;
+    linear-gradient(180deg, rgba(28, 28, 28, 0.018), transparent 38rem),
+    #F7F5F0;
+  color: #1C1C1C;
   font-family: Inter, Geist, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
 }
 
@@ -68,8 +68,8 @@ button {
 }
 
 ::selection {
-  background: #f3f4f6;
-  color: #090d16;
+  background: #1C1C1C;
+  color: #F7F5F0;
 }
 
 @layer utilities {
@@ -79,13 +79,13 @@ button {
 
   .terminal-grid {
     background-image:
-      linear-gradient(rgba(243, 244, 246, 0.026) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(243, 244, 246, 0.026) 1px, transparent 1px);
+      linear-gradient(rgba(28, 28, 28, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(28, 28, 28, 0.04) 1px, transparent 1px);
     background-size: 88px 88px;
   }
 
   .terminal-hairline {
-    border-color: rgba(243, 244, 246, 0.08);
+    border-color: rgba(28, 28, 28, 0.08);
   }
 
   .text-balance {
@@ -95,4 +95,24 @@ button {
   .tabular {
     font-variant-numeric: tabular-nums;
   }
+}
+
+/* Global Noise / Paper Texture Overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  /* Clean Premium Matte Paper Texture */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
+  
+  background-size: 200px;
+  
+  /* Very subtle, clean uniform grain */
+  opacity: 0.08; 
+  mix-blend-mode: multiply; 
+  
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }

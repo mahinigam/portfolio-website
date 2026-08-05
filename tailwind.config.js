@@ -8,14 +8,14 @@ export default {
     extend: {
       colors: {
         terminal: {
-          bg: '#0B0F19',
-          ink: '#0c111c',
-          black: '#090d16',
-          text: '#F3F4F6',
-          muted: '#71717a',
-          dim: '#4B5563',
-          line: 'rgba(243, 244, 246, 0.12)',
-          hairline: 'rgba(243, 244, 246, 0.08)',
+          bg: '#F7F5F0',
+          ink: '#111111',
+          black: '#000000',
+          text: '#1C1C1C',
+          muted: '#52525B',
+          dim: '#A1A1AA',
+          line: 'rgba(28, 28, 28, 0.12)',
+          hairline: 'rgba(28, 28, 28, 0.08)',
         },
       },
       fontFamily: {
@@ -29,7 +29,7 @@ export default {
         terminal: 'cubic-bezier(0.25, 1, 0.5, 1)',
       },
       boxShadow: {
-        tracker: '0 0 18px rgba(243, 244, 246, 0.28)',
+        tracker: '0 0 18px rgba(28, 28, 28, 0.15)',
       },
     },
   },
