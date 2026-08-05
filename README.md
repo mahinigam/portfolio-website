@@ -2,12 +2,13 @@
 
 A highly bespoke, minimal, and physics-driven portfolio website built with React 19, TailwindCSS, and Framer Motion. 
 
-This project rejects the "app-in-a-box" aesthetic in favor of a **Monochrome Terminal** design system. The viewport acts as an interactive engineering tool, featuring an ambient physics framework and a zero-sum canvas partition for displaying complex project telemetry.
+This project rejects the "app-in-a-box" aesthetic in favor of a **Premium Matte Paper / Editorial** design system. The viewport acts as an interactive engineering tool, featuring an ambient physics framework and a zero-sum canvas partition for displaying complex project telemetry.
 
 ## Features
 
 - **Ambient Physics Framework**: Custom CSS physics (`useScrollVelocity.js`) calculating scroll acceleration to drive a Velocity Tracking HUD and an HTML5 Particle Field.
 - **Zero-Sum Canvas Partition**: An interactive, draggable split-screen layout (`useDraggableSplit.js`) for the project showcase that mathematically balances UI layout across three equilibrium states (Balanced, Aggressive Index, Aggressive Canvas).
+- **Procedural Texture Engine**: A hardware-accelerated, zero-bandwidth CSS/SVG texture system that generates a physical matte paper grain mathematically across the viewport.
 - **Role-Based Architecture**: A strictly flat, technically-grouped file structure prioritizing maximum creative execution velocity over deep, rigid routing.
 - **Typography**: A calculated pairing of standard Sans-Serifs with the **Monaspace** family (Argon, Xenon, Krypton) applied precisely for texture, metrics, and structural metadata.
 
