@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react'
 import React from 'react'
 import AmbientShell from './components/ambient/AmbientShell'
 import Footer from './components/Footer'
@@ -16,6 +17,7 @@ function App() {
         <ProjectsDashboard />
       </main>
       <Footer />
+      <Analytics />
     </AmbientShell>
   )
 }
