@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative min-h-[85svh] px-5 pt-24 md:min-h-[92svh] md:px-10 md:pt-44">
+    <section id="hero" className="relative px-5 pb-16 pt-24 md:min-h-[92svh] md:px-10 md:pt-44">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 md:gap-20">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
