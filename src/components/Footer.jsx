@@ -4,7 +4,7 @@ import { ArrowUpRight } from 'lucide-react'
 const links = [
   { label: 'GITHUB', href: 'https://github.com/mahinigam' },
   { label: 'LINKEDIN', href: 'https://linkedin.com/in/mahinigam' },
-  { label: 'EMAIL', href: 'mailto:mahi.nigam.000@gmail.com' },
+  { label: 'EMAIL', href: 'mailto:i.mahinigam@gmail.com' },
 ]
 
 export default function Footer() {
