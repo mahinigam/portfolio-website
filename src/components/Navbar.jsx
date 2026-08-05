@@ -38,7 +38,7 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => scrollToSection('#hero')}
-          className="font-mono text-[11px] font-semibold tracking-[0.28em] text-terminal-text terminal-transition hover:text-white"
+          className="font-mono text-[11px] font-semibold tracking-[0.28em] text-terminal-text terminal-transition"
         >
           MN//SYS
         </button>

@@ -92,7 +92,7 @@ function JsonDetail({ project }) {
       transition={{ duration: 0.22 }}
       className="flex h-full flex-col justify-center p-6 md:p-10"
     >
-      <div className="border border-terminal-hairline bg-terminal-black p-5 font-mono text-[11px] leading-6 text-zinc-700">
+      <div className="border border-terminal-hairline bg-white p-5 font-mono text-[11px] leading-6 text-zinc-700">
         <div className="mb-4 border-b border-terminal-hairline pb-3 text-[10px] uppercase tracking-[0.22em] text-zinc-600">
           markdown_terminal // compressed detail canvas
         </div>

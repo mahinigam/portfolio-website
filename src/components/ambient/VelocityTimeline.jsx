@@ -11,7 +11,7 @@ export default function VelocityTimeline({ progress, intensity }) {
         style={{
           height: `${progress * 100}%`,
           opacity: 0.24 + intensity * 0.76,
-          boxShadow: `0 0 ${18 + intensity * 28}px rgba(243, 244, 246, ${glow})`,
+          boxShadow: `0 0 ${18 + intensity * 28}px rgba(28, 28, 28, ${glow})`,
         }}
       />
     </div>
