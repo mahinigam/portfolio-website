@@ -1,4 +1,5 @@
 import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import React from 'react'
 import AmbientShell from './components/ambient/AmbientShell'
 import Footer from './components/Footer'
@@ -18,6 +19,7 @@ function App() {
       </main>
       <Footer />
       <Analytics />
+      <SpeedInsights />
     </AmbientShell>
   )
 }
