@@ -5,13 +5,13 @@ export const projectsData = [
     name: 'Codebase Cartographer',
     type: 'STRUCTURAL FORENSICS ENGINE',
     utility:
-      'Transforms repositories into a navigable Neo4j knowledge graph of files, symbols, dependencies, Git history, risk signals, and AI-generated architectural summaries. Built to answer where behavior lives, what is load-bearing, and what might break before a refactor lands.',
-    stack: ['Next.js', 'React 19', 'TypeScript', 'FastAPI', 'Neo4j', 'Tree-sitter', 'Gemini', 'Ollama'],
+      'Transforms repositories into a navigable Neo4j knowledge graph of files, dependencies, and Git history. Features a hybrid structural + semantic risk model and a two-tier AI architecture—using TypeSafe Jev for deterministic classification and Gemini/Ollama for generative architectural reasoning.',
+    stack: ['Next.js', 'React 19', 'TypeScript', 'Python', 'FastAPI', 'Neo4j', 'TypeSafe Jev', 'Gemini'],
     metrics: [
       ['Graph', 'files + symbols + imports'],
       ['History', 'up to 500 commits'],
       ['Search', 'Neo4j vector index'],
-      ['Tests', 'pytest + Vitest'],
+      ['Jev Bonds', '10 structured decisions'],
     ],
     repo: 'https://github.com/mahinigam/codebase-cartographer',
   },
