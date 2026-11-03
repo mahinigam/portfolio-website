@@ -137,7 +137,7 @@ Change each capability cell class from `bg-terminal-bg px-4 py-5` to `paper-glas
 
 - [ ] **Step 3: Treat the project dashboard selectively**
 
-Add `paper-glass` to the desktop detail plane, then append `relative paper-gloss` to the active project button class in both dashboard variants. Do not change the `onMouseEnter`, `onClick`, `onPointerDown`, or style calculations.
+Add `paper-glass` to the desktop detail plane, then append `relative paper-glass paper-gloss` to the active project button class in both dashboard variants. Do not change the `onMouseEnter`, `onClick`, `onPointerDown`, or style calculations.
 
 - [ ] **Step 4: Verify the production build**
 
