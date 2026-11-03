@@ -25,7 +25,7 @@
 **Files:**
 - Create: `test/projectsData.test.js`
 
-- [ ] **Step 1: Create a failing catalog test**
+- [x] **Step 1: Create a failing catalog test**
 
 ```js
 import test from 'node:test'
@@ -40,7 +40,7 @@ test('lists Breakpoint fourth and excludes Distributed Task Scheduler', () => {
 })
 ```
 
-- [ ] **Step 2: Run the test and confirm the expected failure**
+- [x] **Step 2: Run the test and confirm the expected failure**
 
 Run: `node --test test/projectsData.test.js`
 
@@ -53,7 +53,7 @@ Expected: FAIL because the fourth item is currently `ai-risk-manager` and no `br
 - Modify: `package.json`
 - Test: `test/projectsData.test.js`
 
-- [ ] **Step 1: Add the Breakpoint record at position 04**
+- [x] **Step 1: Add the Breakpoint record at position 04**
 
 ```js
 {
@@ -75,17 +75,17 @@ Expected: FAIL because the fourth item is currently `ai-risk-manager` and no `br
 
 Remove the complete `task-scheduler` object. Change all following `index` values to `05`–`09` while retaining their existing order.
 
-- [ ] **Step 2: Add the test command**
+- [x] **Step 2: Add the test command**
 
 Add `"test": "node --test"` to `scripts` in `package.json`.
 
-- [ ] **Step 3: Verify the catalog contract passes**
+- [x] **Step 3: Verify the catalog contract passes**
 
 Run: `npm test`
 
 Expected: `1` test passing and `0` failures.
 
-- [ ] **Step 4: Commit the catalog update**
+- [x] **Step 4: Commit the catalog update**
 
 ```bash
 git add package.json src/data/projectsData.js test/projectsData.test.js
@@ -97,7 +97,7 @@ git commit -m "feat: add Breakpoint to portfolio projects"
 **Files:**
 - Modify: `src/index.css`
 
-- [ ] **Step 1: Define focused material utilities**
+- [x] **Step 1: Define focused material utilities**
 
 ```css
 .paper-glass { background: rgba(247, 245, 240, 0.72); border-color: rgba(28, 28, 28, 0.12); box-shadow: inset 0 1px rgba(255, 255, 255, 0.78), 0 12px 32px rgba(28, 28, 28, 0.04); }
@@ -107,14 +107,14 @@ git commit -m "feat: add Breakpoint to portfolio projects"
 .paper-gloss:hover::after, .paper-gloss:focus-visible::after { opacity: 1; transform: translateX(120%); }
 ```
 
-- [ ] **Step 2: Define accessibility and motion fallbacks**
+- [x] **Step 2: Define accessibility and motion fallbacks**
 
 ```css
 button:focus-visible, a:focus-visible { outline: 2px solid #1C1C1C; outline-offset: 4px; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
 ```
 
-- [ ] **Step 3: Verify static quality**
+- [x] **Step 3: Verify static quality**
 
 Run: `npm run lint`
 
@@ -127,25 +127,25 @@ Expected: exit code `0` with no ESLint errors.
 - Modify: `src/pages/Hero.jsx`
 - Modify: `src/components/ProjectsDashboard.jsx`
 
-- [ ] **Step 1: Update the scrolled navigation state**
+- [x] **Step 1: Update the scrolled navigation state**
 
 Change the `scrolled` branch in `Navbar.jsx` to `border-terminal-hairline paper-glass`; retain `border-transparent bg-transparent` otherwise.
 
-- [ ] **Step 2: Treat the hero capability cells as quiet instruments**
+- [x] **Step 2: Treat the hero capability cells as quiet instruments**
 
 Change each capability cell class from `bg-terminal-bg px-4 py-5` to `paper-glass px-4 py-5` in `Hero.jsx`; do not add radius classes.
 
-- [ ] **Step 3: Treat the project dashboard selectively**
+- [x] **Step 3: Treat the project dashboard selectively**
 
 Add `paper-glass` to the desktop detail plane, then append `relative paper-glass paper-gloss` to the active project button class in both dashboard variants. Do not change the `onMouseEnter`, `onClick`, `onPointerDown`, or style calculations.
 
-- [ ] **Step 4: Verify the production build**
+- [x] **Step 4: Verify the production build**
 
 Run: `npm run build`
 
 Expected: Vite completes successfully.
 
-- [ ] **Step 5: Commit the visual finish**
+- [x] **Step 5: Commit the visual finish**
 
 ```bash
 git add src/index.css src/components/Navbar.jsx src/pages/Hero.jsx src/components/ProjectsDashboard.jsx
@@ -157,21 +157,21 @@ git commit -m "style: add refined paper material finish"
 **Files:**
 - No source changes expected
 
-- [ ] **Step 1: Start the Vite development server and capture desktop/mobile screenshots**
+- [x] **Step 1: Start the Vite development server and capture desktop/mobile screenshots**
 
 Run the site through the browser-testing workflow at `1440×900` and `390×844`. Capture the top of the page, the project dashboard, and a selected project state.
 
-- [ ] **Step 2: Check visual and accessibility requirements**
+- [x] **Step 2: Check visual and accessibility requirements**
 
 Confirm readable contrast over every translucent layer; visible keyboard focus; no overflow at 390px; no dashboard regression; and no sheen motion with reduced motion enabled.
 
-- [ ] **Step 3: Run final checks**
+- [x] **Step 3: Run final checks**
 
 Run: `npm test && npm run lint && npm run build`
 
 Expected: all checks exit `0`.
 
-- [ ] **Step 4: Commit any screenshot-driven correction**
+- [x] **Step 4: No screenshot-driven correction was required**
 
 ```bash
 git add src
