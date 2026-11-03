@@ -31,7 +31,7 @@ export default function Navbar() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
       className={`fixed left-0 top-0 z-30 w-full border-b px-5 py-4 terminal-transition md:px-10 ${
-        scrolled ? 'border-terminal-hairline bg-terminal-bg' : 'border-transparent bg-transparent'
+        scrolled ? 'border-terminal-hairline paper-glass' : 'border-transparent bg-transparent'
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between">

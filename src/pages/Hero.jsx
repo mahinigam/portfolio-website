@@ -32,7 +32,7 @@ export default function Hero() {
           className="grid max-w-4xl grid-cols-2 gap-px border-y border-terminal-hairline bg-terminal-hairline font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500 md:grid-cols-4"
         >
           {['ML PIPELINES', 'GRAPH SYSTEMS', 'EVENT FLOWS', 'INTERFACE TOOLS'].map((item) => (
-            <div key={item} className="bg-terminal-bg px-4 py-5">
+            <div key={item} className="paper-glass px-4 py-5">
               {item}
             </div>
           ))}
