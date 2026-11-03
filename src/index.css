@@ -26,6 +26,14 @@
 :root {
   color-scheme: light;
   background: #F7F5F0;
+  --paper-glass-fill: rgba(247, 245, 240, 0.76);
+  --paper-glass-fill-active: rgba(255, 255, 255, 0.46);
+  --paper-glass-line: rgba(28, 28, 28, 0.12);
+  --paper-glass-highlight: rgba(255, 255, 255, 0.82);
+  --paper-glass-shadow: 0 14px 34px rgba(28, 28, 28, 0.045);
+  --paper-focus: #1C1C1C;
+  --paper-ease: cubic-bezier(0.25, 1, 0.5, 1);
+  --paper-duration: 320ms;
   font-synthesis: none;
   text-rendering: geometricPrecision;
   -webkit-font-smoothing: antialiased;
@@ -67,9 +75,58 @@ button {
   cursor: pointer;
 }
 
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--paper-focus);
+  outline-offset: 4px;
+}
+
 ::selection {
   background: #1C1C1C;
   color: #F7F5F0;
+}
+
+.paper-glass {
+  background: var(--paper-glass-fill);
+  border-color: var(--paper-glass-line);
+  box-shadow: inset 0 1px 0 var(--paper-glass-highlight), var(--paper-glass-shadow);
+}
+
+@supports (backdrop-filter: blur(12px)) {
+  .paper-glass {
+    backdrop-filter: blur(14px) saturate(118%);
+  }
+}
+
+.paper-gloss {
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.paper-gloss::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(108deg, transparent 30%, rgba(255, 255, 255, 0.4) 48%, transparent 66%);
+  transform: translateX(-120%);
+  transition: transform 680ms var(--paper-ease), opacity 180ms ease;
+}
+
+.paper-gloss > * {
+  position: relative;
+  z-index: 1;
+}
+
+.paper-gloss:is(:hover, :focus-visible)::after {
+  opacity: 1;
+  transform: translateX(120%);
+}
+
+.paper-gloss:active {
+  transform: translateY(1px);
 }
 
 @layer utilities {
@@ -115,4 +172,15 @@ body::after {
   
   transform: translate3d(0, 0, 0);
   will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

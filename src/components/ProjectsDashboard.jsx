@@ -180,7 +180,7 @@ function DesktopDashboard() {
                     onClick={() => setActiveId(project.id)}
                     className={`grid w-full items-center gap-5 border-b border-terminal-hairline py-5 text-left terminal-transition ${
                       mode === 'aggressive-canvas' ? 'grid-cols-1' : 'grid-cols-[42px_1fr]'
-                    } ${active ? 'text-terminal-text' : 'text-zinc-600 hover:text-zinc-800'}`}
+                    } ${active ? 'relative paper-glass paper-gloss text-terminal-text' : 'text-zinc-600 hover:text-zinc-800'}`}
                   >
                     <span className="font-mono text-xs tracking-[0.24em]">{project.index}</span>
                     {mode !== 'aggressive-canvas' && (
@@ -221,7 +221,7 @@ function DesktopDashboard() {
       </button>
 
       <div
-        className="absolute inset-y-0 right-0 border-l border-terminal-hairline"
+        className="absolute inset-y-0 right-0 border-l border-terminal-hairline paper-glass"
         style={{ width: `${100 - leftWidth}%` }}
       >
         <ProjectDetail project={activeProject} mode={mode} />
@@ -242,7 +242,9 @@ function MobileDashboard() {
             <button
               type="button"
               onClick={() => setActiveId(active ? '' : project.id)}
-              className="grid w-full grid-cols-[42px_1fr] gap-4 px-0 py-6 text-left"
+              className={`grid w-full grid-cols-[42px_1fr] gap-4 px-0 py-6 text-left terminal-transition ${
+                active ? 'relative paper-glass paper-gloss' : ''
+              }`}
             >
               <span className="font-mono text-[11px] tracking-[0.24em] text-zinc-600">{project.index}</span>
               <span className="text-lg font-medium text-terminal-text">{project.name}</span>

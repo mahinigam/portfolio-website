@@ -49,8 +49,24 @@ export const projectsData = [
     demo: 'https://huggingface.co/spaces/mahinigam/4xl',
   },
   {
-    id: 'ai-risk-manager',
+    id: 'breakpoint',
     index: '04',
+    name: 'Breakpoint',
+    type: 'CREDIT-RISK DECISION SYSTEM',
+    utility:
+      'Turns calibrated credit-risk scores into a constrained Grow / Hold / Restrict policy, pairing a 200-feature LightGBM model with explicit portfolio guardrails and economic scenario analysis.',
+    stack: ['Python', 'LightGBM', 'DuckDB', 'SHAP', 'Tableau', 'scikit-learn', 'pytest'],
+    metrics: [
+      ['Calibrated AUC', '0.9584'],
+      ['Policy', 'Grow / Hold / Restrict'],
+      ['Profit uplift', '+5.1% to +9.7%'],
+      ['Worst-case regret', '1.83%'],
+    ],
+    repo: 'https://github.com/mahinigam/breakpoint',
+  },
+  {
+    id: 'ai-risk-manager',
+    index: '05',
     name: 'AI Risk Manager',
     type: 'FRAUD DEFENSE SYSTEM',
     utility:
@@ -66,7 +82,7 @@ export const projectsData = [
   },
   {
     id: 'vocab',
-    index: '05',
+    index: '06',
     name: 'Vocab',
     type: 'IOS WORD GALAXY',
     utility:
@@ -82,7 +98,7 @@ export const projectsData = [
   },
   {
     id: 'aegismind',
-    index: '06',
+    index: '07',
     name: 'AegisMind',
     type: 'SERVERLESS DOCUMENT INTELLIGENCE',
     utility:
@@ -95,22 +111,6 @@ export const projectsData = [
       ['Review', 'human-in-loop'],
     ],
     repo: 'https://github.com/mahinigam/aegismind',
-  },
-  {
-    id: 'task-scheduler',
-    index: '07',
-    name: 'Distributed Task Scheduler',
-    type: 'BACKEND RELIABILITY SYSTEM',
-    utility:
-      'Implements priority task submission, async workers, retry backoff, dead letter queues, idempotent Lua claims, and worker heartbeat reclamation. It is designed as a production-grade queueing system rather than a toy scheduler.',
-    stack: ['FastAPI', 'Redis', 'PostgreSQL', 'Docker', 'Lua', 'JSON logs'],
-    metrics: [
-      ['Rate limit', '50 tasks/min/IP'],
-      ['Retries', '2s -> 4s -> 8s'],
-      ['Queue', 'Redis ZSET priority'],
-      ['Failure sink', 'PostgreSQL DLQ'],
-    ],
-    repo: 'https://github.com/mahinigam/task-scheduler',
   },
   {
     id: 'atlas-intelligence',
